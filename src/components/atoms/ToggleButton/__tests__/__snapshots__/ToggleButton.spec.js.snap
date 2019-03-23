@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should become Open after click 1`] = `
+<Contain(ToggleButton)
+  onClose={[Function]}
+  onOpen={[Function]}
+>
+  <ToggleButton
+    handleClick={[Function]}
+    toggle={true}
+  >
+    <button
+      className="button"
+      onClick={[Function]}
+      type="button"
+    >
+      Close
+    </button>
+  </ToggleButton>
+</Contain(ToggleButton)>
+`;
+
+exports[`should become Open after click 2`] = `
+<Contain(ToggleButton)
+  onClose={[Function]}
+  onOpen={[Function]}
+>
+  <ToggleButton
+    handleClick={[Function]}
+    toggle={false}
+  >
+    <button
+      className="buttonReverse"
+      onClick={[Function]}
+      type="button"
+    >
+      Open
+    </button>
+  </ToggleButton>
+</Contain(ToggleButton)>
+`;
+
+exports[`should become Open after click 3`] = `
+<Contain(ToggleButton)
+  onClose={[Function]}
+  onOpen={[Function]}
+>
+  <ToggleButton
+    handleClick={[Function]}
+    toggle={true}
+  >
+    <button
+      className="button"
+      onClick={[Function]}
+      type="button"
+    >
+      Close
+    </button>
+  </ToggleButton>
+</Contain(ToggleButton)>
+`;

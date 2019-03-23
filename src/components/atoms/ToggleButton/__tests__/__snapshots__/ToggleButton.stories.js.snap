@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`__interactive 1`] = `
+<Contain(ToggleButton)
+  closeTitle="Close"
+  onClose={[Function]}
+  onOpen={[Function]}
+  openTitle="Open"
+>
+  <ToggleButton
+    closeTitle="Close"
+    handleClick={[Function]}
+    openTitle="Open"
+    toggle={true}
+  >
+    <button
+      className="button"
+      onClick={[Function]}
+      type="button"
+    >
+      Close
+    </button>
+  </ToggleButton>
+</Contain(ToggleButton)>
+`;

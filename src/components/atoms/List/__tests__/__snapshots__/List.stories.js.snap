@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`__interactive 1`] = `
+<List
+  items={
+    Array [
+      Object {
+        "key": 1,
+        "value": "Lee",
+      },
+      Object {
+        "key": 2,
+        "value": "Mike",
+      },
+    ]
+  }
+>
+  <ul>
+    <li
+      key="1"
+    >
+      Lee
+    </li>
+    <li
+      key="2"
+    >
+      Mike
+    </li>
+  </ul>
+</List>
+`;
