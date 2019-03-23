@@ -1,6 +1,7 @@
 .header {
+	display: flex;
+	justify-content: center;
+	position: relative;
 	width: 100%;
-	color: var(--darkBlue);
-	background-color: var(--blue);
-	padding: 24px 0;
+	background: #4A90E2;
 }

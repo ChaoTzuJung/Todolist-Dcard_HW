@@ -31,8 +31,7 @@ const todoCategorys = [
 stories.add('__interactive', () => (
 	<Navigation
 		className=""
-		activeCategory={select('type', ['myTasks', 'inProgress', 'completed'], 'myTasks')}
-		// activeCategory="myTasks"
+		activeCategory="myTasks"
 		onClickTab={action('onClick tab')}
 		todoCategorys={object('todoCategorys', todoCategorys)}
 	/>
