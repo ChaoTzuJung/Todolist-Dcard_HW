@@ -5,10 +5,7 @@ import { hot } from 'react-hot-loader/root';
 
 import App from 'layouts/App';
 
-import MembersRoute from './Members';
-import BlogsRoute from './Blogs';
-
-const createRoutes = store => ({
+const createRoutes = () => ({
 	path: '/',
 	component: App,
 	indexRoute: {
@@ -22,7 +19,7 @@ const createRoutes = store => ({
 				'Home',
 			),
 	},
-	childRoutes: [MembersRoute(store), BlogsRoute(store)],
+	childRoutes: [],
 });
 
 const Routes = ({ store, history }) => (
