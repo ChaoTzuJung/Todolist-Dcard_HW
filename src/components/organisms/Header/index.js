@@ -1,5 +1,4 @@
 import React from 'react';
-import Navigation from 'components/molecules/Navigation/component';
 import styles from './index.css';
 
 const Header = ({ children }) => (
