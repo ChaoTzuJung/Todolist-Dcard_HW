@@ -1,0 +1,7 @@
+.icon {
+	color: #000000;
+
+	&.light {
+		color: #FFFFFF;
+	}
+}
