@@ -8,15 +8,14 @@ const Icon = ({
 	className,
 	outlined,
 	light = false,
-	size = 'md-24', // CSS rules for the standard material design sizing guidelines (.md-18 .md-24 .md-36 .md-48)
 	...other
 }) => (
 	<i
 		className={classnames(styles.icon,
 			className,
 			{
-				[`material-icons ${size}`]: !outlined,
-				[`material-icons-outlined ${size}`]: outlined,
+				[`material-icons`]: !outlined,
+				[`material-icons-outlined`]: outlined,
 			},
 			{
 				[styles.light]: light,

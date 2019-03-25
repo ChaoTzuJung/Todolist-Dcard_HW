@@ -9,25 +9,11 @@ const stories = storiesOf('Commons|atoms/Icon', module);
 stories.addDecorator(withKnobs);
 
 stories.add('__interactive', () => (
-	<Icon
-		light={boolean('light', false)}
-		size={select('size', {
-			'18px': 'md-18',
-			'24px': 'md-24',
-			'36px': 'md-36',
-			'48px': 'md-48',
-		})}
-	>
-		add
-	</Icon>
+	<Icon light={boolean('light', false)}>add</Icon>
 ));
 
 stories.add('outlined icon', () => (
-	<Icon
-		outlined={boolean('outlined', false)}
-	>
-		insert_drive_file
-	</Icon>
+	<Icon outlined={boolean('outlined', false)}>insert_drive_file</Icon>
 ));
 
 const usedIcon = [
