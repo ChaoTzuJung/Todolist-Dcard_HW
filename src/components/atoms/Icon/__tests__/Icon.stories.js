@@ -22,6 +22,14 @@ stories.add('__interactive', () => (
 	</Icon>
 ));
 
+stories.add('outlined icon', () => (
+	<Icon
+		outlined={boolean('outlined', false)}
+	>
+		insert_drive_file
+	</Icon>
+));
+
 const usedIcon = [
 	'add',
 	'date_range',
