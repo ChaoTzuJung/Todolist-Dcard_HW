@@ -3,7 +3,7 @@ import { contain } from 'react-container-helper';
 import List from './component';
 
 const initState = () => ({
-	text: '',
+	text: 'Type Something Here...',
 });
 
 const mapSetStateToProps = (
@@ -27,6 +27,10 @@ const mapSetStateToProps = (
 	// actions
 	onChangeCheckbox(event) {
 		setState(event.target.value);
+	},
+
+	handleChange(e) {
+		setState({ text: e.target.value });
 	},
 });
 

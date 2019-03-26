@@ -6,7 +6,7 @@ import Icon from 'components/atoms/Icon';
 
 import styles from './index.css';
 
-const List = ({ className, text, star, edit, checked, date, file, comment, onChangeCheckbox }) => (
+const List = ({ className, star, edit, checked, date, file, comment, onChangeCheckbox, handleChange, text }) => (
 	<Fragment>
 		<div
 			className={classnames(styles.list, className, {
@@ -16,17 +16,7 @@ const List = ({ className, text, star, edit, checked, date, file, comment, onCha
 		>
 			<div className={styles.left}>
 				<div className={styles.top}>
-					{!edit ? (
-						<Checkbox
-							className={classnames({
-								[styles.lineThrough]: checked,
-							})}
-							name="todo"
-							checked={checked}
-							content={text}
-							onChange={onChangeCheckbox}
-						/>
-					) : (
+					{edit ? (
 						<Field
 							className={styles.fieldFix}
 							name="edit_todo"
@@ -35,6 +25,18 @@ const List = ({ className, text, star, edit, checked, date, file, comment, onCha
 							valid="false"
 							color={star ? '#FFF2DC' : '#F2F2F2'}
 							border="false"
+							defaultValue={text}
+							onChange={handleChange}
+						/>
+					) : (
+						<Checkbox
+							className={classnames({
+								[styles.lineThrough]: checked,
+							})}
+							name="todo"
+							checked={checked}
+							content={text}
+							onChange={onChangeCheckbox}
 						/>
 					)}
 				</div>
