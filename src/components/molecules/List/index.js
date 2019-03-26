@@ -5,7 +5,7 @@ import List from './component';
 const initState = () => ({
 	todo: {
 		id: Date.now(),
-		content: 'Type Something Here...',
+		content: '下午上課',
 		dateline: '2018/5/14_14:30',
 		file: null,
 		comment: 'meet him lorence Cafe',
@@ -14,7 +14,7 @@ const initState = () => ({
 
 const mapSetStateToProps = (
 	{ todo },
-	{ className, checked, star, edit, date, file, comment, ...other },
+	{ className, text, checked, star, edit, date, file, comment, ...other },
 	setState,
 ) => ({
 	// state
@@ -22,6 +22,7 @@ const mapSetStateToProps = (
 
 	// props
 	className,
+	text,
 	checked,
 	star,
 	edit,

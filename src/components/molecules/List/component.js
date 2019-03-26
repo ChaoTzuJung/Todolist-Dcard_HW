@@ -1,16 +1,17 @@
 import React, { Fragment } from 'react';
 import classnames from 'classnames';
 import Checkbox from 'components/atoms/Checkbox';
-import Field from 'components/atoms/Field'
+import Field from 'components/atoms/Field';
 import Icon from 'components/atoms/Icon';
 
 import styles from './index.css';
 
-const List = ({ className, todo, star, edit, checked, date, file, comment, onChangeCheckbox }) => (
+const List = ({ className, text, star, edit, checked, date, file, comment, onChangeCheckbox }) => (
 	<Fragment>
 		<div
 			className={classnames(styles.list, className, {
 				[styles.colorList]: star,
+				[styles.border]: edit,
 			})}
 		>
 			<div className={styles.left}>
@@ -22,7 +23,7 @@ const List = ({ className, todo, star, edit, checked, date, file, comment, onCha
 							})}
 							name="todo"
 							checked={checked}
-							content="Type Something Here..."
+							content={text}
 							onChange={onChangeCheckbox}
 						/>
 					) : (
@@ -42,7 +43,7 @@ const List = ({ className, todo, star, edit, checked, date, file, comment, onCha
 						{date && (
 							<Fragment>
 								<Icon className={styles.iconFix}>date_range</Icon>
-								{todo.dateline && <span>{todo.dateline}</span>}
+								{date && <span>6/18</span>}
 							</Fragment>
 						)}
 						{file && (

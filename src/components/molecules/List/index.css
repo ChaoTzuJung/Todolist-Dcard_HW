@@ -76,3 +76,7 @@
 .color-list {
 	background-color: #FFF2DC;;
 }
+
+.border {
+	border-bottom: 2px solid #C8C8C8;
+}
