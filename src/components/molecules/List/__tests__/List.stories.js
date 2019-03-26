@@ -15,9 +15,9 @@ stories.add('__interactive', () => (
 			star={boolean('star', false)}
 			edit={boolean('edit', false)}
 			checked={boolean('checked', false)}
-			date={boolean('date', false)}
-			file={boolean('file', false)}
-			comment={boolean('comment', false)}
+			date={boolean('date', true)}
+			file={boolean('file', true)}
+			comment={boolean('comment', true)}
 		/>
 	</div>
 ));

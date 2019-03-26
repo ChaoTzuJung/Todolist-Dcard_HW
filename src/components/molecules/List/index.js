@@ -12,7 +12,11 @@ const initState = () => ({
 	},
 });
 
-const mapSetStateToProps = ({ todo }, { className, checked, star, edit }, setState) => ({
+const mapSetStateToProps = (
+	{ todo },
+	{ className, checked, star, edit, date, file, comment, ...other },
+	setState,
+) => ({
 	// state
 	todo,
 
@@ -21,6 +25,10 @@ const mapSetStateToProps = ({ todo }, { className, checked, star, edit }, setSta
 	checked,
 	star,
 	edit,
+	date,
+	file,
+	comment,
+	...other,
 
 	// actions
 	onChangeCheckbox(event) {
