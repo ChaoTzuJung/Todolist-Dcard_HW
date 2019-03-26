@@ -1,0 +1,92 @@
+.button {
+	display: flex;
+	justify-content: center;
+	position: relative;
+	width: 310px;
+	height: 60px;
+	padding: 16px 0;
+	outline: none;
+	border: none;
+	transition: all 0.3s;
+
+	& > div {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+		font-weight: 400;
+		font-size: 24px;
+		color: #000000;
+
+		& > i {
+			font-size: 22px;
+			margin-right: 14px;
+		}
+	}
+
+	&:hover {
+		cursor: pointer;
+	}
+
+	&.save {
+		background: #4A90E2;
+
+		& > div,
+		& i {
+			color: #FFFFFF;
+		}
+
+		/* &:hover {
+			background: var(--grayLight);
+		}
+
+		&:focus {
+			border: 1px solid var(--accent);
+		}
+
+		&:active {
+			border: 1px solid var(--accent);
+			background: var(--pinkLight);
+		} */
+	}
+
+	&.cancel {
+		background: white;
+
+		& > div,
+		& i {
+			color: #D0021B;
+		}
+
+		/* &:hover,
+		&:focus,
+		&:active {
+			background: var(--accent);
+		} */
+
+		&.disabled {
+			background: var(--white);
+		}
+	}
+
+	&.upload {
+		background: #C8C8C8;
+
+		& > div,
+		& i {
+			color: #F2F2F2;
+		}
+	}
+
+	&.disabled {
+		background: solid 1px gray;
+
+		& > div {
+			color: #C8C8C8;
+
+			& > i {
+				color: #C8C8C8;
+			}
+		}
+	}
+}
