@@ -17,7 +17,7 @@ const Input = ({
 		onSubmit={submit}
 	>
 		<div className={styles.icon}>
-			<FontAwesomeIcon icon={faPlus} color="#CBCBCB" size="1x"/>
+			<FontAwesomeIcon icon={faPlus} color="#CBCBCB" size="1x" />
 		</div>
 		<input
 			type="text"
