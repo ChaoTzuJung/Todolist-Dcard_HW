@@ -33,21 +33,10 @@
 				}
 
 				&:nth-child(n) {
-
 					&::placeholder {
 						color: #CBCBCB;
 						font-size: 16px;
 						font-weight: 300;
-					}
-				}
-
-				& > .field {
-					& input {
-						&::placeholder {
-							color: #CBCBCB;
-							font-size: 16px;
-							font-weight: 300;
-						}
 					}
 				}
 

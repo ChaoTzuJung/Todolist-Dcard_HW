@@ -3,11 +3,22 @@ import classnames from 'classnames';
 import Button from 'components/atoms/Button';
 import ButtonFile from 'components/atoms/ButtonFile';
 import Field from 'components/atoms/Field';
+import FieldDate from 'components/atoms/FieldDate';
 import Icon from 'components/atoms/Icon';
 
 import styles from './index.css';
 
-const TodoPanel = ({ className, imageUrl, hasImage, files, id, onUploadFile, submitFile, ...other }) => (
+const TodoPanel = ({
+	className,
+	imageUrl,
+	hasImage,
+	files,
+	id,
+	onUploadFile,
+	handleChangeTextarea,
+	textareaValue,
+	...other
+}) => (
 	<div className={classnames(styles.todoPanel, className)}>
 		<div className={styles.fieldGroup}>
 			<label htmlFor={id}>
@@ -16,26 +27,8 @@ const TodoPanel = ({ className, imageUrl, hasImage, files, id, onUploadFile, sub
 					<span>Deadline</span>
 				</p>
 				<div className={styles.row}>
-					<Field
-						className={styles.field}
-						type="text"
-						id={id}
-						name="deadline"
-						placeholder="yyyy/mm/dd"
-						onChange=""
-						value=""
-						{...other}
-					/>
-					<Field
-						className={styles.field}
-						type="text"
-						id={id}
-						name="deadline"
-						placeholder="hh/mm"
-						onChange=""
-						value=""
-						{...other}
-					/>
+					<FieldDate dateOnly id={id} {...other} />
+					<FieldDate timeOnly id={id} {...other} />
 				</div>
 			</label>
 			<label htmlFor={id}>
@@ -67,8 +60,8 @@ const TodoPanel = ({ className, imageUrl, hasImage, files, id, onUploadFile, sub
 						id={id}
 						name="comment"
 						placeholder="Type your memo here..."
-						onChange=""
-						value=""
+						onChange={handleChangeTextarea}
+						value={textareaValue}
 						{...other}
 					/>
 				</div>

@@ -6,13 +6,15 @@ const initState = () => ({
 	imageUrl: null,
 	hasImage: false,
 	files: null,
+	textareaValue: '',
 });
 
-const mapSetStateToProps = ({ imageUrl, hasImage, files }, { className, id }, setState) => ({
+const mapSetStateToProps = ({ imageUrl, hasImage, files, textareaValue }, { className, id }, setState) => ({
 	// state
 	imageUrl,
 	hasImage,
 	files,
+	textareaValue,
 
 	// props
 	className,
@@ -36,14 +38,19 @@ const mapSetStateToProps = ({ imageUrl, hasImage, files }, { className, id }, se
 		});
 	},
 
-	submitFile() {
-		// axios
-		// axios.post('/img', imageUrl);
-		// multpart
-		// cost form = new formData();
-		// form.append(files)
-		// axios.post('/img', {form});
+	handleChangeTextarea(e) {
+		setState({
+			textareaValue: e.target.value,
+		});
 	},
+	// submitFile() {
+	// 	axios
+	// 	axios.post('/img', imageUrl);
+	// 	multpart
+	// 	const form = new formData();
+	// 	form.append(files)
+	// 	axios.post('/img', {form});
+	// },
 });
 
 export default contain(initState, mapSetStateToProps)(TodoPanel);
