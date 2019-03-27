@@ -1,5 +1,5 @@
 import React from 'react';
-import { withKnobs, boolean, select } from '@storybook/addon-knobs/react';
+import { withKnobs, boolean } from '@storybook/addon-knobs/react';
 import { storiesOf } from '@storybook/react';
 
 import Icon from 'components/atoms/Icon';
@@ -8,9 +8,7 @@ const stories = storiesOf('Commons|atoms/Icon', module);
 
 stories.addDecorator(withKnobs);
 
-stories.add('__interactive', () => (
-	<Icon light={boolean('light', false)}>add</Icon>
-));
+stories.add('__interactive', () => <Icon light={boolean('light', false)}>add</Icon>);
 
 stories.add('outlined icon', () => (
 	<Icon outlined={boolean('outlined', false)}>insert_drive_file</Icon>
