@@ -21,7 +21,7 @@ const TodoPanel = ({
 }) => (
 	<div className={classnames(styles.todoPanel, className)}>
 		<div className={styles.fieldGroup}>
-			<label htmlFor={id}>
+			<div className={styles.label}>
 				<p>
 					<Icon>date_range</Icon>
 					<span>Deadline</span>
@@ -30,8 +30,8 @@ const TodoPanel = ({
 					<FieldDate dateOnly id={id} {...other} />
 					<FieldDate timeOnly id={id} {...other} />
 				</div>
-			</label>
-			<label htmlFor={id}>
+			</div>
+			<div className={styles.label}>
 				<p>
 					<Icon outlined>insert_drive_file</Icon>
 					<span>File</span>
@@ -47,9 +47,9 @@ const TodoPanel = ({
 						<img src={imageUrl} alt="preview" />
 					</div>
 				)}
-			</label>
+			</div>
 
-			<label htmlFor={id}>
+			<div className={styles.label}>
 				<p>
 					<Icon outlined>textsms</Icon>
 					<span>Comment</span>
@@ -65,7 +65,7 @@ const TodoPanel = ({
 						{...other}
 					/>
 				</div>
-			</label>
+			</div>
 		</div>
 		<div className={styles.buttonGroup}>
 			<Button color="cancel">
