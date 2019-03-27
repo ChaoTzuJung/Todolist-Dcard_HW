@@ -1,0 +1,85 @@
+.todo-panel {
+	position: relative;
+	height: 100%;
+	width: 620px;
+	background: #F2F2F2;
+	box-shadow: 0 4px 4px 0 #C8C8C8;
+	border-radius: 5px;
+
+	& > .field-group {
+		padding: 24px 72px;
+
+		& > label {
+			/* border: 1px solid green; */
+
+			& > p {
+				display: flex;
+				align-items: center;
+
+				& > span {
+					margin-left: 6px;
+					font-size: 20px;
+    				font-weight: 500;
+				}
+			}
+
+			& > .row {
+				display: flex;
+				align-items: center;
+
+				& > :first-child {
+					margin-left: 28px;
+					margin-right: 8px;
+				}
+
+				&:nth-child(n) {
+
+					&::placeholder {
+						color: #CBCBCB;
+						font-size: 16px;
+						font-weight: 300;
+					}
+				}
+
+				& > .field {
+					& input {
+						&::placeholder {
+							color: #CBCBCB;
+							font-size: 16px;
+							font-weight: 300;
+						}
+					}
+				}
+
+				& > textarea {
+					padding: 8px 16px;
+					width: 445px;
+					height: 120px;
+					border: none;
+					resize: none;
+
+					&::placeholder {
+						color: #CBCBCB;
+						font-size: 16px;
+						font-weight: 300;
+						line-height: 24px;
+					}
+				}
+			}
+			& > .photo {
+				margin-top: 24px;
+				width: 100%;
+				height: 100%;
+
+				& > img {
+					width: 100%;
+				}
+			}
+		}
+	}
+
+	& > .button-group {
+		/* border: 1px solid blue; */
+		display: flex;
+	}
+}
