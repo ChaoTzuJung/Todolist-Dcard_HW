@@ -9,13 +9,10 @@ const Input = ({
 	value,
 	submit,
 	handleChange,
-	getInputElement
+	getInputElement,
+	onFocus,
 }) => (
-	<form
-		className={styles.input}
-		action=""
-		onSubmit={submit}
-	>
+	<form className={styles.input} action="" onSubmit={submit}>
 		<div className={styles.icon}>
 			<FontAwesomeIcon icon={faPlus} color="#CBCBCB" size="1x" />
 		</div>
@@ -31,6 +28,7 @@ const Input = ({
 			placeholder={placeholder}
 			value={value}
 			onChange={handleChange}
+			onFocus={onFocus}
 		/>
 	</form>
 );

@@ -2,7 +2,6 @@ import React from 'react';
 import classnames from 'classnames';
 import Button from 'components/atoms/Button';
 import ButtonFile from 'components/atoms/ButtonFile';
-import Field from 'components/atoms/Field';
 import FieldDate from 'components/atoms/FieldDate';
 import Icon from 'components/atoms/Icon';
 
@@ -17,6 +16,7 @@ const TodoPanel = ({
 	onUploadFile,
 	handleChangeTextarea,
 	textareaValue,
+	onCancel,
 	...other
 }) => (
 	<div className={classnames(styles.todoPanel, className)}>
@@ -68,7 +68,7 @@ const TodoPanel = ({
 			</div>
 		</div>
 		<div className={styles.buttonGroup}>
-			<Button color="cancel">
+			<Button color="cancel" onClick={onCancel}>
 				<Icon>close</Icon>
 				Cancel
 			</Button>

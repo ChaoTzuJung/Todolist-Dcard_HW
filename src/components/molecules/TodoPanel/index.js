@@ -9,7 +9,11 @@ const initState = () => ({
 	textareaValue: '',
 });
 
-const mapSetStateToProps = ({ imageUrl, hasImage, files, textareaValue }, { className, id }, setState) => ({
+const mapSetStateToProps = (
+	{ imageUrl, hasImage, files, textareaValue },
+	{ className, id, onCancel },
+	setState,
+) => ({
 	// state
 	imageUrl,
 	hasImage,
@@ -19,6 +23,7 @@ const mapSetStateToProps = ({ imageUrl, hasImage, files, textareaValue }, { clas
 	// props
 	className,
 	id,
+	onCancel,
 
 	// action
 

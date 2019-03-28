@@ -5,35 +5,33 @@ import Input from './component';
 const initState = () => ({
 	inputElement: undefined,
 	value: '',
-	content: []
+	content: [],
 });
 
 const mapSetStateToProps = (
-	{ inputElement, value, content },
-	{
-		className,
-		placeholder,
-		onSubmit = () => {},
-		...props
-	},
+	{ inputElement, value, content, focused },
+	{ className, placeholder, onSubmit = () => {}, onFocus = () => {}, ...props },
 	setState,
 ) => ({
-	//state
+	// state
 	value,
 	content,
+	focused,
 
 	// props
 	className,
 	placeholder,
+	onFocus,
+	...props,
 
 	// actions
 	handleChange(event) {
-		setState({ value: event.target.value })
+		setState({ value: event.target.value });
 	},
 
-	getInputElement(node){
-		if(!inputElement) {
-			setState({ inputElement: node })
+	getInputElement(node) {
+		if (!inputElement) {
+			setState({ inputElement: node });
 		}
 	},
 
@@ -41,14 +39,14 @@ const mapSetStateToProps = (
 		event.preventDefault();
 		onSubmit(value);
 
-		if(inputElement) {
+		if (inputElement) {
 			inputElement.blur();
 		}
 		setState({
-			content: [{id: Date.now(), value}, ...content],
-			value: ''
-		})
-	}
+			content: [{ id: Date.now(), value }, ...content],
+			value: '',
+		});
+	},
 });
 
 export default contain(initState, mapSetStateToProps)(Input);
