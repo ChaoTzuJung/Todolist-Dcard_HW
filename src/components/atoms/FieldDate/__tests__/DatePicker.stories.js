@@ -1,6 +1,7 @@
 import React from 'react';
 import { withKnobs } from '@storybook/addon-knobs/react';
 import { storiesOf } from '@storybook/react';
+import { action } from '@storybook/addon-actions';
 
 import FieldDate from 'components/atoms/FieldDate';
 
@@ -10,18 +11,18 @@ stories.addDecorator(withKnobs);
 
 stories.add('with default', () => (
 	<div style={{ margin: '16px' }}>
-		<FieldDate />
+		<FieldDate onChange={action('selected date and time')} />
 	</div>
 ));
 
 stories.add('with date only', () => (
 	<div style={{ margin: '16px' }}>
-		<FieldDate dateOnly />
+		<FieldDate dateOnly onChange={action('selected date')} />
 	</div>
 ));
 
 stories.add('with time only', () => (
 	<div style={{ margin: '16px' }}>
-		<FieldDate timeOnly />
+		<FieldDate timeOnly onChange={action('selected time')} />
 	</div>
 ));

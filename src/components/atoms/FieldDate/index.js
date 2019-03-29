@@ -6,17 +6,19 @@ const initState = () => ({
 	startDate: null,
 });
 
-const mapSetStateToProps = ({ startDate }, { className, ...other }, setState) => ({
+const mapSetStateToProps = ({ startDate }, { className, onChange, ...other }, setState) => ({
 	// state
 	startDate,
 
 	// props
 	className,
+	onChange,
 	...other,
 
 	// actions
 	handleChange(date) {
 		setState({ startDate: date });
+		onChange(date);
 	},
 });
 

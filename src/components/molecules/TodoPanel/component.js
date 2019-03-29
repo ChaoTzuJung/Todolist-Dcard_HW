@@ -17,6 +17,7 @@ const TodoPanel = ({
 	handleChangeTextarea,
 	textareaValue,
 	onCancel,
+	onSave,
 	...other
 }) => (
 	<div className={classnames(styles.todoPanel, className)}>
@@ -72,7 +73,7 @@ const TodoPanel = ({
 				<Icon>close</Icon>
 				Cancel
 			</Button>
-			<Button color="save">
+			<Button color="save" onClick={onSave}>
 				<Icon>add</Icon>
 				Add Task
 			</Button>

@@ -11,7 +11,7 @@ const initState = () => ({
 
 const mapSetStateToProps = (
 	{ imageUrl, hasImage, files, textareaValue },
-	{ className, id, onCancel },
+	{ className, id, onCancel, onSave },
 	setState,
 ) => ({
 	// state
@@ -24,6 +24,7 @@ const mapSetStateToProps = (
 	className,
 	id,
 	onCancel,
+	onSave,
 
 	// action
 

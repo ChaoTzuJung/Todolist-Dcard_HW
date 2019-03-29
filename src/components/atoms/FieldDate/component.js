@@ -39,6 +39,7 @@ const FieldDate = ({ startDate, handleChange, dateOnly, timeOnly }) => (
 	<Fragment>
 		{!dateOnly && !timeOnly && (
 			<DatePicker
+				placeholderText="MMMM d, yyyy h:mm aa"
 				selected={startDate}
 				onChange={handleChange}
 				showTimeSelect

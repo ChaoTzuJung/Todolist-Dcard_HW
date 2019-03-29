@@ -41,23 +41,24 @@ class TodoList extends Component {
 	}
 
 	handleSubmit(e) {
-		this.setState(prevState => {
-			return {
-				todos: [
-					...prevState.todos,
-					{
-						id: Date.now(),
-						title: e.target.value,
-						deadline: '',
-						file: '',
-						comment: '',
-						star: false,
-						edit: false,
-						checked: false,
-					},
-				],
-			};
-		});
+		console.log(e);
+		this.input.current.state.value = '';
+		this.setState(prevState => ({
+			todos: [
+				...prevState.todos,
+				{
+					id: Date.now(),
+					title: 'test',
+					deadline: '',
+					file: '',
+					comment: '',
+					star: false,
+					edit: false,
+					checked: false,
+				},
+			],
+			open: false,
+		}));
 	}
 
 	handleCancel() {
@@ -80,7 +81,7 @@ class TodoList extends Component {
 					onSubmit={this.handleSubmit}
 					{...props}
 				/>
-				{open && <TodoPanel onCancel={this.handleCancel} />}
+				{open && <TodoPanel onCancel={this.handleCancel} onSave={this.handleSubmit} />}
 				{todos.title &&
 					todos.map(todo => (
 						<List
