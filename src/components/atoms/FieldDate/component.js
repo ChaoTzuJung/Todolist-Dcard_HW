@@ -42,6 +42,7 @@ const FieldDate = ({ startDate, handleChange, dateOnly, timeOnly }) => (
 				placeholderText="MMMM d, yyyy h:mm aa"
 				selected={startDate}
 				onChange={handleChange}
+				minDate={new Date()}
 				showTimeSelect
 				timeFormat="HH:mm"
 				timeIntervals={15}
@@ -55,6 +56,7 @@ const FieldDate = ({ startDate, handleChange, dateOnly, timeOnly }) => (
 				placeholderText="yyyy/mm/dd"
 				selected={startDate}
 				onChange={handleChange}
+				minDate={new Date()}
 				dateFormat="yyyy/MM/dd"
 				customInput={<InputComponent />}
 			/>
@@ -64,6 +66,7 @@ const FieldDate = ({ startDate, handleChange, dateOnly, timeOnly }) => (
 				placeholderText="hh:mm"
 				selected={startDate}
 				onChange={handleChange}
+				minDate={new Date()}
 				showTimeSelect
 				showTimeSelectOnly
 				timeIntervals={60}

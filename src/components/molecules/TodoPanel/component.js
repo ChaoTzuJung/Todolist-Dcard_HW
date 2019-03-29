@@ -11,8 +11,10 @@ const TodoPanel = ({
 	className,
 	imageUrl,
 	hasImage,
-	files,
+	file,
 	id,
+	onChangDate,
+	onChangeTime,
 	onUploadFile,
 	handleChangeTextarea,
 	textareaValue,
@@ -28,8 +30,8 @@ const TodoPanel = ({
 					<span>Deadline</span>
 				</p>
 				<div className={styles.row}>
-					<FieldDate dateOnly id={id} {...other} />
-					<FieldDate timeOnly id={id} {...other} />
+					<FieldDate dateOnly id={id} {...other} onChange={onChangDate} />
+					<FieldDate timeOnly id={id} {...other} onChange={onChangeTime} />
 				</div>
 			</div>
 			<div className={styles.label}>
@@ -41,7 +43,7 @@ const TodoPanel = ({
 					<ButtonFile onChange={onUploadFile}>
 						<i className="material-icons" style={{ color: '#FFFFFF' }}>add</i>
 					</ButtonFile>
-					{hasImage && <span>{files.name}</span>}
+					{hasImage && <span>{file.name}</span>}
 				</div>
 				{hasImage && (
 					<div className={classnames(styles.photo, styles.preview)}>

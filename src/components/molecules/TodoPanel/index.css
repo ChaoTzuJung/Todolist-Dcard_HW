@@ -4,7 +4,8 @@
 	width: 620px;
 	background: #F2F2F2;
 	box-shadow: 0 4px 4px 0 #C8C8C8;
-	border-radius: 5px;
+	border-top: 2px solid #C8C8C8;
+	border-radius: 0 0 5px 5px;
 
 	& > .field-group {
 		padding: 24px 72px;

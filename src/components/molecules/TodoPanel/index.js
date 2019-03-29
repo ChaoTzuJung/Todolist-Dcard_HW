@@ -3,20 +3,25 @@ import { contain } from 'react-container-helper';
 import TodoPanel from './component';
 
 const initState = () => ({
-	imageUrl: null,
+	date: '',
+	time: '',
 	hasImage: false,
-	files: null,
+	imageUrl: null,
+	fileName: '',
+	fileType: null,
+	file: null,
 	textareaValue: '',
 });
 
 const mapSetStateToProps = (
-	{ imageUrl, hasImage, files, textareaValue },
+	{ deadline, imageUrl, hasImage, files, textareaValue },
 	{ className, id, onCancel, onSave },
 	setState,
 ) => ({
 	// state
-	imageUrl,
+	deadline,
 	hasImage,
+	imageUrl,
 	files,
 	textareaValue,
 
@@ -30,17 +35,30 @@ const mapSetStateToProps = (
 
 	onUploadFile(e) {
 		const file = e.target.files.item(0);
+		const fileName = file.name;
+		const fileType = file.type;
+
 		console.log(file);
 		const fr = new FileReader();
 		fr.addEventListener('load', () => {
+			console.log(fr);
+			if (fileType === 'image/png') {
+				setState({
+					imageUrl: fr.result,
+					hasImage: true,
+				});
+			}
+
 			setState({
-				imageUrl: fr.result,
-				hasImage: true,
+				file: fr.result,
+				hasImage: false,
 			});
 		});
 		fr.readAsDataURL(file);
+		console.log(file.name);
 		setState({
-			files: file,
+			fileName,
+			fileType,
 		});
 	},
 
@@ -57,6 +75,24 @@ const mapSetStateToProps = (
 	// 	form.append(files)
 	// 	axios.post('/img', {form});
 	// },
+	onChangDate(e) {
+		const year = e.getFullYear();
+		const month = e.getMonth() + 1;
+		const day = e.getDate();
+
+		setState({
+			date: `${year}/${month}/${day}`,
+		});
+	},
+
+	onChangeTime(e) {
+		const hour = e.getHours();
+		const minute = e.getMinutes();
+
+		setState({
+			time: `${hour}:${minute}0`,
+		});
+	},
 });
 
 export default contain(initState, mapSetStateToProps)(TodoPanel);
