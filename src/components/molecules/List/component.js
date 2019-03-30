@@ -11,7 +11,7 @@ const List = ({ className, star, edit, checked, date, file, comment, onChangeChe
 		<div
 			className={classnames(styles.list, className, {
 				[styles.colorList]: star,
-				[styles.border]: edit,
+				[styles.squaredBottom]: edit,
 			})}
 		>
 			<div className={styles.left}>

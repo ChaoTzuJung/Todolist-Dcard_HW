@@ -77,6 +77,6 @@
 	background-color: #FFF2DC;;
 }
 
-.border {
-	border-bottom: 2px solid #C8C8C8;
+.squared-bottom {
+	border-radius: 5px 5px 0 0;
 }

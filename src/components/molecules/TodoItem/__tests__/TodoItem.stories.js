@@ -17,7 +17,7 @@ stories.add('__interactive', () => (
 			date={text('deadline', '')}
 			file={text('file', '')}
 			comment={text('comment', '')}
-			checked={boolean('checked', false)}
+			checked={boolean('checked', true)}
 			star={boolean('star', false)}
 			edit={boolean('edit', true)}
 		/>

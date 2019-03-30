@@ -9,59 +9,105 @@ const initState = () => ({
 	imageUrl: null,
 	fileName: '',
 	fileType: null,
-	file: null,
+	fileData: null,
 	textareaValue: '',
 });
 
 const mapSetStateToProps = (
-	{ deadline, imageUrl, hasImage, files, textareaValue },
-	{ className, id, onCancel, onSave },
+	{ date, time, imageUrl, hasImage, fileName, fileType, fileData, textareaValue },
+	{ className, onCancel = () => {}, onSave = () => {} },
 	setState,
 ) => ({
 	// state
-	deadline,
-	hasImage,
+	date,
+	time,
 	imageUrl,
-	files,
+	hasImage,
+	fileName,
+	fileType,
+	fileData,
 	textareaValue,
 
 	// props
 	className,
-	id,
 	onCancel,
 	onSave,
 
 	// action
 
+	handleCancel() {
+		setState({
+			date: '',
+			time: '',
+			hasImage: false,
+			imageUrl: null,
+			fileName: '',
+			fileType: null,
+			fileData: null,
+			textareaValue: '',
+		});
+		onCancel({
+			date: '',
+			time: '',
+			hasImage: false,
+			imageUrl: null,
+			fileName: '',
+			fileType: null,
+			fileData: null,
+			textareaValue: '',
+		});
+	},
+
+	handleSave() {
+		setState({
+			date: '10/12',
+			time: '10:10',
+			hasImage: false,
+			imageUrl: 'text',
+			fileName: 'test',
+			fileType: 'text',
+			fileData: 'text',
+			textareaValue: 'test',
+		});
+
+		onSave({
+			date: '10/12',
+			time: '10:10',
+			hasImage: false,
+			imageUrl: 'text',
+			fileName: 'test',
+			fileType: 'text',
+			fileData: 'text',
+			textareaValue: 'test',
+		});
+	},
+
 	onUploadFile(e) {
 		const file = e.target.files.item(0);
-		const fileName = file.name;
-		const fileType = file.type;
 
-		console.log(file);
 		const fr = new FileReader();
+
 		fr.addEventListener('load', () => {
-			console.log(fr);
-			if (fileType === 'image/png') {
+			if (file.type === 'image/png' || file.type === 'image/jpeg') {
 				setState({
 					imageUrl: fr.result,
 					hasImage: true,
 				});
+			} else {
+				setState({
+					fileData: fr.result,
+					hasImage: false,
+				});
 			}
-
-			setState({
-				file: fr.result,
-				hasImage: false,
-			});
 		});
+
 		fr.readAsDataURL(file);
-		console.log(file.name);
+
 		setState({
-			fileName,
-			fileType,
+			fileName: file.name,
+			fileType: file.type,
 		});
 	},
-
 	handleChangeTextarea(e) {
 		setState({
 			textareaValue: e.target.value,

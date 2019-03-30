@@ -8,18 +8,26 @@ import Icon from 'components/atoms/Icon';
 import styles from './index.css';
 
 const TodoPanel = ({
-	className,
+	date,
+	time,
 	imageUrl,
 	hasImage,
-	file,
-	id,
-	onChangDate,
-	onChangeTime,
-	onUploadFile,
-	handleChangeTextarea,
+	fileName,
+	fileType,
+	fileData,
 	textareaValue,
+
+	className,
 	onCancel,
 	onSave,
+
+	handleCancel,
+	handleSave,
+	onUploadFile,
+	handleChangeTextarea,
+	onChangDate,
+	onChangeTime,
+
 	...other
 }) => (
 	<div className={classnames(styles.todoPanel, className)}>
@@ -30,8 +38,8 @@ const TodoPanel = ({
 					<span>Deadline</span>
 				</p>
 				<div className={styles.row}>
-					<FieldDate dateOnly id={id} {...other} onChange={onChangDate} />
-					<FieldDate timeOnly id={id} {...other} onChange={onChangeTime} />
+					<FieldDate dateOnly {...other} onChange={onChangDate} />
+					<FieldDate timeOnly {...other} onChange={onChangeTime} />
 				</div>
 			</div>
 			<div className={styles.label}>
@@ -41,12 +49,15 @@ const TodoPanel = ({
 				</p>
 				<div className={styles.row}>
 					<ButtonFile onChange={onUploadFile}>
-						<i className="material-icons" style={{ color: '#FFFFFF' }}>add</i>
+						<i className="material-icons" style={{ color: '#FFFFFF' }}>
+							add
+						</i>
 					</ButtonFile>
-					{hasImage && <span>{file.name}</span>}
+					{!hasImage && <span>{fileName}</span>}
 				</div>
 				{hasImage && (
 					<div className={classnames(styles.photo, styles.preview)}>
+						<span>{fileName}</span>
 						<img src={imageUrl} alt="preview" />
 					</div>
 				)}
@@ -60,7 +71,6 @@ const TodoPanel = ({
 				<div className={styles.row}>
 					<textarea
 						type="text"
-						id={id}
 						name="comment"
 						placeholder="Type your memo here..."
 						onChange={handleChangeTextarea}
@@ -71,11 +81,11 @@ const TodoPanel = ({
 			</div>
 		</div>
 		<div className={styles.buttonGroup}>
-			<Button color="cancel" onClick={onCancel}>
+			<Button color="cancel" onClick={handleCancel}>
 				<Icon>close</Icon>
 				Cancel
 			</Button>
-			<Button color="save" onClick={onSave}>
+			<Button color="save" onClick={handleSave}>
 				<Icon>add</Icon>
 				Add Task
 			</Button>
