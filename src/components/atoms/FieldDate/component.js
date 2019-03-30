@@ -63,7 +63,7 @@ const FieldDate = ({ startDate, handleChange, dateOnly, timeOnly }) => (
 		)}
 		{timeOnly && (
 			<DatePicker
-				placeholderText="hh:mm"
+				placeholderText="HH:mm"
 				selected={startDate}
 				onChange={handleChange}
 				minDate={new Date()}

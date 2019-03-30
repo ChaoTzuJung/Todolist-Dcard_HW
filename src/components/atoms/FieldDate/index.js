@@ -16,9 +16,14 @@ const mapSetStateToProps = ({ startDate }, { className, onChange, ...other }, se
 	...other,
 
 	// actions
-	handleChange(date) {
-		setState({ startDate: date });
-		onChange(date);
+	handleChange(e) {
+		setState({ startDate: e });
+		onChange(e);
+	},
+
+	// NOTE: child's method (FieldDate) can't be call by parent (TodoPanel)
+	clearDateInput() {
+		setState({ startDate: null });
 	},
 });
 
