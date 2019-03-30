@@ -13,11 +13,11 @@ stories.add('__interactive', () => (
 	<div style={{ margin: '100px' }}>
 		<TodoItem
 			id={Date.now()}
-			text={text('text', 'Type Something Here…')}
-			date={text('deadline', '')}
-			file={text('file', '')}
-			comment={text('comment', '')}
-			checked={boolean('checked', true)}
+			text={text('text', '')}
+			date={text('deadline', null)}
+			file={text('file', null)}
+			comment={text('comment', null)}
+			checked={boolean('checked', false)}
 			star={boolean('star', false)}
 			edit={boolean('edit', true)}
 		/>
