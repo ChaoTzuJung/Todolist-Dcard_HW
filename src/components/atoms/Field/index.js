@@ -18,6 +18,7 @@ const Field = ({ type, icon, name, className, valid = true, color, border, ...ot
 				[styles.border]: border,
 			})}
 			style={{ background: color }}
+			autoComplete="off"
 			type={type}
 			name={name}
 			{...other}

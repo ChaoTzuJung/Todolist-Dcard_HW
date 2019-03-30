@@ -11,7 +11,7 @@ stories.addDecorator(withKnobs);
 stories.add('__interactive', () => <Icon light={boolean('light', false)}>add</Icon>);
 
 stories.add('outlined icon', () => (
-	<Icon outlined={boolean('outlined', false)}>insert_drive_file</Icon>
+	<Icon outlined={boolean('outlined', true)}>insert_drive_file</Icon>
 ));
 
 const usedIcon = [

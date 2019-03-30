@@ -45,8 +45,6 @@ class TodoPanel extends Component {
 			fileData: null,
 			textareaValue: '',
 		});
-		console.log(this.inputDate);
-		console.log(this.inputTime);
 
 		this.inputDate.current.state.startDate = null;
 		this.inputTime.current.state.startDate = null;
