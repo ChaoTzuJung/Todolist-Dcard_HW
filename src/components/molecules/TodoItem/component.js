@@ -16,7 +16,7 @@ const TodoItem = ({
 	edit,
 	...other,
 }) => (
-	<div classNames={classnames(styles.todoItem, styles.todo)}>
+	<div className={classnames(styles.todoItem, styles.todo)}>
 		<List
 			id={id}
 			text={text}
