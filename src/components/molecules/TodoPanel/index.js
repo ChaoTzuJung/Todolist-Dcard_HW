@@ -27,7 +27,6 @@ class TodoPanel extends Component {
 		};
 
 		this.onCancel = this.onCancel.bind(this);
-		this.onSave = this.onSave.bind(this);
 		this.onUploadFile = this.onUploadFile.bind(this);
 		this.handleChangeTextarea = this.handleChangeTextarea.bind(this);
 		this.onChangDate = this.onChangDate.bind(this);
@@ -48,19 +47,6 @@ class TodoPanel extends Component {
 
 		this.inputDate.current.state.startDate = null;
 		this.inputTime.current.state.startDate = null;
-	}
-
-	onSave() {
-		this.setState({
-			date: '10/12',
-			time: '10:10',
-			hasImage: false,
-			imageUrl: 'text',
-			fileName: 'test',
-			fileType: 'text',
-			fileData: 'text',
-			textareaValue: 'test',
-		});
 	}
 
 	onUploadFile(e) {
@@ -117,7 +103,7 @@ class TodoPanel extends Component {
 
 	render() {
 		const { date, time, imageUrl, hasImage, fileName, fileType, fileData, textareaValue } = this.state;
-		const { className, onCancel, onSave, ...other } = this.props;
+		const { className, onCancel, onSave = () => {}, ...other } = this.props;
 
 		return (
 			<div className={classnames(styles.todoPanel, className)}>
@@ -175,7 +161,7 @@ class TodoPanel extends Component {
 						<Icon>close</Icon>
 						Cancel
 					</Button>
-					<Button color="save" onClick={this.onSave}>
+					<Button color="save" onClick={() => onSave(this.state)}>
 						<Icon>add</Icon>
 						Add Task
 					</Button>

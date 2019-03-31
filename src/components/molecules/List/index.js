@@ -3,12 +3,12 @@ import { contain } from 'react-container-helper';
 import List from './component';
 
 const initState = () => ({
-	text: 'Type Something Here...',
+	text: '',
 });
 
 const mapSetStateToProps = (
 	{ text },
-	{ className, checked, star, edit, date, file, comment, ...other },
+	{ className, checked, star, edit, deadline, file, comment, ...other },
 	setState,
 ) => ({
 	// state
@@ -19,7 +19,7 @@ const mapSetStateToProps = (
 	checked,
 	star,
 	edit,
-	date,
+	deadline,
 	file,
 	comment,
 	...other,

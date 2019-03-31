@@ -6,7 +6,7 @@ import Icon from 'components/atoms/Icon';
 
 import styles from './index.css';
 
-const List = ({ className, star, edit, checked, date, file, comment, onChangeCheckbox, handleChange, text }) => (
+const List = ({ className, star, edit, checked, deadline, file, comment, onChangeCheckbox, handleChange, text }) => (
 	<Fragment>
 		<div
 			className={classnames(styles.list, className, {
@@ -42,10 +42,10 @@ const List = ({ className, star, edit, checked, date, file, comment, onChangeChe
 				</div>
 				{!checked && (
 					<div className={styles.down}>
-						{date && (
+						{deadline && (
 							<Fragment>
 								<Icon className={styles.iconFix}>date_range</Icon>
-								{date && <span>6/18</span>}
+								{deadline && <span>6/18</span>}
 							</Fragment>
 						)}
 						{file && (
