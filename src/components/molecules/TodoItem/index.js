@@ -37,18 +37,9 @@ class TodoItem extends Component {
 	}
 
 	handleSave(data) {
-		const { date, time, fileName, imageUrl, fileData, textareaValue } = data
+		const { date, time, fileName, imageUrl, fileData, textareaValue } = data;
+		//  List contains a simple text input. We need to expose a way for other components to read the text written in the List component.
 
-		// this.setState(prevState => ({
-		// 	...prevState.todo,
-		// 	date: data.date,
-		// 	time: data.time,
-		// 	fileName: data.fileName,
-		// 	imageUrl: data.imageUrl,
-		// 	fileData: data.fileData,
-		// 	textareaValue: data.textareaValue,
-		// }));
-		// 缺 監察是否有填欄位
 		if (isExist(this.input.current.state.text)) {
 			this.setState(prevState => ({
 				todo: {
@@ -65,8 +56,8 @@ class TodoItem extends Component {
 		}
 	}
 
-	handleCancel(e) {
-		console.log(e);
+	handleCancel() {
+		this.input.current.state.text = '';
 	}
 
 	render() {

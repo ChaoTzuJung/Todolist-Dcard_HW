@@ -6,7 +6,7 @@ import Icon from 'components/atoms/Icon';
 
 import styles from './index.css';
 
-const List = ({ className, star, edit, checked, deadline, file, comment, onChangeCheckbox, handleChange, text }) => (
+const List = ({ className, text, star, edit, checked, deadline, file, comment, onChangeCheckbox, handleChange, AddStar, OpenEdit }) => (
 	<Fragment>
 		<div
 			className={classnames(styles.list, className, {
@@ -66,6 +66,7 @@ const List = ({ className, star, edit, checked, deadline, file, comment, onChang
 					className={classnames({
 						[styles.star]: star,
 					})}
+					onClick={AddStar}
 				>
 					{star ? 'star' : 'star_border'}
 				</Icon>
@@ -74,6 +75,7 @@ const List = ({ className, star, edit, checked, deadline, file, comment, onChang
 						[styles.edit]: edit,
 					})}
 					outlined={!edit}
+					onClick={OpenEdit}
 				>
 					edit
 				</Icon>

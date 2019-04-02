@@ -32,6 +32,14 @@ const mapSetStateToProps = (
 	handleChange(e) {
 		setState({ text: e.target.value });
 	},
+
+	AddStar() {
+		setState({ edit: !edit });
+	},
+
+	OpenEdit() {
+		setState({ star: !star });
+	},
 });
 
 export default contain(initState, mapSetStateToProps)(List);

@@ -33,6 +33,7 @@ class TodoPanel extends Component {
 		this.onChangeTime = this.onChangeTime.bind(this);
 	}
 
+	// set child state here
 	onCancel() {
 		this.setState({
 			date: '',
@@ -44,7 +45,6 @@ class TodoPanel extends Component {
 			fileData: null,
 			textareaValue: '',
 		});
-
 		this.inputDate.current.state.startDate = null;
 		this.inputTime.current.state.startDate = null;
 	}
@@ -102,8 +102,11 @@ class TodoPanel extends Component {
 	}
 
 	render() {
+		// TodoPanel exposes the onSave event as a property.
+		// The parent component (TodoItem) should pass a callback as the event handler. The callback will be called when the TodoPanel's button is clicked.
+		// The child component (TodoPanel) communicates with its parent by calling callbacks. The parent sets the callbacks as properties on the child component.
 		const { date, time, imageUrl, hasImage, fileName, fileType, fileData, textareaValue } = this.state;
-		const { className, onCancel, onSave = () => {}, ...other } = this.props;
+		const { className, onSave = () => {}, ...other } = this.props;
 
 		return (
 			<div className={classnames(styles.todoPanel, className)}>
