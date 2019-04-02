@@ -6,7 +6,7 @@ import Icon from 'components/atoms/Icon';
 
 import styles from './index.css';
 
-const List = ({ className, text, star, edit, checked, deadline, file, comment, onChangeCheckbox, handleChange, AddStar, OpenEdit }) => (
+const List = ({ className, text, star, edit, checked, date, deadline, file, comment, onChangeCheckbox, handleChange, AddStar, OpenEdit }) => (
 	<Fragment>
 		<div
 			className={classnames(styles.list, className, {
@@ -45,7 +45,7 @@ const List = ({ className, text, star, edit, checked, deadline, file, comment, o
 						{deadline && (
 							<Fragment>
 								<Icon className={styles.iconFix}>date_range</Icon>
-								{deadline && <span>6/18</span>}
+								{deadline && <span>{date}</span>}
 							</Fragment>
 						)}
 						{file && (
@@ -62,23 +62,25 @@ const List = ({ className, text, star, edit, checked, deadline, file, comment, o
 				)}
 			</div>
 			<div className={styles.right}>
-				<Icon
-					className={classnames({
-						[styles.star]: star,
-					})}
-					onClick={AddStar}
-				>
-					{star ? 'star' : 'star_border'}
-				</Icon>
-				<Icon
-					className={classnames({
-						[styles.edit]: edit,
-					})}
-					outlined={!edit}
-					onClick={OpenEdit}
-				>
-					edit
-				</Icon>
+				<span onClick={AddStar} onKeyPress={AddStar} role="button" tabIndex="0">
+					<Icon
+						className={classnames({
+							[styles.star]: star,
+						})}
+					>
+						{star ? 'star' : 'star_border'}
+					</Icon>
+				</span>
+				<span onClick={OpenEdit} onKeyPress={OpenEdit} role="button" tabIndex="0">
+					<Icon
+						className={classnames({
+							[styles.edit]: edit,
+						})}
+						outlined={!edit}
+					>
+						edit
+					</Icon>
+				</span>
 			</div>
 		</div>
 	</Fragment>

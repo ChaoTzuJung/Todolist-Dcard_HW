@@ -11,11 +11,12 @@ stories.addDecorator(withKnobs);
 stories.add('__interactive', () => (
 	<div style={{ margin: '16px' }}>
 		<List
-			// text={text('text', 'type something here...')}
+			text={text('text', 'type something here...')}
 			star={boolean('star', false)}
 			edit={boolean('edit', false)}
 			checked={boolean('checked', false)}
 			deadline={boolean('deadline', true)}
+			date={text('date', '6/18')}
 			file={boolean('file', true)}
 			comment={boolean('comment', true)}
 		/>

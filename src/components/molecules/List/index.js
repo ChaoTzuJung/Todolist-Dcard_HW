@@ -4,11 +4,13 @@ import List from './component';
 
 const initState = () => ({
 	text: '',
+	star: false,
+	edit: false,
 });
 
 const mapSetStateToProps = (
 	{ text },
-	{ className, checked, star, edit, deadline, file, comment, ...other },
+	{ className, checked, star, edit, date, deadline, file, comment, AddStar, OpenEdit, ...other },
 	setState,
 ) => ({
 	// state
@@ -19,6 +21,7 @@ const mapSetStateToProps = (
 	checked,
 	star,
 	edit,
+	date,
 	deadline,
 	file,
 	comment,
@@ -34,11 +37,11 @@ const mapSetStateToProps = (
 	},
 
 	AddStar() {
-		setState({ edit: !edit });
+		setState({ star: !star });
 	},
 
 	OpenEdit() {
-		setState({ star: !star });
+		setState({ edit: !edit });
 	},
 });
 
