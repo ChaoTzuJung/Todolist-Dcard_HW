@@ -1,10 +1,12 @@
 import React from 'react';
+import classnames from 'classnames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 import styles from './index.css';
 
 const Input = ({
+	className,
 	placeholder = '請輸入關鍵字',
 	value,
 	submit,
@@ -12,7 +14,7 @@ const Input = ({
 	getInputElement,
 	onFocus,
 }) => (
-	<form className={styles.input} autoComplete="off" action="" onSubmit={submit}>
+	<form className={classnames(styles.input, className)} autoComplete="off" action="" onSubmit={submit}>
 		<div className={styles.icon}>
 			<FontAwesomeIcon icon={faPlus} color="#CBCBCB" size="1x" />
 		</div>

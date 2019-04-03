@@ -67,7 +67,7 @@
 				color: #4a90e2;
 			}
 
-			& :not(:first-child) {
+			&:not(:first-child) {
 				margin-left: 32px;
 			}
 		}

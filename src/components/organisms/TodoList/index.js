@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import classnames from 'classnames';
 
 import Input from 'components/atoms/Input';
-import List from 'components/molecules/List';
-import TodoPanel from 'components/molecules/TodoPanel';
+import TodoItem from 'components/molecules/TodoItem';
 
 import styles from './index.css';
 
@@ -75,16 +74,17 @@ class TodoList extends Component {
 		return (
 			<div className={classnames(styles.todolist, className)}>
 				<Input
+					className={styles.inputButton}
 					ref={this.input}
 					onFocus={this.onFocus}
 					placeholder="Add Task"
 					onSubmit={this.handleSubmit}
 					{...props}
 				/>
-				{open && <TodoPanel onCancel={this.handleCancel} onSave={this.handleSubmit} />}
+				{open && <TodoItem />}
 				{todos.title &&
 					todos.map(todo => (
-						<List
+						<TodoItem
 							key={todo.id}
 							text={todo.title}
 							star={todo.star}
