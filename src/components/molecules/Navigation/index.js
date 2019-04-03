@@ -8,11 +8,7 @@ const initState = ({ activeCategory }) => ({
 
 const mapSetStateToProps = (
 	{ activeCategory },
-	{
-		className,
-		todoCategorys,
-		onClickTab,
-	},
+	{ className, todoCategorys, onClickTab },
 	setState,
 ) => ({
 	// state

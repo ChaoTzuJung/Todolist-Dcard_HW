@@ -3,15 +3,10 @@ import classnames from 'classnames';
 
 import styles from './index.css';
 
-const Icon = ({
-	children,
-	className,
-	outlined,
-	light = false,
-	...other
-}) => (
+const Icon = ({ children, className, outlined, light = false, ...other }) => (
 	<i
-		className={classnames(styles.icon,
+		className={classnames(
+			styles.icon,
 			className,
 			{
 				[`material-icons`]: !outlined,
@@ -19,7 +14,8 @@ const Icon = ({
 			},
 			{
 				[styles.light]: light,
-			})}
+			},
+		)}
 		{...other}
 	>
 		{children}

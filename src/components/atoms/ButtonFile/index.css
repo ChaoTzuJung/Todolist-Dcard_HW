@@ -8,7 +8,7 @@
 }
 
 .button-file {
-	background: #C8C8C8;
+	background: #c8c8c8;
 	border-radius: 2px;
 	padding: 8px;
 
@@ -27,11 +27,11 @@
 		position: relative;
 		height: 30px;
 		padding: 0 10px 0 12px;
-		border: solid 1px #000000;
+		border: solid 1px #000;
 		border-radius: 0;
 		outline: none;
 		transition: all 0.3s;
-		background: #FFFFFF;
+		background: #fff;
 
 		& > div {
 			display: flex;
@@ -41,7 +41,7 @@
 			font-size: 12px;
 			line-height: 1.75;
 			letter-spacing: 3.4px;
-			color: #000000;
+			color: #000;
 
 			& > i {
 				font-size: 16px;

@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`__interactive 1`] = `
+<ButtonFile>
+  <button
+    className="buttonFile"
+    onClick={[Function]}
+    type="button"
+  >
+    <div>
+      <i
+        className="material-icons"
+        style={
+          Object {
+            "color": "#FFFFFF",
+          }
+        }
+      >
+        add
+      </i>
+    </div>
+  </button>
+  <input
+    className="inputFile"
+    type="file"
+  />
+</ButtonFile>
+`;
+
+exports[`with button style 1`] = `
+<ButtonFile
+  type="button"
+>
+  <button
+    className="buttonFile buttonStyle"
+    onClick={[Function]}
+    type="button"
+  >
+    <div>
+      選擇檔案
+    </div>
+  </button>
+  <input
+    className="inputFile"
+    type="file"
+  />
+</ButtonFile>
+`;

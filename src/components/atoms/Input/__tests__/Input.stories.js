@@ -11,7 +11,7 @@ const stories = storiesOf('Commons|atoms/Input', module);
 stories.addDecorator(withKnobs);
 
 stories.add('__interactive', () => (
-	<div style={{ marginLeft: '200px'}}>
+	<div style={{ marginLeft: '200px' }}>
 		<Input
 			className=""
 			placeholder={text('placeholder', 'Add Task')}
@@ -19,5 +19,4 @@ stories.add('__interactive', () => (
 			onSubmit={action('submit')}
 		/>
 	</div>
-
 ));

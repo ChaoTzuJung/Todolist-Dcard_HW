@@ -1,0 +1,151 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`__interactive 1`] = `
+<div
+  style={
+    Object {
+      "margin": "16px",
+    }
+  }
+>
+  <Contain(List)
+    checked={false}
+    comment={true}
+    date="6/18"
+    deadline={true}
+    edit={false}
+    file={true}
+    star={false}
+    text="type something here..."
+  >
+    <List
+      AddStar={[Function]}
+      OpenEdit={[Function]}
+      checked={false}
+      comment={true}
+      date="6/18"
+      deadline={true}
+      edit={false}
+      file={true}
+      handleChange={[Function]}
+      onChangeCheckbox={[Function]}
+      star={false}
+      text="type something here..."
+    >
+      <div
+        className="list"
+      >
+        <div
+          className="left"
+        >
+          <div
+            className="top"
+          >
+            <Checkbox
+              checked={false}
+              className=""
+              content="type something here..."
+              name="todo"
+              onChange={[Function]}
+            >
+              <label
+                className="label"
+                htmlFor="todo"
+              >
+                type something here...
+                <input
+                  checked={false}
+                  id="todo"
+                  name="todo"
+                  onChange={[Function]}
+                  type="checkbox"
+                />
+                <span
+                  className="checkbox"
+                >
+                  <Icon>
+                    <i
+                      className="icon material-icons"
+                    >
+                      check
+                    </i>
+                  </Icon>
+                </span>
+              </label>
+            </Checkbox>
+          </div>
+          <div
+            className="down"
+          >
+            <Icon
+              className="iconFix"
+            >
+              <i
+                className="icon iconFix material-icons"
+              >
+                date_range
+              </i>
+            </Icon>
+            <span>
+              6/18
+            </span>
+            <Icon
+              className="iconFix"
+              outlined={true}
+            >
+              <i
+                className="icon iconFix material-icons-outlined"
+              >
+                insert_drive_file
+              </i>
+            </Icon>
+            <Icon
+              className="iconFix"
+              outlined={true}
+            >
+              <i
+                className="icon iconFix material-icons-outlined"
+              >
+                textsms
+              </i>
+            </Icon>
+          </div>
+        </div>
+        <div
+          className="right"
+        >
+          <span
+            role="button"
+            tabIndex="0"
+          >
+            <Icon
+              className=""
+            >
+              <i
+                className="icon material-icons"
+              >
+                star_border
+              </i>
+            </Icon>
+          </span>
+          <span
+            role="button"
+            tabIndex="0"
+          >
+            <Icon
+              className=""
+              outlined={true}
+            >
+              <i
+                className="icon material-icons-outlined"
+              >
+                edit
+              </i>
+            </Icon>
+          </span>
+        </div>
+      </div>
+    </List>
+  </Contain(List)>
+</div>
+`;

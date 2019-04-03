@@ -3,12 +3,7 @@ import classnames from 'classnames';
 
 import styles from './index.css';
 
-const Navigation = ({
-	className,
-	todoCategorys,
-	activeCategory,
-	onClickTab
-}) => (
+const Navigation = ({ className, todoCategorys, activeCategory, onClickTab }) => (
 	<div className={classnames(styles.navigation, className)}>
 		{todoCategorys.map(category => (
 			<div

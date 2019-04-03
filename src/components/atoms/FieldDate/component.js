@@ -35,7 +35,7 @@ export class InputComponent extends Component {
 	}
 }
 
-const FieldDate = ({ startDate, startTime, handleChange, handleDateChange, dateOnly, timeOnly }) => (
+const FieldDate = ({ startTime, handleDateChange, dateOnly, timeOnly }) => (
 	<Fragment>
 		{!dateOnly && !timeOnly && (
 			<DatePicker

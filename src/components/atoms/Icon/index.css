@@ -1,7 +1,7 @@
 .icon {
-	color: #000000;
+	color: #000;
 
 	&.light {
-		color: #FFFFFF;
+		color: #fff;
 	}
 }

@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`__interactive 1`] = `
+<Field
+  border={false}
+  color="#FFFFFF"
+  icon="person_outline"
+  name="phone"
+  placeholder="aaa"
+  valid={true}
+>
+  <label
+    className="field icon"
+    htmlFor="phone"
+  >
+    <i
+      className="material-icons"
+    >
+      person_outline
+    </i>
+    <input
+      autoComplete="off"
+      className="input"
+      name="phone"
+      placeholder="aaa"
+      style={
+        Object {
+          "background": "#FFFFFF",
+        }
+      }
+    />
+  </label>
+</Field>
+`;

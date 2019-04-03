@@ -3,12 +3,6 @@ import { Provider } from 'react-redux';
 import { Router } from 'react-router';
 import { hot } from 'react-hot-loader/root';
 
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faIgloo } from '@fortawesome/free-solid-svg-icons'
-
-library.add(faIgloo)
-
 import App from 'layouts/App';
 
 const createRoutes = () => ({

@@ -2,15 +2,15 @@
 	& > input {
 		padding: 8px 16px;
 		width: 162px;
-		background-color: #FFFFFF;
+		background-color: #fff;
 		border-radius: 2px;
-		color: #000000;
+		color: #000;
 		font-weight: 300;
 		font-size: 16px;
 		border: none;
 
 		&::placeholder {
-			color: #CBCBCB;
+			color: #cbcbcb;
 			font-size: 16px;
 			font-weight: 300;
 		}

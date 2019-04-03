@@ -10,7 +10,7 @@
 	line-height: 18px;
 	letter-spacing: 0.5px;
 	cursor: pointer;
-	color: #000000;
+	color: #000;
 
 	& > .checkbox {
 		display: flex;
@@ -20,11 +20,10 @@
 		left: 0;
 		width: 24px;
 		height: 24px;
-		background-color: #FFFFFF;
-		border: 1px solid #FFFFFF;
+		background-color: #fff;
+		border: 1px solid #fff;
 		border-radius: 2px;
 		transition: all 0.2s;
-		/* top: calc(50% - 9px); */
 
 		& > i {
 			font-size: 18px;
@@ -45,8 +44,8 @@
 	}
 
 	& > input:checked ~ .checkbox {
-		background: #4A90E2;;
-		border: 1px solid #4A90E2;;
+		background: #4a90e2;
+		border: 1px solid #4a90e2;
 
 		& > i {
 			opacity: 1;

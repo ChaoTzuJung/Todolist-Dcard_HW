@@ -29,7 +29,6 @@ const todoCategorys = [
 	},
 ];
 
-
 stories.add('__interactive', () => (
 	<Header>
 		<Navigation

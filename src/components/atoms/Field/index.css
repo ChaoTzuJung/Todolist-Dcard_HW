@@ -6,14 +6,13 @@
 		font-size: 12px;
 		font-weight: 300;
 		letter-spacing: 0.5px;
-		border: 1px solid #FFFFFF;
+		border: 1px solid #fff;
 		outline: none;
 		transition: border 0.2s;
 
 		/* &:focus {
 			border: 1px solid #F2F2F2;
 		} */
-
 	}
 
 	& > .border {
@@ -33,7 +32,7 @@
 			font-size: 18px;
 			border: 1px solid var(--gray);
 			border-right: 0;
-			color: #000000;
+			color: #000;
 			transition: border 0.2s;
 		}
 
@@ -49,7 +48,7 @@
 	&.invalid {
 		& > i,
 		& > input {
-			border-color: #D0021B;
+			border-color: #d0021b;
 		}
 	}
 }

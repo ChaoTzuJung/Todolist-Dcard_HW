@@ -16,7 +16,7 @@
 		text-align: center;
 		font-weight: 400;
 		font-size: 24px;
-		color: #000000;
+		color: #000;
 
 		& > i {
 			font-size: 24px;
@@ -29,11 +29,11 @@
 	}
 
 	&.save {
-		background: #4A90E2;
+		background: #4a90e2;
 
 		& > div,
 		& i {
-			color: #FFFFFF;
+			color: #fff;
 		}
 
 		/* &:hover {
@@ -55,7 +55,7 @@
 
 		& > div,
 		& i {
-			color: #D0021B;
+			color: #d0021b;
 		}
 
 		/* &:hover,
@@ -70,11 +70,11 @@
 	}
 
 	&.upload {
-		background: #C8C8C8;
+		background: #c8c8c8;
 
 		& > div,
 		& i {
-			color: #F2F2F2;
+			color: #f2f2f2;
 		}
 	}
 
@@ -82,10 +82,10 @@
 		background: solid 1px gray;
 
 		& > div {
-			color: #C8C8C8;
+			color: #c8c8c8;
 
 			& > i {
-				color: #C8C8C8;
+				color: #c8c8c8;
 			}
 		}
 	}
