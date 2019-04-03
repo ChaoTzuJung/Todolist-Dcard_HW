@@ -14,11 +14,12 @@ class Checkbox extends Component {
 	handleChange(evt) {
 		const { onChange = () => {} } = this.props;
 
+		// 把 checkbox 帶的值 與 開關 true/false 帶入 onChange
 		onChange(evt.target.value, evt.target.checked);
 	}
 
 	render() {
-		const { name, value, content, className, small, onChange: _, ...other } = this.props;
+		const { name, value, content, checked, className, small, onChange: _, ...other } = this.props;
 		return (
 			<label
 				htmlFor={name}
@@ -30,6 +31,7 @@ class Checkbox extends Component {
 					id={name}
 					name={name}
 					value={value}
+					checked={checked}
 					onChange={this.handleChange}
 					{...other}
 				/>

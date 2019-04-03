@@ -9,29 +9,25 @@ const initState = () => ({
 });
 
 const mapSetStateToProps = (
-	{ text },
-	{ className, checked, star, edit, date, deadline, file, comment, AddStar, OpenEdit, ...other },
+	{ text, star, edit },
+	{ className, checked, date, deadline, file, comment, AddStar, OpenEdit, onCkecked, onChangeCheckbox, ...other },
 	setState,
 ) => ({
 	// state
 	text,
-
+	star,
+	edit,
 	// props
 	className,
 	checked,
-	star,
-	edit,
 	date,
 	deadline,
 	file,
 	comment,
+	onChangeCheckbox,
 	...other,
 
 	// actions
-	onChangeCheckbox(event) {
-		setState(event.target.value);
-	},
-
 	handleChange(e) {
 		setState({ text: e.target.value });
 	},

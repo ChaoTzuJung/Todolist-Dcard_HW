@@ -32,6 +32,7 @@ class TodoItem extends Component {
 		this.handleCancel = this.handleCancel.bind(this);
 		this.addStar = this.addStar.bind(this);
 		this.onEdit = this.onEdit.bind(this);
+		this.onCheck = this.onCheck.bind(this);
 	}
 
 	handleSave(data) {
@@ -90,6 +91,18 @@ class TodoItem extends Component {
 		}));
 	}
 
+	onCheck(value, checked) {
+		console.log(value);
+		console.log(checked);
+		this.setState(prevState => ({
+			todo: {
+				...prevState.todo,
+				// checked: !prevState.todo.checked,
+				checked,
+			},
+		}));
+	}
+
 	render() {
 		const { todo } = this.state;
 		const { className } = this.props;
@@ -109,6 +122,7 @@ class TodoItem extends Component {
 					ref={this.input}
 					addStar={this.addStar}
 					onEdit={this.onEdit}
+					onChangeCheckbox={this.onCheck}
 				/>
 				{todo.edit && (
 					<TodoPanel

@@ -7,19 +7,25 @@ import Icon from 'components/atoms/Icon';
 import styles from './index.css';
 
 const List = ({
-	className,
+	// state
 	text,
 	star,
 	edit,
+
+	// props
+	className,
 	checked,
 	date,
 	deadline,
 	file,
 	comment,
+
+	// actions
 	onChangeCheckbox,
 	handleChange,
 	addStar,
 	onEdit,
+	...other
 }) => (
 	<Fragment>
 		<div
@@ -47,10 +53,12 @@ const List = ({
 							className={classnames({
 								[styles.lineThrough]: checked,
 							})}
-							name="todo"
-							checked={checked}
+							name={text}
+							value={text}
 							content={text}
+							checked={checked}
 							onChange={onChangeCheckbox}
+							{...other}
 						/>
 					)}
 				</div>
