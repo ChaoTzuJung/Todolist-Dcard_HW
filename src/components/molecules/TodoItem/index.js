@@ -10,34 +10,33 @@ class TodoItem extends Component {
 	constructor(props) {
 		super(props);
 		this.input = React.createRef();
+		this.panel = React.createRef();
 
 		this.state = {
 			todo: {
-				// List 呈現
 				text: '',
 				checked: false,
 				star: false,
 				edit: true,
-				deadline: false,
-				file: false,
-				comment: false,
-				// panel 資料
+				startTime: '',
 				date: '',
 				time: '',
-				hasImage: false,
-				imageUrl: null,
+				fileData: '',
 				fileName: '',
-				fileType: null,
-				fileData: null,
-				textareaValue: '',
+				fileType: '',
+				hasImage: false,
+				textarea: '',
 			},
 		};
 		this.handleSave = this.handleSave.bind(this);
 		this.handleCancel = this.handleCancel.bind(this);
+		this.addStar = this.addStar.bind(this);
+		this.onEdit = this.onEdit.bind(this);
 	}
 
 	handleSave(data) {
-		const { date, time, fileName, imageUrl, fileData, textareaValue } = data;
+		console.log(data);
+		const { date, time, startTime, fileData, fileName, fileType, hasImage, textarea } = data;
 		//  List contains a simple text input. We need to expose a way for other components to read the text written in the List component.
 
 		if (isExist(this.input.current.state.text)) {
@@ -46,9 +45,17 @@ class TodoItem extends Component {
 					...prevState.todo,
 					text: this.input.current.state.text,
 					edit: false,
-					deadline: isExist(date),
-					file: isExist(fileName),
-					comment: isExist(textareaValue),
+					startTime,
+					date,
+					time,
+					fileData,
+					fileName,
+					fileType,
+					hasImage,
+					textarea,
+					deadline: isExist(startTime),
+					file: isExist(fileData),
+					comment: isExist(textarea),
 				},
 			}));
 		} else {
@@ -57,26 +64,61 @@ class TodoItem extends Component {
 	}
 
 	handleCancel() {
-		this.input.current.state.text = '';
+		this.setState(prevState => ({
+			todo: {
+				...prevState.todo,
+				edit: false,
+			},
+		}));
+	}
+
+	addStar() {
+		this.setState(prevState => ({
+			todo: {
+				...prevState.todo,
+				star: !prevState.todo.star,
+			},
+		}));
+	}
+
+	onEdit() {
+		this.setState(prevState => ({
+			todo: {
+				...prevState.todo,
+				edit: !prevState.todo.edit,
+			},
+		}));
 	}
 
 	render() {
 		const { todo } = this.state;
-		const { className, checked, star } = this.props;
+		const { className } = this.props;
+		const todoData = { ...todo };
 
 		return (
 			<div className={classnames(styles.todoItem, className)}>
 				<List
 					text={todo.text}
-					checked={checked}
-					star={star}
+					checked={todo.checked}
+					star={todo.star}
 					edit={todo.edit}
-					deadline={todo.deadline}
+					deadline={todo.date || todo.time}
+					date={`${todo.date} ${todo.time}` || todo.date || todo.time}
 					file={todo.file}
 					comment={todo.comment}
 					ref={this.input}
+					addStar={this.addStar}
+					onEdit={this.onEdit}
 				/>
-				{todo.edit && <TodoPanel onSave={this.handleSave} onCancel={this.handleCancel} />}
+				{todo.edit && (
+					<TodoPanel
+						// Add task and edit
+						todoData={todoData}
+						onSave={this.handleSave}
+						onCancel={this.handleCancel}
+						ref={this.panel}
+					/>
+				)}
 			</div>
 		);
 	}

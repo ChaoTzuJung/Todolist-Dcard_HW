@@ -1,5 +1,5 @@
 import React from 'react';
-import { withKnobs, object, select } from '@storybook/addon-knobs/react';
+import { withKnobs, object } from '@storybook/addon-knobs/react';
 
 import Navigation from 'components/molecules/Navigation';
 

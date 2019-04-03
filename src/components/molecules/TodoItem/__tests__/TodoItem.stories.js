@@ -1,5 +1,5 @@
 import React from 'react';
-import { withKnobs, text, boolean } from '@storybook/addon-knobs/react';
+import { withKnobs } from '@storybook/addon-knobs/react';
 
 import TodoItem from 'components/molecules/TodoItem';
 
@@ -11,10 +11,6 @@ stories.addDecorator(withKnobs);
 
 stories.add('__interactive', () => (
 	<div style={{ margin: '100px' }}>
-		<TodoItem
-			text={text('title', '')}
-			checked={boolean('checked', false)}
-			star={boolean('star', false)}
-		/>
+		<TodoItem />
 	</div>
 ));

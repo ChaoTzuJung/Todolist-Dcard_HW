@@ -3,27 +3,24 @@ import { contain } from 'react-container-helper';
 import FieldDate from './component';
 
 const initState = () => ({
-	startDate: null,
+	startDate: Date.now(),
 });
 
-const mapSetStateToProps = ({ startDate }, { className, onChange, ...other }, setState) => ({
+const mapSetStateToProps = ({ startDate }, { className, startTime, onChange, handleDateChange, ...other }, setState) => ({
 	// state
 	startDate,
 
 	// props
 	className,
+	startTime,
 	onChange,
+	handleDateChange,
 	...other,
 
 	// actions
 	handleChange(e) {
 		setState({ startDate: e });
 		onChange(e);
-	},
-
-	// NOTE: child's method (FieldDate) can't be call by parent (TodoPanel)
-	clearDateInput() {
-		setState({ startDate: null });
 	},
 });
 

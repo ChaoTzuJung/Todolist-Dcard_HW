@@ -11,18 +11,18 @@ stories.addDecorator(withKnobs);
 
 stories.add('with default', () => (
 	<div style={{ margin: '16px' }}>
-		<FieldDate onChange={action('selected date and time')} />
+		<FieldDate onChange={action('selected date and time')} startTime={null} />
 	</div>
 ));
 
 stories.add('with date only', () => (
 	<div style={{ margin: '16px' }}>
-		<FieldDate dateOnly onChange={action('selected date')} />
+		<FieldDate dateOnly onChange={action('selected date')} startTime={null} />
 	</div>
 ));
 
 stories.add('with time only', () => (
 	<div style={{ margin: '16px' }}>
-		<FieldDate timeOnly onChange={action('selected time')} />
+		<FieldDate timeOnly onChange={action('selected time')} startTime={null} />
 	</div>
 ));

@@ -35,13 +35,13 @@ export class InputComponent extends Component {
 	}
 }
 
-const FieldDate = ({ startDate, handleChange, dateOnly, timeOnly }) => (
+const FieldDate = ({ startDate, startTime, handleChange, handleDateChange, dateOnly, timeOnly }) => (
 	<Fragment>
 		{!dateOnly && !timeOnly && (
 			<DatePicker
 				placeholderText="MMMM d, yyyy h:mm aa"
-				selected={startDate}
-				onChange={handleChange}
+				selected={startTime}
+				onChange={handleDateChange}
 				minDate={new Date()}
 				showTimeSelect
 				timeFormat="HH:mm"
@@ -54,8 +54,8 @@ const FieldDate = ({ startDate, handleChange, dateOnly, timeOnly }) => (
 		{dateOnly && (
 			<DatePicker
 				placeholderText="yyyy/mm/dd"
-				selected={startDate}
-				onChange={handleChange}
+				selected={startTime}
+				onChange={handleDateChange}
 				minDate={new Date()}
 				dateFormat="yyyy/MM/dd"
 				customInput={<InputComponent />}
@@ -64,8 +64,8 @@ const FieldDate = ({ startDate, handleChange, dateOnly, timeOnly }) => (
 		{timeOnly && (
 			<DatePicker
 				placeholderText="HH:mm"
-				selected={startDate}
-				onChange={handleChange}
+				selected={startTime}
+				onChange={handleDateChange}
 				minDate={new Date()}
 				showTimeSelect
 				showTimeSelectOnly

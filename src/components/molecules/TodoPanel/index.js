@@ -11,42 +11,39 @@ import styles from './index.css';
 class TodoPanel extends Component {
 	constructor(props) {
 		super(props);
-
+		console.log(this);
 		this.inputDate = React.createRef();
 		this.inputTime = React.createRef();
 
-		this.state = {
-			date: '',
-			time: '',
-			hasImage: false,
-			imageUrl: null,
-			fileName: '',
-			fileType: null,
-			fileData: null,
-			textareaValue: '',
-		};
+		const { todoData } = this.props;
 
-		this.onCancel = this.onCancel.bind(this);
+		this.state = {
+			...todoData,
+		};
+		console.log(this.state);
+
 		this.onUploadFile = this.onUploadFile.bind(this);
 		this.handleChangeTextarea = this.handleChangeTextarea.bind(this);
 		this.onChangDate = this.onChangDate.bind(this);
 		this.onChangeTime = this.onChangeTime.bind(this);
+		this.handleDateChange = this.handleDateChange.bind(this);
 	}
 
-	// set child state here
-	onCancel() {
-		this.setState({
-			date: '',
-			time: '',
-			hasImage: false,
-			imageUrl: null,
-			fileName: '',
-			fileType: null,
-			fileData: null,
-			textareaValue: '',
+	handleDateChange(e) {
+		console.log(e);
+
+		this.setState({ startTime: e }, () => {
+			const { startTime } = this.state;
+			const year = startTime.getFullYear();
+			const month = startTime.getMonth() + 1;
+			const day = startTime.getDate();
+			const hour = startTime.getHours();
+			const minute = startTime.getMinutes();
+			this.setState({
+				date: `${year}/${month}/${day}`,
+				time: `${hour}:${minute}0`,
+			});
 		});
-		this.inputDate.current.state.startDate = null;
-		this.inputTime.current.state.startDate = null;
 	}
 
 	onUploadFile(e) {
@@ -57,7 +54,7 @@ class TodoPanel extends Component {
 		fr.addEventListener('load', () => {
 			if (file.type === 'image/png' || file.type === 'image/jpeg') {
 				this.setState({
-					imageUrl: fr.result,
+					fileData: fr.result,
 					hasImage: true,
 				});
 			} else {
@@ -78,7 +75,7 @@ class TodoPanel extends Component {
 
 	handleChangeTextarea(e) {
 		this.setState({
-			textareaValue: e.target.value,
+			textarea: e.target.value,
 		});
 	}
 
@@ -102,11 +99,8 @@ class TodoPanel extends Component {
 	}
 
 	render() {
-		// TodoPanel exposes the onSave event as a property.
-		// The parent component (TodoItem) should pass a callback as the event handler. The callback will be called when the TodoPanel's button is clicked.
-		// The child component (TodoPanel) communicates with its parent by calling callbacks. The parent sets the callbacks as properties on the child component.
-		const { date, time, imageUrl, hasImage, fileName, fileType, fileData, textareaValue } = this.state;
-		const { className, onSave = () => {}, ...other } = this.props;
+		const { startTime, hasImage, fileName, fileData, textarea } = this.state;
+		const { className, onCancel = () => {}, onSave = () => {}, todoData, ...other } = this.props;
 
 		return (
 			<div className={classnames(styles.todoPanel, className)}>
@@ -117,8 +111,22 @@ class TodoPanel extends Component {
 							<span>Deadline</span>
 						</p>
 						<div className={styles.row}>
-							<FieldDate dateOnly {...other} onChange={this.onChangDate} ref={this.inputDate} />
-							<FieldDate timeOnly {...other} onChange={this.onChangeTime} ref={this.inputTime} />
+							<FieldDate
+								dateOnly
+								onChange={this.onChangDate}
+								ref={this.inputDate}
+								handleDateChange={this.handleDateChange}
+								startTime={startTime}
+								{...other}
+							/>
+							<FieldDate
+								timeOnly
+								onChange={this.onChangDate}
+								ref={this.inputDate}
+								handleDateChange={this.handleDateChange}
+								startTime={startTime}
+								{...other}
+							/>
 						</div>
 					</div>
 					<div className={styles.label}>
@@ -137,7 +145,7 @@ class TodoPanel extends Component {
 						{hasImage && (
 							<div className={classnames(styles.photo, styles.preview)}>
 								<span>{fileName}</span>
-								<img src={imageUrl} alt="preview" />
+								<img src={fileData} alt="preview" />
 							</div>
 						)}
 					</div>
@@ -153,14 +161,14 @@ class TodoPanel extends Component {
 								name="comment"
 								placeholder="Type your memo here..."
 								onChange={this.handleChangeTextarea}
-								value={textareaValue}
+								value={textarea}
 								{...other}
 							/>
 						</div>
 					</div>
 				</div>
 				<div className={styles.buttonGroup}>
-					<Button color="cancel" onClick={this.onCancel}>
+					<Button color="cancel" onClick={() => onCancel(this.state)}>
 						<Icon>close</Icon>
 						Cancel
 					</Button>
