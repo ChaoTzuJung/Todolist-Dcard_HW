@@ -17,7 +17,7 @@ exports[`with date only 1`] = `
       dateOnly={true}
       handleChange={[Function]}
       onChange={[Function]}
-      startDate={1554276994412}
+      startDate={1554278048744}
       startTime={null}
     >
       <DatePicker
@@ -29,7 +29,7 @@ exports[`with date only 1`] = `
         disabledKeyboardNavigation={false}
         dropdownMode="scroll"
         inlineFocusSelectedMonth={false}
-        minDate={2019-04-03T07:36:34.412Z}
+        minDate={2019-04-03T07:54:08.744Z}
         monthsShown={1}
         nextMonthButtonLabel="Next month"
         onBlur={[Function]}
@@ -159,7 +159,7 @@ exports[`with default 1`] = `
     <FieldDate
       handleChange={[Function]}
       onChange={[Function]}
-      startDate={1554276994385}
+      startDate={1554278048722}
       startTime={null}
     >
       <DatePicker
@@ -171,7 +171,7 @@ exports[`with default 1`] = `
         disabledKeyboardNavigation={false}
         dropdownMode="scroll"
         inlineFocusSelectedMonth={false}
-        minDate={2019-04-03T07:36:34.386Z}
+        minDate={2019-04-03T07:54:08.722Z}
         monthsShown={1}
         nextMonthButtonLabel="Next month"
         onBlur={[Function]}
@@ -303,7 +303,7 @@ exports[`with time only 1`] = `
     <FieldDate
       handleChange={[Function]}
       onChange={[Function]}
-      startDate={1554276994418}
+      startDate={1554278048758}
       startTime={null}
       timeOnly={true}
     >
@@ -316,7 +316,7 @@ exports[`with time only 1`] = `
         disabledKeyboardNavigation={false}
         dropdownMode="scroll"
         inlineFocusSelectedMonth={false}
-        minDate={2019-04-03T07:36:34.418Z}
+        minDate={2019-04-03T07:54:08.758Z}
         monthsShown={1}
         nextMonthButtonLabel="Next month"
         onBlur={[Function]}

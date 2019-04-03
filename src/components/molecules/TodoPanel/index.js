@@ -11,7 +11,6 @@ import styles from './index.css';
 class TodoPanel extends Component {
 	constructor(props) {
 		super(props);
-		console.log(this);
 		this.inputDate = React.createRef();
 		this.inputTime = React.createRef();
 
@@ -20,7 +19,6 @@ class TodoPanel extends Component {
 		this.state = {
 			...todoData,
 		};
-		console.log(this.state);
 
 		this.onUploadFile = this.onUploadFile.bind(this);
 		this.handleChangeTextarea = this.handleChangeTextarea.bind(this);

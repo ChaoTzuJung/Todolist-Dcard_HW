@@ -1,5 +1,5 @@
 import React from 'react';
-import { withKnobs, boolean, text, select } from '@storybook/addon-knobs/react';
+import { withKnobs, object } from '@storybook/addon-knobs/react';
 
 import TodoPanel from 'components/molecules/TodoPanel';
 
@@ -13,18 +13,20 @@ stories.addDecorator(withKnobs);
 stories.add('__interactive', () => (
 	<div style={{ margin: '100px' }}>
 		<TodoPanel
-			fileType={select(
-				'file type',
-				{ png: 'image/png', jpeg: 'image/jpeg', pdf: 'application/pdf', doc: 'application/zip' },
-				'png',
-			)}
-			hasImage={boolean('hasImage', false)}
-			fileName={text('fileName', '照片.png')}
-			fileData={text(
-				'imageUrl',
-				'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
-			)}
-			textareaValue={text('comment', '內文')}
+			todoData={object('todoData', {
+				text: '',
+				checked: false,
+				star: false,
+				edit: true,
+				startTime: '',
+				date: '',
+				time: '',
+				fileData: '',
+				fileName: '',
+				fileType: '',
+				hasImage: false,
+				textarea: '',
+			})}
 			onSave={action('Add Task')}
 			onCancel={action('Cancel')}
 		/>

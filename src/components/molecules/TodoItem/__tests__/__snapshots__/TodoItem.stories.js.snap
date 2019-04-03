@@ -175,7 +175,7 @@ exports[`__interactive 1`] = `
                     handleChange={[Function]}
                     handleDateChange={[Function]}
                     onChange={[Function]}
-                    startDate={1554276997133}
+                    startDate={1554278050721}
                     startTime=""
                   >
                     <DatePicker
@@ -187,7 +187,7 @@ exports[`__interactive 1`] = `
                       disabledKeyboardNavigation={false}
                       dropdownMode="scroll"
                       inlineFocusSelectedMonth={false}
-                      minDate={2019-04-03T07:36:37.133Z}
+                      minDate={2019-04-03T07:54:10.721Z}
                       monthsShown={1}
                       nextMonthButtonLabel="Next month"
                       onBlur={[Function]}
@@ -309,7 +309,7 @@ exports[`__interactive 1`] = `
                     handleChange={[Function]}
                     handleDateChange={[Function]}
                     onChange={[Function]}
-                    startDate={1554276997143}
+                    startDate={1554278050726}
                     startTime=""
                     timeOnly={true}
                   >
@@ -322,7 +322,7 @@ exports[`__interactive 1`] = `
                       disabledKeyboardNavigation={false}
                       dropdownMode="scroll"
                       inlineFocusSelectedMonth={false}
-                      minDate={2019-04-03T07:36:37.143Z}
+                      minDate={2019-04-03T07:54:10.726Z}
                       monthsShown={1}
                       nextMonthButtonLabel="Next month"
                       onBlur={[Function]}

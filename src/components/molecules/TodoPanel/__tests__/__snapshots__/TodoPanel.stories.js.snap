@@ -9,13 +9,24 @@ exports[`__interactive 1`] = `
   }
 >
   <TodoPanel
-    fileData="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
-    fileName="照片.png"
-    fileType="png"
-    hasImage={false}
     onCancel={[Function]}
     onSave={[Function]}
-    textareaValue="內文"
+    todoData={
+      Object {
+        "checked": false,
+        "date": "",
+        "edit": true,
+        "fileData": "",
+        "fileName": "",
+        "fileType": "",
+        "hasImage": false,
+        "star": false,
+        "startTime": "",
+        "text": "",
+        "textarea": "",
+        "time": "",
+      }
+    }
   >
     <div
       className="todoPanel"
@@ -43,25 +54,17 @@ exports[`__interactive 1`] = `
           >
             <Contain(FieldDate)
               dateOnly={true}
-              fileData="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
-              fileName="照片.png"
-              fileType="png"
               handleDateChange={[Function]}
-              hasImage={false}
               onChange={[Function]}
-              textareaValue="內文"
+              startTime=""
             >
               <FieldDate
                 dateOnly={true}
-                fileData="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
-                fileName="照片.png"
-                fileType="png"
                 handleChange={[Function]}
                 handleDateChange={[Function]}
-                hasImage={false}
                 onChange={[Function]}
-                startDate={1554276993815}
-                textareaValue="內文"
+                startDate={1554278049149}
+                startTime=""
               >
                 <DatePicker
                   allowSameDay={false}
@@ -72,7 +75,7 @@ exports[`__interactive 1`] = `
                   disabledKeyboardNavigation={false}
                   dropdownMode="scroll"
                   inlineFocusSelectedMonth={false}
-                  minDate={2019-04-03T07:36:33.816Z}
+                  minDate={2019-04-03T07:54:09.150Z}
                   monthsShown={1}
                   nextMonthButtonLabel="Next month"
                   onBlur={[Function]}
@@ -90,6 +93,7 @@ exports[`__interactive 1`] = `
                   previousMonthButtonLabel="Previous Month"
                   readOnly={false}
                   renderDayContents={[Function]}
+                  selected=""
                   shouldCloseOnSelect={true}
                   showMonthYearPicker={false}
                   showTimeInput={false}
@@ -184,25 +188,17 @@ exports[`__interactive 1`] = `
               </FieldDate>
             </Contain(FieldDate)>
             <Contain(FieldDate)
-              fileData="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
-              fileName="照片.png"
-              fileType="png"
               handleDateChange={[Function]}
-              hasImage={false}
               onChange={[Function]}
-              textareaValue="內文"
+              startTime=""
               timeOnly={true}
             >
               <FieldDate
-                fileData="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
-                fileName="照片.png"
-                fileType="png"
                 handleChange={[Function]}
                 handleDateChange={[Function]}
-                hasImage={false}
                 onChange={[Function]}
-                startDate={1554276993826}
-                textareaValue="內文"
+                startDate={1554278049159}
+                startTime=""
                 timeOnly={true}
               >
                 <DatePicker
@@ -214,7 +210,7 @@ exports[`__interactive 1`] = `
                   disabledKeyboardNavigation={false}
                   dropdownMode="scroll"
                   inlineFocusSelectedMonth={false}
-                  minDate={2019-04-03T07:36:33.826Z}
+                  minDate={2019-04-03T07:54:09.159Z}
                   monthsShown={1}
                   nextMonthButtonLabel="Next month"
                   onBlur={[Function]}
@@ -232,6 +228,7 @@ exports[`__interactive 1`] = `
                   previousMonthButtonLabel="Previous Month"
                   readOnly={false}
                   renderDayContents={[Function]}
+                  selected=""
                   shouldCloseOnSelect={true}
                   showMonthYearPicker={false}
                   showTimeInput={false}
@@ -400,15 +397,11 @@ exports[`__interactive 1`] = `
             className="row"
           >
             <textarea
-              fileData="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
-              fileName="照片.png"
-              fileType="png"
-              hasImage={false}
               name="comment"
               onChange={[Function]}
               placeholder="Type your memo here..."
-              textareaValue="內文"
               type="text"
+              value=""
             />
           </div>
         </div>
