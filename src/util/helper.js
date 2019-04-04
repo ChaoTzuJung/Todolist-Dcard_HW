@@ -13,9 +13,7 @@ export const transDateToDay = date => {
 	};
 };
 
-export const transDayToDate = (day, time) => {
-	const now = new Date(`${day} ${time}`);
-	return {
-		date: now,
-	};
+export const transDayToDate = value => {
+	const now = new Date(value);
+	return now;
 };

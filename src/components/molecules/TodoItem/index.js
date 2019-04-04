@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
-import { isExist } from 'util/helper';
+import axios from 'axios';
+
+import { isExist, transDayToDate } from 'util/helper';
 import List from 'components/molecules/List';
 import TodoPanel from 'components/molecules/TodoPanel';
 
@@ -13,20 +15,7 @@ class TodoItem extends Component {
 		this.panel = React.createRef();
 
 		this.state = {
-			todo: {
-				text: '',
-				checked: false,
-				star: false,
-				edit: true,
-				startTime: '',
-				date: '',
-				time: '',
-				fileData: '',
-				fileName: '',
-				fileType: '',
-				hasImage: false,
-				textarea: '',
-			},
+			edit: false,
 		};
 		this.handleSave = this.handleSave.bind(this);
 		this.handleCancel = this.handleCancel.bind(this);
@@ -39,8 +28,19 @@ class TodoItem extends Component {
 		// data 是 在 panel Add task 時 所戴的資料
 		console.log(data);
 		const { date, time, startTime, fileData, fileName, fileType, hasImage, textarea } = data;
-		//  List contains a simple text input. We need to expose a way for other components to read the text written in the List component.
-		const todo = {};
+		const URL = 'http://localhost:5000';
+
+		axios
+			.post(`${URL}/todos`, data)
+			.then(response => {
+				console.log(response.data);
+			})
+			.catch(error => {
+				console.log(error);
+			});
+
+		// axios.post(api, {})
+		// const todo = {};
 		if (isExist(this.input.current.state.text)) {
 			this.setState(prevState => ({
 				todo: {
@@ -105,22 +105,21 @@ class TodoItem extends Component {
 	}
 
 	render() {
-		const { todo } = this.state;
-		const { className, edit } = this.props;
-		const todoData = { ...todo };
+		const { edit } = this.state;
+		const { className, text, star, date, file, name, type, comment, complete } = this.props;
 
 		return (
 			<div className={classnames(styles.todoItem, className)}>
 				<List
-					text={todo.text}
-					checked={todo.checked}
-					star={todo.star}
-					edit={edit}
-					deadline={todo.date || todo.time}
-					date={`${todo.date} ${todo.time}` || todo.date || todo.time}
-					file={todo.file}
-					comment={todo.comment}
 					ref={this.input}
+					text={text}
+					checked={complete === 'completed'}
+					star={star}
+					edit={edit}
+					date={date}
+					deadline={isExist(date)}
+					file={isExist(file)}
+					comment={isExist(comment)}
 					addStar={this.addStar}
 					onEdit={this.onEdit}
 					onChangeCheckbox={this.onCheck}
@@ -128,10 +127,14 @@ class TodoItem extends Component {
 				{edit && (
 					<TodoPanel
 						// Add task and edit
-						todoData={todoData}
+						ref={this.panel}
+						date={transDayToDate(date)}
+						file={file}
+						name={name}
+						type={type}
+						textarea={comment}
 						onSave={this.handleSave}
 						onCancel={this.handleCancel}
-						ref={this.panel}
 					/>
 				)}
 			</div>

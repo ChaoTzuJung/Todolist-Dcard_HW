@@ -1,5 +1,4 @@
 import { contain } from 'react-container-helper';
-
 import List from './component';
 
 const initState = () => ({

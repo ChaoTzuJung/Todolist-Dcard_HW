@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
+import axios from 'axios';
 
 import Input from 'components/atoms/Input';
 import TodoItem from 'components/molecules/TodoItem';
 
 import styles from './index.css';
-import DB from '../../../../db.json';
-
-console.log(DB);
 
 class TodoList extends Component {
 	constructor(props) {
@@ -24,6 +22,22 @@ class TodoList extends Component {
 		this.handleCancel = this.handleCancel.bind(this);
 	}
 
+	componentDidMount() {
+		const URL = 'http://localhost:5000';
+
+		axios
+			.get(`${URL}/todos`)
+			.then(response => {
+				this.setState(prevState => ({
+					...prevState.todos,
+					todos: response.data,
+				}));
+			})
+			.catch(error => {
+				console.log(error);
+			});
+	}
+
 	onFocus() {
 		this.setState({
 			isNewTodo: true,
@@ -31,23 +45,19 @@ class TodoList extends Component {
 	}
 
 	handleSubmit(e) {
-		console.log(ec);
+		console.log(e);
 		this.setState({
 			isNewTodo: false,
 		});
 	}
 
 	handleCancel() {
-		this.setState({
-			open: false,
-		});
 		this.input.current.state.value = '';
 	}
 
 	render() {
 		const { className, value, ...props } = this.props;
 		const { todos, isNewTodo } = this.state;
-
 		return (
 			<div className={classnames(styles.todolist, className)}>
 				<div className={styles.inputPanel}>
@@ -65,21 +75,19 @@ class TodoList extends Component {
 				}
 				</div>
 
-				{DB.todos.map(todo => {
-					console.log(todo);
-					return (
-						<TodoItem
-							key={todo.id}
-							text={todo.message}
-							star={todo.stared}
-							edit={todo.edit}
-							checked={todo.checked}
-							date={todo.deadline}
-							file={todo.file}
-							comment={todo.comment}
-						/>
-					);
-				})}
+				{todos.map(todo => (
+					<TodoItem
+						key={todo.timestamp}
+						text={todo.message}
+						star={todo.stared}
+						date={todo.date}
+						file={todo.file}
+						name={todo.name}
+						type={todo.type}
+						comment={todo.comment}
+						complete={todo.complete}
+					/>
+				))}
 			</div>
 		);
 	}

@@ -15,7 +15,9 @@ const List = ({
 	// props
 	className,
 	checked,
+	// icon 隔壁的時間
 	date,
+	// 3個小icon
 	deadline,
 	file,
 	comment,
