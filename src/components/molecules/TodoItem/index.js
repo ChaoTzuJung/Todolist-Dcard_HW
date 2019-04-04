@@ -36,10 +36,11 @@ class TodoItem extends Component {
 	}
 
 	handleSave(data) {
+		// data 是 在 panel Add task 時 所戴的資料
 		console.log(data);
 		const { date, time, startTime, fileData, fileName, fileType, hasImage, textarea } = data;
 		//  List contains a simple text input. We need to expose a way for other components to read the text written in the List component.
-
+		const todo = {};
 		if (isExist(this.input.current.state.text)) {
 			this.setState(prevState => ({
 				todo: {
@@ -105,7 +106,7 @@ class TodoItem extends Component {
 
 	render() {
 		const { todo } = this.state;
-		const { className } = this.props;
+		const { className, edit } = this.props;
 		const todoData = { ...todo };
 
 		return (
@@ -114,7 +115,7 @@ class TodoItem extends Component {
 					text={todo.text}
 					checked={todo.checked}
 					star={todo.star}
-					edit={todo.edit}
+					edit={edit}
 					deadline={todo.date || todo.time}
 					date={`${todo.date} ${todo.time}` || todo.date || todo.time}
 					file={todo.file}
@@ -124,7 +125,7 @@ class TodoItem extends Component {
 					onEdit={this.onEdit}
 					onChangeCheckbox={this.onCheck}
 				/>
-				{todo.edit && (
+				{edit && (
 					<TodoPanel
 						// Add task and edit
 						todoData={todoData}

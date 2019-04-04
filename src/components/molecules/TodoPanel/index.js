@@ -17,6 +17,7 @@ class TodoPanel extends Component {
 		const { todoData } = this.props;
 
 		this.state = {
+			caaheTodo: {},
 			...todoData,
 		};
 

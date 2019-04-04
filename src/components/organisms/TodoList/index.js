@@ -5,6 +5,9 @@ import Input from 'components/atoms/Input';
 import TodoItem from 'components/molecules/TodoItem';
 
 import styles from './index.css';
+import DB from '../../../../db.json';
+
+console.log(DB);
 
 class TodoList extends Component {
 	constructor(props) {
@@ -12,19 +15,8 @@ class TodoList extends Component {
 		this.input = React.createRef();
 
 		this.state = {
-			todos: [
-				{
-					id: '',
-					title: '',
-					deadline: '',
-					file: '',
-					comment: '',
-					star: false,
-					edit: false,
-					checked: false,
-				},
-			],
-			open: false,
+			todos: [],
+			isNewTodo: false,
 		};
 
 		this.onFocus = this.onFocus.bind(this);
@@ -33,31 +25,16 @@ class TodoList extends Component {
 	}
 
 	onFocus() {
-		console.log(this);
 		this.setState({
-			open: true,
+			isNewTodo: true,
 		});
 	}
 
 	handleSubmit(e) {
-		console.log(e);
-		this.input.current.state.value = '';
-		this.setState(prevState => ({
-			todos: [
-				...prevState.todos,
-				{
-					id: Date.now(),
-					title: 'test',
-					deadline: '',
-					file: '',
-					comment: '',
-					star: false,
-					edit: false,
-					checked: false,
-				},
-			],
-			open: false,
-		}));
+		console.log(ec);
+		this.setState({
+			isNewTodo: false,
+		});
 	}
 
 	handleCancel() {
@@ -69,32 +46,40 @@ class TodoList extends Component {
 
 	render() {
 		const { className, value, ...props } = this.props;
-		const { todos, open } = this.state;
+		const { todos, isNewTodo } = this.state;
 
 		return (
 			<div className={classnames(styles.todolist, className)}>
-				<Input
-					className={styles.inputButton}
-					ref={this.input}
-					onFocus={this.onFocus}
-					placeholder="Add Task"
-					onSubmit={this.handleSubmit}
-					{...props}
-				/>
-				{open && <TodoItem />}
-				{todos.title &&
-					todos.map(todo => (
+				<div className={styles.inputPanel}>
+				{isNewTodo ?
+					<TodoItem edit={true}/>
+					:
+					<Input
+						className={styles.inputButton}
+						ref={this.input}
+						onFocus={this.onFocus}
+						placeholder="Add Task"
+						onSubmit={this.handleSubmit}
+						{...props}
+					/>
+				}
+				</div>
+
+				{DB.todos.map(todo => {
+					console.log(todo);
+					return (
 						<TodoItem
 							key={todo.id}
-							text={todo.title}
-							star={todo.star}
+							text={todo.message}
+							star={todo.stared}
 							edit={todo.edit}
 							checked={todo.checked}
 							date={todo.deadline}
 							file={todo.file}
 							comment={todo.comment}
 						/>
-					))}
+					);
+				})}
 			</div>
 		);
 	}

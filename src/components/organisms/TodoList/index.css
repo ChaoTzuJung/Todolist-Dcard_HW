@@ -1,5 +1,6 @@
 .todolist {
-	& > .input-button {
+	margin-top: 24px;
+	& > .input-panel {
 		margin-bottom: 24px;
 	}
 }
