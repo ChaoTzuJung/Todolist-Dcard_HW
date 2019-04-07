@@ -84,7 +84,29 @@ class TodoItem extends Component {
 	addStar() {
 		console.log('按下星星');
 		const { star } = this.state;
-		this.setState({ star: !star });
+		const { id, message, date, file, name, type, comment, completed } = this.props;
+		const URL = 'http://localhost:5000';
+		this.setState({ star: !star }, () => {
+			const todo = {
+				id,
+				message,
+				star: !star,
+				date,
+				file,
+				name,
+				type,
+				comment,
+				completed,
+			};
+			axios
+				.put(`${URL}/todos/${id}`, todo)
+				.then(response => {
+					console.log(`Checked 後要更新的單筆資料: ${response.data}`);
+				})
+				.catch(error => {
+					console.error(`PUT 失敗: ${error}`);
+				});
+		});
 	}
 
 	onEdit() {
