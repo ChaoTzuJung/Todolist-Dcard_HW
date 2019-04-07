@@ -34,7 +34,7 @@ class TodoItem extends Component {
 		// data 是 在 panel Add task 時 所戴的資料
 		const { isNewTodo, setNewTodo, id } = this.props;
 		const { message, star } = this.input.current.state;
-		const todo = { ...data, message, star };
+		const todo = { ...data, message, star, completed: false };
 		const URL = 'http://localhost:5000';
 
 		if (!isExist(this.input.current.state.message)) {

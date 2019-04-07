@@ -27,6 +27,7 @@ class TodoList extends Component {
 		axios
 			.get(`${URL}/todos`)
 			.then(response => {
+				console.log(response.data);
 				this.setState(prevState => ({
 					...prevState.todos,
 					todos: response.data,
@@ -50,7 +51,7 @@ class TodoList extends Component {
 	}
 
 	render() {
-		const { className, value, ...props } = this.props;
+		const { className, value, tab, ...props } = this.props;
 		const { todos, isNewTodo } = this.state;
 		return (
 			<div className={classnames(styles.todolist, className)}>
@@ -67,23 +68,78 @@ class TodoList extends Component {
 						/>
 					)}
 				</div>
-
-				{todos.reverse().map(todo => (
-					<TodoItem
-						key={todo.id}
-						id={todo.id}
-						message={todo.message}
-						star={todo.star}
-						date={todo.date}
-						file={todo.file}
-						name={todo.name}
-						type={todo.type}
-						comment={todo.comment}
-						completed={todo.completed}
-						isNewTodo={isNewTodo}
-						setNewTodo={this.handleNewTodo}
-					/>
-				))}
+				{tab === 'myTasks' &&
+					todos
+						.reverse()
+						.map(todo => (
+							<TodoItem
+								key={todo.id}
+								id={todo.id}
+								message={todo.message}
+								star={todo.star}
+								date={todo.date}
+								file={todo.file}
+								name={todo.name}
+								type={todo.type}
+								comment={todo.comment}
+								completed={todo.completed}
+								isNewTodo={isNewTodo}
+								setNewTodo={this.handleNewTodo}
+							/>
+						))}
+				{tab === 'inProgress' &&
+					todos
+						.reduce((filtered, todo) => {
+							if (!todo.completed) {
+								const filteredTodo = { ...todo };
+								filtered.push(filteredTodo);
+							}
+							return filtered;
+						}, [])
+						.map(todo => {
+							console.log(todo);
+							return (
+								<TodoItem
+									key={todo.id}
+									id={todo.id}
+									message={todo.message}
+									star={todo.star}
+									date={todo.date}
+									file={todo.file}
+									name={todo.name}
+									type={todo.type}
+									comment={todo.comment}
+									completed={todo.completed}
+									isNewTodo={isNewTodo}
+									setNewTodo={this.handleNewTodo}
+								/>
+							);
+						})}
+				{tab === 'completed' &&
+					todos
+						.reduce((filtered, todo) => {
+							if (todo.completed) {
+								const filteredTodo = { ...todo };
+								filtered.push(filteredTodo);
+							}
+							return filtered;
+						}, [])
+						.map(todo => (
+							<TodoItem
+								key={todo.id}
+								id={todo.id}
+								message={todo.message}
+								star={todo.star}
+								date={todo.date}
+								file={todo.file}
+								name={todo.name}
+								type={todo.type}
+								comment={todo.comment}
+								completed={todo.completed}
+								isNewTodo={isNewTodo}
+								setNewTodo={this.handleNewTodo}
+							/>
+						))}
 			</div>
 		);
 	}
