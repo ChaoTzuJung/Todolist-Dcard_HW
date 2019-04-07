@@ -14,106 +14,107 @@ class TodoItem extends Component {
 		this.input = React.createRef();
 		this.panel = React.createRef();
 
+		const { isNewTodo, completed, star } = this.props;
+
 		this.state = {
-			edit: false,
+			star: star || false,
+			edit: isNewTodo,
+			completed: completed || false,
 		};
+
 		this.handleSave = this.handleSave.bind(this);
 		this.handleCancel = this.handleCancel.bind(this);
 		this.addStar = this.addStar.bind(this);
 		this.onEdit = this.onEdit.bind(this);
-		this.onCheck = this.onCheck.bind(this);
+		this.handleCheck = this.handleCheck.bind(this);
 	}
 
 	handleSave(data) {
+		console.log(`Add Task 帶的資料: ${data}`);
 		// data 是 在 panel Add task 時 所戴的資料
-		console.log(data);
-		const { date, time, startTime, fileData, fileName, fileType, hasImage, textarea } = data;
+		const { isNewTodo, setNewTodo, id } = this.props;
+		const { message, star } = this.input.current.state;
+		const todo = { ...data, message, star };
 		const URL = 'http://localhost:5000';
 
-		axios
-			.post(`${URL}/todos`, data)
-			.then(response => {
-				console.log(response.data);
-			})
-			.catch(error => {
-				console.log(error);
-			});
-
-		// axios.post(api, {})
-		// const todo = {};
-		if (isExist(this.input.current.state.text)) {
-			this.setState(prevState => ({
-				todo: {
-					...prevState.todo,
-					text: this.input.current.state.text,
-					edit: false,
-					startTime,
-					date,
-					time,
-					fileData,
-					fileName,
-					fileType,
-					hasImage,
-					textarea,
-					deadline: isExist(startTime),
-					file: isExist(fileData),
-					comment: isExist(textarea),
-				},
-			}));
-		} else {
+		if (!isExist(this.input.current.state.message)) {
 			alert('請輸入 Todo 標題 !');
+			return;
+		}
+
+		if (isNewTodo) {
+			axios
+				.post(`${URL}/todos`, todo)
+				.then(response => {
+					console.log(`Add Task POST的資料: ${response.data}`);
+					if (isNewTodo) {
+						setNewTodo();
+					}
+					this.setState({ edit: false });
+				})
+				.catch(error => {
+					console.error(`POST 失敗: ${error}`);
+				});
+		} else {
+			axios
+				.put(`${URL}/todos/${id}`, todo)
+				.then(response => {
+					console.log(`Add Task 後要更新的單筆資料: ${response.data}`);
+					if (isNewTodo) {
+						setNewTodo();
+					}
+					this.setState({ edit: false });
+				})
+				.catch(error => {
+					console.error(`PUT 失敗: ${error}`);
+				});
 		}
 	}
 
 	handleCancel() {
-		this.setState(prevState => ({
-			todo: {
-				...prevState.todo,
-				edit: false,
-			},
-		}));
+		const { isNewTodo, setNewTodo } = this.props;
+
+		// 若是要新增Todo 的 panel 就回復成 input 而不是 todo item
+		if (isNewTodo) {
+			setNewTodo();
+		}
+		this.setState({ edit: false });
 	}
 
 	addStar() {
-		this.setState(prevState => ({
-			todo: {
-				...prevState.todo,
-				star: !prevState.todo.star,
-			},
-		}));
+		console.log('按下星星');
+		const { star } = this.state;
+		this.setState({ star: !star });
 	}
 
 	onEdit() {
-		this.setState(prevState => ({
-			todo: {
-				...prevState.todo,
-				edit: !prevState.todo.edit,
-			},
-		}));
+		console.log('按下 edit icon (只改變 todoItem 的 edit state)');
+		const { edit } = this.state;
+		const { isNewTodo } = this.props;
+		if (isNewTodo) {
+			alert('請按下Cancel或Add Task')
+		} else {
+			this.setState({ edit: !edit });
+		}
 	}
 
-	onCheck(value, checked) {
-		console.log(value);
-		console.log(checked);
-		this.setState(prevState => ({
-			todo: {
-				...prevState.todo,
-				// checked: !prevState.todo.checked,
-				checked,
-			},
-		}));
+	handleCheck() {
+		console.log('按下Checkbox');
+		const { completed } = this.state;
+		this.setState({ completed: !completed });
 	}
 
 	render() {
-		const { edit } = this.state;
-		const { className, text, star, date, file, name, type, comment, complete } = this.props;
+		const { edit, star, completed } = this.state;
+		const { className, id, message, date, file, name, type, comment, isNewTodo } = this.props;
 
 		return (
 			<div className={classnames(styles.todoItem, className)}>
 				<List
 					ref={this.input}
-					text={text}
-					checked={complete === 'completed'}
+					id={id}
+					message={message}
+					completed={completed}
 					star={star}
 					edit={edit}
 					date={date}
@@ -122,17 +123,19 @@ class TodoItem extends Component {
 					comment={isExist(comment)}
 					addStar={this.addStar}
 					onEdit={this.onEdit}
-					onChangeCheckbox={this.onCheck}
+					handleCheckboxChange={this.handleCheck}
 				/>
 				{edit && (
 					<TodoPanel
 						// Add task and edit
 						ref={this.panel}
+						id={id}
 						date={transDayToDate(date)}
 						file={file}
 						name={name}
 						type={type}
 						textarea={comment}
+						isNewTodo={isNewTodo}
 						onSave={this.handleSave}
 						onCancel={this.handleCancel}
 					/>

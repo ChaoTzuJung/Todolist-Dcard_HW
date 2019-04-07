@@ -11,7 +11,7 @@ stories.addDecorator(withKnobs);
 stories.add('__interactive', () => (
 	<div style={{ margin: '16px' }}>
 		<List
-			text={text('text', 'type something here...')}
+			message={text('message', 'type something here...')}
 			star={boolean('star', false)}
 			edit={boolean('edit', false)}
 			checked={boolean('checked', false)}

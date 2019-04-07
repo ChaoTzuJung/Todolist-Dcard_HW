@@ -23,7 +23,7 @@ const App = ({ children }) => {
 	];
 
 	return (
-		<div style={{ background: '#e1e1e1', height: '100vh' }}>
+		<div style={{ height: '100%', paddingBottom: '48px' }}>
 			<Header>
 				<Navigation
 					className=""

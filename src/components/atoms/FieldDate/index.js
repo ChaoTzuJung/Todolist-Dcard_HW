@@ -3,7 +3,7 @@ import { contain } from 'react-container-helper';
 import FieldDate from './component';
 
 const initState = () => ({
-	startDate: Date.now(),
+	startDate: null,
 });
 
 const mapSetStateToProps = (

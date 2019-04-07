@@ -40,7 +40,7 @@ const FieldDate = ({ startTime, handleDateChange, dateOnly, timeOnly }) => (
 		{!dateOnly && !timeOnly && (
 			<DatePicker
 				placeholderText="MMMM d, yyyy h:mm aa"
-				selected={startTime}
+				selected={startTime || null}
 				onChange={handleDateChange}
 				minDate={new Date()}
 				showTimeSelect
@@ -54,7 +54,7 @@ const FieldDate = ({ startTime, handleDateChange, dateOnly, timeOnly }) => (
 		{dateOnly && (
 			<DatePicker
 				placeholderText="yyyy/mm/dd"
-				selected={startTime}
+				selected={startTime || null}
 				onChange={handleDateChange}
 				minDate={new Date()}
 				dateFormat="yyyy/MM/dd"
@@ -64,7 +64,7 @@ const FieldDate = ({ startTime, handleDateChange, dateOnly, timeOnly }) => (
 		{timeOnly && (
 			<DatePicker
 				placeholderText="HH:mm"
-				selected={startTime}
+				selected={startTime || null}
 				onChange={handleDateChange}
 				minDate={new Date()}
 				showTimeSelect

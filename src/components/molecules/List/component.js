@@ -8,25 +8,26 @@ import styles from './index.css';
 
 const List = ({
 	// state
-	text,
+	cacheTodo: { message },
+	completed,
+	// message,
 	star,
 	edit,
 
 	// props
 	className,
-	checked,
 	// icon 隔壁的時間
 	date,
 	// 3個小icon
 	deadline,
 	file,
 	comment,
-
-	// actions
-	onChangeCheckbox,
-	handleChange,
 	addStar,
 	onEdit,
+
+	// actions
+	handleCheckboxChange,
+	handleChange,
 	...other
 }) => (
 	<Fragment>
@@ -47,24 +48,23 @@ const List = ({
 							valid="false"
 							color={star ? '#FFF2DC' : '#F2F2F2'}
 							border="false"
-							defaultValue={text}
+							value={message}
 							onChange={handleChange}
 						/>
 					) : (
 						<Checkbox
 							className={classnames({
-								[styles.lineThrough]: checked,
+								[styles.lineThrough]: completed,
 							})}
-							name={text}
-							value={text}
-							content={text}
-							checked={checked}
-							onChange={onChangeCheckbox}
-							{...other}
+							name={message}
+							value={message}
+							content={message}
+							checked={completed}
+							onChange={handleCheckboxChange}
 						/>
 					)}
 				</div>
-				{!checked && (
+				{!completed && (
 					<div className={styles.down}>
 						{deadline && (
 							<Fragment>

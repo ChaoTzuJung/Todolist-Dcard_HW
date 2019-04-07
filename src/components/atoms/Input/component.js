@@ -14,7 +14,12 @@ const Input = ({
 	getInputElement,
 	onFocus,
 }) => (
-	<form className={classnames(styles.input, className)} autoComplete="off" action="" onSubmit={submit}>
+	<form
+		className={classnames(styles.input, className)}
+		autoComplete="off"
+		action=""
+		onSubmit={submit}
+	>
 		<div className={styles.icon}>
 			<FontAwesomeIcon icon={faPlus} color="#CBCBCB" size="1x" />
 		</div>

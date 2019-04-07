@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
-import { transDateToDay } from 'util/helper';
+import axios from 'axios';
 
+import { transDateToDay } from 'util/helper';
 import Button from 'components/atoms/Button';
 import ButtonFile from 'components/atoms/ButtonFile';
 import FieldDate from 'components/atoms/FieldDate';
@@ -16,83 +17,107 @@ class TodoPanel extends Component {
 		this.inputTime = React.createRef();
 
 		this.state = {
-			type: null,
+			textarea: '',
 			cacheTodo: {},
 		};
 
 		this.onUploadFile = this.onUploadFile.bind(this);
 		this.handleChangeTextarea = this.handleChangeTextarea.bind(this);
-		this.onChangDate = this.onChangDate.bind(this);
-		this.onChangeTime = this.onChangeTime.bind(this);
 		this.handleDateChange = this.handleDateChange.bind(this);
 	}
 
+	// 針對 onEdit 去抓資料放入 input
+	componentDidMount() {
+		const { id, isNewTodo } = this.props;
+		// 若是單純新增todo而展開panel不用 fetch fdata
+		if (!isNewTodo) {
+			const URL = 'http://localhost:5000';
+			axios
+				.get(`${URL}/todos/${id}`)
+				.then(response => {
+					const { startDate, date, type, name, file, comment } = response.data;
+					this.setState(prevState => ({
+						cacheTodo: {
+							...prevState.cacheTodo,
+							startDate,
+							date,
+							type,
+							name,
+							file,
+							comment,
+						},
+					}));
+				})
+				.catch(error => {
+					console.log(error);
+				});
+		}
+	}
+
 	handleDateChange(e) {
-		console.log(e);
+		console.log(`handleDateChange 選取時間: ${e}`);
 		const { day, time } = transDateToDay(e);
-		this.setState({
-			date: day,
-			time,
-		});
+		this.setState(prevState => ({
+			cacheTodo: {
+				...prevState.cacheTodo,
+				startDate: e,
+				date: `${day} ${time}`,
+			},
+		}));
 	}
 
 	onUploadFile(e) {
 		const file = e.target.files.item(0);
 		const fr = new FileReader();
-
 		const { name, type } = file;
-		const { result } = fr;
 
-		this.setState({
-			dataType: type,
-		});
+		console.log(`onUploadFile 上傳新的file: ${name} / ${type} / ${fr.result}`);
 
 		fr.addEventListener('load', () => {
-			this.setState({
-				fileData: result,
-				name,
-				hasImage: true,
-			});
+			this.setState(prevState => ({
+				cacheTodo: {
+					...prevState.cacheTodo,
+					type,
+					name,
+					file: fr.result,
+				},
+			}));
 		});
 
 		fr.readAsDataURL(file);
 	}
 
 	handleChangeTextarea(e) {
+		console.log(`handleChangeTextarea 輸入新的comment: ${e.target.value}`);
 		// 直接新增 state 屬性
-		this.setState({
-			textarea: e.target.value,
-		});
-	}
-
-	onChangDate(e) {
-		const year = e.getFullYear();
-		const month = e.getMonth() + 1;
-		const day = e.getDate();
-
-		this.setState({
-			date: `${year}/${month}/${day}`,
-		});
-	}
-
-	onChangeTime(e) {
-		const hour = e.getHours();
-		const minute = e.getMinutes();
-
-		this.setState({
-			time: `${hour}:${minute}0`,
-		});
+		this.setState(
+			{
+				textarea: e.target.value,
+			},
+			() => {
+				this.setState(prevState => ({
+					cacheTodo: {
+						...prevState.cacheTodo,
+						comment: prevState.textarea,
+					},
+				}));
+			},
+		);
 	}
 
 	render() {
-		const { dataType } = this.state;
+		const {
+			cacheTodo: { startDate, date, type, name, file, comment },
+		} = this.state;
+
 		const {
 			className,
-			date,
-			file,
-			name,
-			type,
-			textarea,
+			// date,
+			// 暫時改用 state 來做顯示
+			// file,
+			// name,
+			// type,
+			// textarea,
 			onCancel = () => {},
 			onSave = () => {},
 			...other
@@ -109,18 +134,16 @@ class TodoPanel extends Component {
 						<div className={styles.row}>
 							<FieldDate
 								dateOnly
-								onChange={this.onChangDate}
 								ref={this.inputDate}
+								startTime={startDate}
 								handleDateChange={this.handleDateChange}
-								startTime={date}
 								{...other}
 							/>
 							<FieldDate
 								timeOnly
-								onChange={this.onChangDate}
 								ref={this.inputDate}
+								startTime={startDate}
 								handleDateChange={this.handleDateChange}
-								startTime={date}
 								{...other}
 							/>
 						</div>
@@ -151,22 +174,34 @@ class TodoPanel extends Component {
 						</p>
 						<div className={styles.row}>
 							<textarea
+								ref={this.textareaRef}
 								type="text"
 								name="comment"
 								placeholder="Type your memo here..."
+								value={comment}
 								onChange={this.handleChangeTextarea}
-								value={textarea}
-								{...other}
 							/>
 						</div>
 					</div>
 				</div>
 				<div className={styles.buttonGroup}>
-					<Button color="cancel" onClick={() => onCancel(this.state)}>
+					<Button color="cancel" onClick={() => onCancel()}>
 						<Icon>close</Icon>
 						Cancel
 					</Button>
-					<Button color="save" onClick={() => onSave(this.state)}>
+					<Button
+						color="save"
+						onClick={() =>
+							onSave({
+								startDate,
+								date,
+								type,
+								name,
+								file,
+								comment,
+							})
+						}
+					>
 						<Icon>add</Icon>
 						Add Task
 					</Button>

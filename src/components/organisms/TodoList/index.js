@@ -18,8 +18,7 @@ class TodoList extends Component {
 		};
 
 		this.onFocus = this.onFocus.bind(this);
-		this.handleSubmit = this.handleSubmit.bind(this);
-		this.handleCancel = this.handleCancel.bind(this);
+		this.handleNewTodo = this.handleNewTodo.bind(this);
 	}
 
 	componentDidMount() {
@@ -44,15 +43,10 @@ class TodoList extends Component {
 		});
 	}
 
-	handleSubmit(e) {
-		console.log(e);
+	handleNewTodo() {
 		this.setState({
 			isNewTodo: false,
 		});
-	}
-
-	handleCancel() {
-		this.input.current.state.value = '';
 	}
 
 	render() {
@@ -61,31 +55,34 @@ class TodoList extends Component {
 		return (
 			<div className={classnames(styles.todolist, className)}>
 				<div className={styles.inputPanel}>
-				{isNewTodo ?
-					<TodoItem edit={true}/>
-					:
-					<Input
-						className={styles.inputButton}
-						ref={this.input}
-						onFocus={this.onFocus}
-						placeholder="Add Task"
-						onSubmit={this.handleSubmit}
-						{...props}
-					/>
-				}
+					{isNewTodo ? (
+						<TodoItem isNewTodo={isNewTodo} setNewTodo={this.handleNewTodo} />
+					) : (
+						<Input
+							className={styles.inputButton}
+							ref={this.input}
+							onFocus={this.onFocus}
+							placeholder="Add Task"
+							{...props}
+						/>
+					)}
 				</div>
 
-				{todos.map(todo => (
+				{todos.reverse().map(todo => (
 					<TodoItem
-						key={todo.timestamp}
-						text={todo.message}
-						star={todo.stared}
+						key={todo.id}
+						id={todo.id}
+						message={todo.message}
+						star={todo.star}
 						date={todo.date}
 						file={todo.file}
 						name={todo.name}
 						type={todo.type}
 						comment={todo.comment}
-						complete={todo.complete}
+						completed={todo.completed}
+						isNewTodo={isNewTodo}
+						setNewTodo={this.handleNewTodo}
+						onClick={e => console.log(e)}
 					/>
 				))}
 			</div>
