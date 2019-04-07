@@ -33,25 +33,6 @@ const mapSetStateToProps = (
 	handleCheckboxChange,
 	...other,
 
-	// actions
-
-	// handleCheckboxChange(isCheck) {
-	// 	console.log('click');
-	// 	setState(
-	// 		{
-	// 			completed: isCheck,
-	// 		},
-	// 		() => {
-	// 			setState(prevState => ({
-	// 				cacheTodo: {
-	// 					...prevState.cacheTodo,
-	// 					completed: prevState.completed,
-	// 				},
-	// 			}));
-	// 		},
-	// 	);
-	// },
-
 	handleChange(e) {
 		console.log(`handleChange 輸入新的message: ${e.target.value}`);
 		setState(

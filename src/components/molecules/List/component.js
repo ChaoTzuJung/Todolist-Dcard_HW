@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import classnames from 'classnames';
+
 import Checkbox from 'components/atoms/Checkbox';
 import Field from 'components/atoms/Field';
 import Icon from 'components/atoms/Icon';

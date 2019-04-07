@@ -101,7 +101,29 @@ class TodoItem extends Component {
 	handleCheck() {
 		console.log('按下Checkbox');
 		const { completed } = this.state;
-		this.setState({ completed: !completed });
+		const { id, message, star, date, file, name, type, comment } = this.props;
+		const URL = 'http://localhost:5000';
+		this.setState({ completed: !completed }, () => {
+			const todo = {
+				id,
+				message,
+				star,
+				date,
+				file,
+				name,
+				type,
+				comment,
+				completed: !completed,
+			};
+			axios
+				.put(`${URL}/todos/${id}`, todo)
+				.then(response => {
+					console.log(`Checked 後要更新的單筆資料: ${response.data}`);
+				})
+				.catch(error => {
+					console.error(`PUT 失敗: ${error}`);
+				});
+		});
 	}
 
 	render() {

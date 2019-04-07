@@ -82,7 +82,6 @@ class TodoList extends Component {
 						completed={todo.completed}
 						isNewTodo={isNewTodo}
 						setNewTodo={this.handleNewTodo}
-						onClick={e => console.log(e)}
 					/>
 				))}
 			</div>

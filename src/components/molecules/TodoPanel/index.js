@@ -15,6 +15,7 @@ class TodoPanel extends Component {
 		super(props);
 		this.inputDate = React.createRef();
 		this.inputTime = React.createRef();
+		this.textareaRef = React.createRef();
 
 		this.state = {
 			textarea: '',
@@ -28,8 +29,8 @@ class TodoPanel extends Component {
 
 	// 針對 onEdit 去抓資料放入 input
 	componentDidMount() {
-		const { id, isNewTodo } = this.props;
 		// 若是單純新增todo而展開panel不用 fetch fdata
+		const { id, isNewTodo } = this.props;
 		if (!isNewTodo) {
 			const URL = 'http://localhost:5000';
 			axios
