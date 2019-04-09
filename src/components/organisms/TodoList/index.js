@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
-import axios from 'axios';
-
+// import axios from 'axios';
 import Input from 'components/atoms/Input';
 import TodoItem from 'components/molecules/TodoItem';
 
+import { firebaseTodos, firebaseLooper } from '../../../../firebase';
 import styles from './index.css';
 
 class TodoList extends Component {
@@ -22,8 +22,16 @@ class TodoList extends Component {
 	}
 
 	componentDidMount() {
-		const URL = 'http://localhost:5000';
+		firebaseTodos.once('value').then(snapshot => {
+		const todos = firebaseLooper(snapshot).reverse()
+			this.setState(prevState => ({
+				...prevState.todos,
+				todos,
+			}));
+		});
 
+		/*
+		const URL = 'http://localhost:5000';
 		axios
 			.get(`${URL}/todos`)
 			.then(response => {
@@ -35,7 +43,21 @@ class TodoList extends Component {
 			})
 			.catch(error => {
 				console.log(error);
+			});*/
+	}
+
+	componentDidUpdate(prevProps) {
+		if (this.props.todos !== prevProps.todos) {
+			firebaseTodos.once('value').then(snapshot => {
+				const todos = firebaseLooper(snapshot).reverse();
+				this.setState(prevState => ({
+					...prevState.todos,
+					todos,
+				}));
+				console.log(todos);
 			});
+			console.log('componentDidUpdate');
+		}
 	}
 
 	onFocus() {
@@ -69,24 +91,22 @@ class TodoList extends Component {
 					)}
 				</div>
 				{tab === 'myTasks' &&
-					todos
-						.reverse()
-						.map(todo => (
-							<TodoItem
-								key={todo.id}
-								id={todo.id}
-								message={todo.message}
-								star={todo.star}
-								date={todo.date}
-								file={todo.file}
-								name={todo.name}
-								type={todo.type}
-								comment={todo.comment}
-								completed={todo.completed}
-								isNewTodo={isNewTodo}
-								setNewTodo={this.handleNewTodo}
-							/>
-						))}
+					todos.map(todo => (
+						<TodoItem
+							key={todo.id}
+							id={todo.id}
+							message={todo.message}
+							star={todo.star}
+							date={todo.date}
+							file={todo.file}
+							name={todo.name}
+							type={todo.type}
+							comment={todo.comment}
+							completed={todo.completed}
+							isNewTodo={isNewTodo}
+							setNewTodo={this.handleNewTodo}
+						/>
+					))}
 				{tab === 'inProgress' &&
 					todos
 						.reduce((filtered, todo) => {
@@ -97,7 +117,6 @@ class TodoList extends Component {
 							return filtered;
 						}, [])
 						.map(todo => {
-							console.log(todo);
 							return (
 								<TodoItem
 									key={todo.id}

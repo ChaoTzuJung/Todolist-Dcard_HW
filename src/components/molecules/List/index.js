@@ -1,6 +1,7 @@
 import { contain } from 'react-container-helper';
-import axios from 'axios';
+// import axios from 'axios';
 
+import { firebaseDB } from '../../../../firebase';
 import List from './component';
 
 const initState = ({ message, completed }) => ({
@@ -55,21 +56,32 @@ const setLifecycle = () => ({
 	// 每次更新畫面 要 抓 data 的 message 到 cacheTodo 的 state 內
 	componentDidMount({ setState, getProps }) {
 		const { id } = getProps();
-		const URL = 'http://localhost:5000';
-		axios
-			.get(`${URL}/todos/${id}`)
-			.then(response => {
-				const { message } = response.data;
-				setState(prevState => ({
-					cacheTodo: {
-						...prevState.cacheTodo,
-						message,
-					},
-				}));
-			})
-			.catch(error => {
-				console.log(error);
-			});
+
+		firebaseDB.ref(`todos/${id}`).once('value').then(snapshot => {
+			const { message } = snapshot.val();
+			setState(prevState => ({
+				cacheTodo: {
+					...prevState.cacheTodo,
+					message,
+				},
+			}));
+		});
+		
+		// const URL = 'http://localhost:5000';
+		// axios
+		// 	.get(`${URL}/todos/${id}`)
+		// 	.then(response => {
+		// 		const { message } = response.data;
+		// 		setState(prevState => ({
+		// 			cacheTodo: {
+		// 				...prevState.cacheTodo,
+		// 				message,
+		// 			},
+		// 		}));
+		// 	})
+		// 	.catch(error => {
+		// 		console.log(error);
+		// 	});
 	},
 });
 

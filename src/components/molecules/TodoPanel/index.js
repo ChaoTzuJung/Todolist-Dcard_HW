@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
-import axios from 'axios';
+// import axios from 'axios';
 
 import { transDateToDay } from 'util/helper';
 import Button from 'components/atoms/Button';
@@ -8,6 +8,7 @@ import ButtonFile from 'components/atoms/ButtonFile';
 import FieldDate from 'components/atoms/FieldDate';
 import Icon from 'components/atoms/Icon';
 
+import { firebaseDB } from '../../../../firebase';
 import styles from './index.css';
 
 class TodoPanel extends Component {
@@ -32,26 +33,32 @@ class TodoPanel extends Component {
 		// 若是單純新增todo而展開panel不用 fetch fdata
 		const { id, isNewTodo } = this.props;
 		if (!isNewTodo) {
-			const URL = 'http://localhost:5000';
-			axios
-				.get(`${URL}/todos/${id}`)
-				.then(response => {
-					const { startDate, date, type, name, file, comment } = response.data;
-					this.setState(prevState => ({
-						cacheTodo: {
-							...prevState.cacheTodo,
-							startDate,
-							date,
-							type,
-							name,
-							file,
-							comment,
-						},
-					}));
-				})
-				.catch(error => {
-					console.log(error);
-				});
+			firebaseDB.ref(`todos/${id}`).once('value').then(snapshot => {
+				console.log(snapshot.val());
+				this.setState(prevState => ({
+					cacheTodo: { ...prevState.cacheTodo, ...snapshot.val() },
+				}));
+			});
+			// const URL = 'http://localhost:5000';
+			// axios
+			// 	.get(`${URL}/todos/${id}`)
+			// 	.then(response => {
+			// 		const { startDate, date, type, name, file, comment } = response.data;
+			// 		this.setState(prevState => ({
+			// 			cacheTodo: {
+			// 				...prevState.cacheTodo,
+			// 				startDate,
+			// 				date,
+			// 				type,
+			// 				name,
+			// 				file,
+			// 				comment,
+			// 			},
+			// 		}));
+			// 	})
+			// 	.catch(error => {
+			// 		console.log(error);
+			// 	});
 		}
 	}
 
