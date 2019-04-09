@@ -21,15 +21,35 @@ class TodoList extends Component {
 	}
 
 	componentDidMount() {
-		firebaseTodos.once('value').then(snapshot => {
-		const todos = firebaseLooper(snapshot).reverse()
+		console.log('componentDidMount');
+		// firebaseTodos.on('value').then(snapshot => {
+		// 	const todos = firebaseLooper(snapshot).reverse();
+		// 	this.setState(prevState => ({
+		// 		...prevState.todos,
+		// 		todos,
+		// 	}));
+		// });
+
+		firebaseTodos.on('value', snapshot => {
+			const todos = firebaseLooper(snapshot).reverse();
 			this.setState(prevState => ({
 				...prevState.todos,
 				todos,
 			}));
 		});
+	}
+
+	// shouldComponentUpdate(nextProps, nextState) {
+	// 	console.log(nextProps); // { tab: "inProgress" } / {tab: "completed"}
+	// 	console.log(nextState); // {todos: Array(3), isNewTodo: false}
+
+	// 	return true;
+	// }
 
 	componentDidUpdate(prevProps) {
+		console.log(prevProps);
+		console.log(this.props);
+		// eslint-disable-next-line react/destructuring-assignment
 		if (this.props.todos !== prevProps.todos) {
 			firebaseTodos.once('value').then(snapshot => {
 				const todos = firebaseLooper(snapshot).reverse();
@@ -56,6 +76,7 @@ class TodoList extends Component {
 	}
 
 	render() {
+		console.log('render');
 		const { className, value, tab, ...props } = this.props;
 		const { todos, isNewTodo } = this.state;
 		return (

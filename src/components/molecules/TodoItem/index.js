@@ -60,13 +60,13 @@ class TodoItem extends Component {
 			this.setState({ edit: false });
 		} else {
 			firebaseDB.ref(`todos/${id}`).set({
-				comment,
-				date,
-				file,
-				message,
-				name,
-				// startDate,
-				type,
+				comment: isExist(comment) ? comment : null,
+				date: isExist(date) ? date : null,
+				file: isExist(file) ? file : null,
+				message: isExist(message) ? message : null,
+				name: isExist(name) ? name : null,
+				startDate: isExist(startDate) ? startDate : null,
+				type: isExist(type) ? type : null,
 				// completed,
 				star,
 			});
