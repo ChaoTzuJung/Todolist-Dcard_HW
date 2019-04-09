@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
-// import axios from 'axios';
 import Input from 'components/atoms/Input';
 import TodoItem from 'components/molecules/TodoItem';
 
@@ -29,22 +28,6 @@ class TodoList extends Component {
 				todos,
 			}));
 		});
-
-		/*
-		const URL = 'http://localhost:5000';
-		axios
-			.get(`${URL}/todos`)
-			.then(response => {
-				console.log(response.data);
-				this.setState(prevState => ({
-					...prevState.todos,
-					todos: response.data,
-				}));
-			})
-			.catch(error => {
-				console.log(error);
-			});*/
-	}
 
 	componentDidUpdate(prevProps) {
 		if (this.props.todos !== prevProps.todos) {

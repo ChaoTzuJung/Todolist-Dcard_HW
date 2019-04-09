@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
-// import axios from 'axios';
 
 import { transDateToDay } from 'util/helper';
 import Button from 'components/atoms/Button';
@@ -33,32 +32,14 @@ class TodoPanel extends Component {
 		// 若是單純新增todo而展開panel不用 fetch fdata
 		const { id, isNewTodo } = this.props;
 		if (!isNewTodo) {
-			firebaseDB.ref(`todos/${id}`).once('value').then(snapshot => {
-				console.log(snapshot.val());
-				this.setState(prevState => ({
-					cacheTodo: { ...prevState.cacheTodo, ...snapshot.val() },
-				}));
-			});
-			// const URL = 'http://localhost:5000';
-			// axios
-			// 	.get(`${URL}/todos/${id}`)
-			// 	.then(response => {
-			// 		const { startDate, date, type, name, file, comment } = response.data;
-			// 		this.setState(prevState => ({
-			// 			cacheTodo: {
-			// 				...prevState.cacheTodo,
-			// 				startDate,
-			// 				date,
-			// 				type,
-			// 				name,
-			// 				file,
-			// 				comment,
-			// 			},
-			// 		}));
-			// 	})
-			// 	.catch(error => {
-			// 		console.log(error);
-			// 	});
+			firebaseDB
+				.ref(`todos/${id}`)
+				.once('value')
+				.then(snapshot => {
+					this.setState(prevState => ({
+						cacheTodo: { ...prevState.cacheTodo, ...snapshot.val() },
+					}));
+				});
 		}
 	}
 
@@ -120,12 +101,6 @@ class TodoPanel extends Component {
 
 		const {
 			className,
-			// date,
-			// 暫時改用 state 來做顯示
-			// file,
-			// name,
-			// type,
-			// textarea,
 			onCancel = () => {},
 			onSave = () => {},
 			...other

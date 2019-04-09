@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
-// import axios from 'axios';
 
 import { isExist, transDayToDate } from 'util/helper';
 import List from 'components/molecules/List';
@@ -35,8 +34,6 @@ class TodoItem extends Component {
 		// data 是 在 panel Add task 時 所戴的資料
 		const { isNewTodo, setNewTodo, id } = this.props;
 		const { message, star } = this.input.current.state;
-		// const todo = { ...data, message, star, completed: false };
-		// const URL = 'http://localhost:5000';
 
 		const { comment, date, file, name, startDate, type, completed } = data;
 		if (!isExist(this.input.current.state.message)) {
@@ -61,18 +58,6 @@ class TodoItem extends Component {
 				setNewTodo();
 			}
 			this.setState({ edit: false });
-			// axios
-			// 	.post(`${URL}/todos`, todo)
-			// 	.then(response => {
-			// 		console.log(`Add Task POST的資料: ${response.data}`);
-			// 		if (isNewTodo) {
-			// 			setNewTodo();
-			// 		}
-			// 		this.setState({ edit: false });
-			// 	})
-			// 	.catch(error => {
-			// 		console.error(`POST 失敗: ${error}`);
-			// 	});
 		} else {
 			firebaseDB.ref(`todos/${id}`).set({
 				comment,
@@ -80,9 +65,9 @@ class TodoItem extends Component {
 				file,
 				message,
 				name,
-				startDate,
+				// startDate,
 				type,
-				completed,
+				// completed,
 				star,
 			});
 
@@ -90,18 +75,6 @@ class TodoItem extends Component {
 				setNewTodo();
 			}
 			this.setState({ edit: false });
-			// axios
-			// 	.put(`${URL}/todos/${id}`, todo)
-			// 	.then(response => {
-			// 		console.log(`Add Task 後要更新的單筆資料: ${response.data}`);
-			// 		if (isNewTodo) {
-			// 			setNewTodo();
-			// 		}
-			// 		this.setState({ edit: false });
-			// 	})
-			// 	.catch(error => {
-			// 		console.error(`PUT 失敗: ${error}`);
-			// 	});
 		}
 	}
 
@@ -139,16 +112,6 @@ class TodoItem extends Component {
 					star: !star,
 				},
 			}));
-
-			// const URL = 'http://localhost:5000';
-			// axios
-			// 	.put(`${URL}/todos/${id}`, todo)
-			// 	.then(response => {
-			// 		console.log(`Checked 後要更新的單筆資料: ${response.data}`);
-			// 	})
-			// 	.catch(error => {
-			// 		console.error(`PUT 失敗: ${error}`);
-			// 	});
 		});
 	}
 
@@ -167,31 +130,9 @@ class TodoItem extends Component {
 		console.log('按下Checkbox');
 		const { completed } = this.state;
 		const { id, message, star, date, file, name, type, comment } = this.props;
-		// this.setState({ completed: !completed }, () => {
-		// 	const todo = {
-		// 		id,
-		// 		message,
-		// 		star,
-		// 		date,
-		// 		file,
-		// 		name,
-		// 		type,
-		// 		comment,
-		// 		completed: !completed,
-		// 	};
 
-		// 	const URL = 'http://localhost:5000';
-		// 	axios
-		// 		.put(`${URL}/todos/${id}`, todo)
-		// 		.then(response => {
-		// 			console.log(`Checked 後要更新的單筆資料: ${response.data}`);
-		// 		})
-		// 		.catch(error => {
-		// 			console.error(`PUT 失敗: ${error}`);
-		// 		});
-		// });
 		this.setState({ completed: !completed });
-		firebaseDB.ref(`todos/${id}/completed`).set(!completed)
+		firebaseDB.ref(`todos/${id}/completed`).set(!completed);
 	}
 
 	render() {
@@ -211,6 +152,7 @@ class TodoItem extends Component {
 					deadline={isExist(date)}
 					file={isExist(file)}
 					comment={isExist(comment)}
+					isNewTodo={isNewTodo}
 					addStar={this.addStar}
 					onEdit={this.onEdit}
 					handleCheckboxChange={this.handleCheck}
