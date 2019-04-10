@@ -40,8 +40,13 @@ class TodoItem extends Component {
 			alert('請輸入 Todo 標題 !');
 			return;
 		}
-		const timestamp = startDate.getTime();
-		console.log(timestamp);
+
+		let timestamp;
+
+		if (typeof startDate === 'object') {
+			timestamp = startDate.getTime();
+		}
+
 		if (isNewTodo) {
 			firebaseTodos.push({
 				comment: isExist(comment) ? comment : null,
@@ -66,7 +71,7 @@ class TodoItem extends Component {
 				file: isExist(file) ? file : null,
 				message: isExist(message) ? message : null,
 				name: isExist(name) ? name : null,
-				startDate: isExist(timestamp) ? timestamp : null,
+				startDate: isExist(startDate) ? startDate : null,
 				type: isExist(type) ? type : null,
 				// completed,
 				star,
