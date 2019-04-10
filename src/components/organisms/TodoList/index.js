@@ -4,7 +4,7 @@ import Input from 'components/atoms/Input';
 import TodoItem from 'components/molecules/TodoItem';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 
-import { firebaseTodos, firebaseSort, firebaseLooper } from '../../../../firebase';
+import { firebaseTodos, firebaseLooper } from '../../../../firebase';
 import styles from './index.css';
 
 // a little function to help us with reordering the result
@@ -21,7 +21,6 @@ class TodoList extends Component {
 		this.input = React.createRef();
 
 		this.state = {
-			sort: [],
 			todos: [],
 			isNewTodo: false,
 		};
@@ -32,19 +31,13 @@ class TodoList extends Component {
 	}
 
 	componentDidMount() {
+		console.log('componentDidMount');
 		firebaseTodos.on('value', snapshot => {
 			const todos = firebaseLooper(snapshot).reverse();
+
 			this.setState(prevState => ({
 				...prevState.todos,
 				todos,
-			}));
-		});
-
-		firebaseSort.on('value', snapshot => {
-			const sort = firebaseLooper(snapshot).reverse();
-			this.setState(prevState => ({
-				...prevState.sort,
-				sort,
 			}));
 		});
 	}
@@ -52,8 +45,10 @@ class TodoList extends Component {
 	componentDidUpdate(prevProps) {
 		// eslint-disable-next-line react/destructuring-assignment
 		if (this.props.todos !== prevProps.todos) {
+			console.log('componentDidUpdate');
 			firebaseTodos.once('value').then(snapshot => {
 				const todos = firebaseLooper(snapshot).reverse();
+				console.log(todos);
 				this.setState(prevState => ({
 					...prevState.todos,
 					todos,
@@ -72,6 +67,7 @@ class TodoList extends Component {
 		this.setState({
 			todos: todo,
 		});
+		firebaseTodos.set(todo);
 	}
 
 	onFocus() {

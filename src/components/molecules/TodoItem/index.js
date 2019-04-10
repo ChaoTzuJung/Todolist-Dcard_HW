@@ -13,13 +13,13 @@ class TodoItem extends Component {
 		super(props);
 		this.input = React.createRef();
 		this.panel = React.createRef();
-
 		const { isNewTodo, completed, star } = this.props;
 
 		this.state = {
 			star: star || false,
 			edit: isNewTodo,
 			completed: completed || false,
+			sortId: Math.floor(Math.random() * 100),
 		};
 
 		this.handleSave = this.handleSave.bind(this);
@@ -31,9 +31,12 @@ class TodoItem extends Component {
 
 	handleSave(data) {
 		console.log(`Add Task 帶的資料: ${data}`);
+
 		// data 是 在 panel Add task 時 所戴的資料
 		const { isNewTodo, setNewTodo, id } = this.props;
+		const { sortId } = this.state;
 		const { message, star } = this.input.current.state;
+		console.log('todo item id', id);
 
 		const { comment, date, file, name, startDate, type } = data;
 		if (!isExist(this.input.current.state.message)) {
@@ -58,11 +61,15 @@ class TodoItem extends Component {
 				type: isExist(type) ? type : null,
 				completed: false,
 				star: false,
+				sortId,
 			});
+
+			firebaseSort.push(sortId);
 
 			if (isNewTodo) {
 				setNewTodo();
 			}
+
 			this.setState({ edit: false });
 		} else {
 			firebaseDB.ref(`todos/${id}`).set({
@@ -75,6 +82,7 @@ class TodoItem extends Component {
 				type: isExist(type) ? type : null,
 				// completed,
 				star,
+				sortId,
 			});
 
 			if (isNewTodo) {
