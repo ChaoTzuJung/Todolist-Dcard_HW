@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import classnames from 'classnames';
 import Input from 'components/atoms/Input';
 import TodoItem from 'components/molecules/TodoItem';
+// import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 
 import { firebaseTodos, firebaseLooper } from '../../../../firebase';
 import styles from './index.css';
@@ -21,15 +22,6 @@ class TodoList extends Component {
 	}
 
 	componentDidMount() {
-		console.log('componentDidMount');
-		// firebaseTodos.on('value').then(snapshot => {
-		// 	const todos = firebaseLooper(snapshot).reverse();
-		// 	this.setState(prevState => ({
-		// 		...prevState.todos,
-		// 		todos,
-		// 	}));
-		// });
-
 		firebaseTodos.on('value', snapshot => {
 			const todos = firebaseLooper(snapshot).reverse();
 			this.setState(prevState => ({
@@ -38,13 +30,6 @@ class TodoList extends Component {
 			}));
 		});
 	}
-
-	// shouldComponentUpdate(nextProps, nextState) {
-	// 	console.log(nextProps); // { tab: "inProgress" } / {tab: "completed"}
-	// 	console.log(nextState); // {todos: Array(3), isNewTodo: false}
-
-	// 	return true;
-	// }
 
 	componentDidUpdate(prevProps) {
 		console.log(prevProps);
@@ -76,7 +61,6 @@ class TodoList extends Component {
 	}
 
 	render() {
-		console.log('render');
 		const { className, value, tab, ...props } = this.props;
 		const { todos, isNewTodo } = this.state;
 		return (
