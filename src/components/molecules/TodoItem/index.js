@@ -5,7 +5,7 @@ import { isExist, transDayToDate } from 'util/helper';
 import List from 'components/molecules/List';
 import TodoPanel from 'components/molecules/TodoPanel';
 
-import { firebaseTodos, firebaseSort, firebaseDB } from '../../../../firebase';
+import { firebaseTodos, firebaseDB } from '../../../../firebase';
 import styles from './index.css';
 
 class TodoItem extends Component {
@@ -19,7 +19,6 @@ class TodoItem extends Component {
 			star: star || false,
 			edit: isNewTodo,
 			completed: completed || false,
-			sortId: Math.floor(Math.random() * 100),
 		};
 
 		this.handleSave = this.handleSave.bind(this);
@@ -34,9 +33,7 @@ class TodoItem extends Component {
 
 		// data 是 在 panel Add task 時 所戴的資料
 		const { isNewTodo, setNewTodo, id } = this.props;
-		const { sortId } = this.state;
 		const { message, star } = this.input.current.state;
-		console.log('todo item id', id);
 
 		const { comment, date, file, name, startDate, type } = data;
 		if (!isExist(this.input.current.state.message)) {
@@ -61,10 +58,7 @@ class TodoItem extends Component {
 				type: isExist(type) ? type : null,
 				completed: false,
 				star: false,
-				sortId,
 			});
-
-			firebaseSort.push(sortId);
 
 			if (isNewTodo) {
 				setNewTodo();
@@ -82,7 +76,6 @@ class TodoItem extends Component {
 				type: isExist(type) ? type : null,
 				// completed,
 				star,
-				sortId,
 			});
 
 			if (isNewTodo) {

@@ -4,8 +4,9 @@ import Input from 'components/atoms/Input';
 import TodoItem from 'components/molecules/TodoItem';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 
-import { firebaseTodos, firebaseLooper } from '../../../../firebase';
+import { firebaseTodos, firebaseLooper, firebaseSort } from '../../../../firebase';
 import styles from './index.css';
+import { Object } from 'es6-shim';
 
 // a little function to help us with reordering the result
 const reorder = (list, startIndex, endIndex) => {
@@ -33,8 +34,8 @@ class TodoList extends Component {
 	componentDidMount() {
 		console.log('componentDidMount');
 		firebaseTodos.on('value', snapshot => {
-			const todos = firebaseLooper(snapshot).reverse();
-
+			const todos = firebaseLooper(snapshot);
+			console.log(todos);
 			this.setState(prevState => ({
 				...prevState.todos,
 				todos,
@@ -46,9 +47,8 @@ class TodoList extends Component {
 		// eslint-disable-next-line react/destructuring-assignment
 		if (this.props.todos !== prevProps.todos) {
 			console.log('componentDidUpdate');
-			firebaseTodos.once('value').then(snapshot => {
-				const todos = firebaseLooper(snapshot).reverse();
-				console.log(todos);
+			firebaseTodos.on('value').then(snapshot => {
+				const todos = firebaseLooper(snapshot);
 				this.setState(prevState => ({
 					...prevState.todos,
 					todos,
@@ -67,7 +67,36 @@ class TodoList extends Component {
 		this.setState({
 			todos: todo,
 		});
-		firebaseTodos.set(todo);
+		// 產生新順序
+		const sortId = [];
+		todo.forEach(obj => {
+			sortId.push(obj.id);
+		});
+
+		// 建立順序
+		firebaseSort.set(sortId);
+
+		// Todo 依照順序曾心渲染data跟畫面
+		firebaseTodos.on('value', snapshot => {
+			const TodoObj = snapshot.val();
+			const answer = [];
+
+			sortId.forEach(key => {
+				let found = false;
+				Object.keys(TodoObj).filter(item => {
+					if (!found && item === key) {
+						answer.push(TodoObj[item]);
+						found = true;
+						return false;
+					}
+				});
+			});
+			console.log(answer);
+			this.setState(prevState => ({
+				...prevState.todos,
+				todos: answer,
+			}));
+		});
 	}
 
 	onFocus() {
