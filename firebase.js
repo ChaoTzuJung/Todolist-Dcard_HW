@@ -24,4 +24,5 @@ const firebaseLooper = snapshot => {
 
 const firebaseDB = firebase.database();
 const firebaseTodos = firebaseDB.ref('todos');
-export { firebase, firebaseDB, firebaseTodos, firebaseLooper };
+const firebaseSort = firebaseDB.ref('sort');
+export { firebase, firebaseDB, firebaseTodos, firebaseSort, firebaseLooper };

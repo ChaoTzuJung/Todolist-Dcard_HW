@@ -99,12 +99,9 @@ class TodoPanel extends Component {
 			cacheTodo: { startDate, date, type, name, file, comment },
 		} = this.state;
 
-		const {
-			className,
-			onCancel = () => {},
-			onSave = () => {},
-			...other
-		} = this.props;
+		console.log(this.state.cacheTodo);
+		console.log(typeof(startDate));
+		const { className, onCancel = () => {}, onSave = () => {}, ...other } = this.props;
 
 		return (
 			<div className={classnames(styles.todoPanel, className)}>

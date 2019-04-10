@@ -5,7 +5,7 @@ import { isExist, transDayToDate } from 'util/helper';
 import List from 'components/molecules/List';
 import TodoPanel from 'components/molecules/TodoPanel';
 
-import { firebaseTodos, firebaseDB } from '../../../../firebase';
+import { firebaseTodos, firebaseSort, firebaseDB } from '../../../../firebase';
 import styles from './index.css';
 
 class TodoItem extends Component {
@@ -35,12 +35,13 @@ class TodoItem extends Component {
 		const { isNewTodo, setNewTodo, id } = this.props;
 		const { message, star } = this.input.current.state;
 
-		const { comment, date, file, name, startDate, type, completed } = data;
+		const { comment, date, file, name, startDate, type } = data;
 		if (!isExist(this.input.current.state.message)) {
 			alert('請輸入 Todo 標題 !');
 			return;
 		}
-
+		const timestamp = startDate.getTime();
+		console.log(timestamp);
 		if (isNewTodo) {
 			firebaseTodos.push({
 				comment: isExist(comment) ? comment : null,
@@ -48,7 +49,7 @@ class TodoItem extends Component {
 				file: isExist(file) ? file : null,
 				message: isExist(message) ? message : null,
 				name: isExist(name) ? name : null,
-				startDate: isExist(startDate) ? startDate : null,
+				startDate: isExist(timestamp) ? timestamp : null,
 				type: isExist(type) ? type : null,
 				completed: false,
 				star: false,
@@ -65,7 +66,7 @@ class TodoItem extends Component {
 				file: isExist(file) ? file : null,
 				message: isExist(message) ? message : null,
 				name: isExist(name) ? name : null,
-				startDate: isExist(startDate) ? startDate : null,
+				startDate: isExist(timestamp) ? timestamp : null,
 				type: isExist(type) ? type : null,
 				// completed,
 				star,
