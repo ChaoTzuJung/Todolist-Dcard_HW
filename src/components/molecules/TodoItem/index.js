@@ -97,19 +97,8 @@ class TodoItem extends Component {
 	addStar() {
 		console.log('按下星星');
 		const { star } = this.state;
-		const { id, message, date, file, name, type, comment, completed } = this.props;
+		const { id } = this.props;
 		this.setState({ star: !star }, () => {
-			const todo = {
-				id,
-				message,
-				star: !star,
-				date,
-				file,
-				name,
-				type,
-				comment,
-				completed,
-			};
 			firebaseDB.ref(`todos/${id}/star`).set(this.state.star)
 
 			this.setState(prevState => ({
@@ -135,7 +124,7 @@ class TodoItem extends Component {
 	handleCheck() {
 		console.log('按下Checkbox');
 		const { completed } = this.state;
-		const { id, message, star, date, file, name, type, comment } = this.props;
+		const { id } = this.props;
 
 		this.setState({ completed: !completed });
 		firebaseDB.ref(`todos/${id}/completed`).set(!completed);

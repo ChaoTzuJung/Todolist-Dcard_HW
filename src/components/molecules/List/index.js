@@ -71,7 +71,6 @@ const setLifecycle = () => ({
 				.ref(`todos/${id}`)
 				.once('value')
 				.then(snapshot => {
-					console.log(snapshot.val());
 					const { message } = snapshot.val();
 					setState(prevState => ({
 						cacheTodo: {

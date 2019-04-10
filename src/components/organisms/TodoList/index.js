@@ -58,9 +58,7 @@ class TodoList extends Component {
 					...prevState.todos,
 					todos,
 				}));
-				console.log(todos);
 			});
-			console.log('componentDidUpdate');
 		}
 	}
 
@@ -71,8 +69,6 @@ class TodoList extends Component {
 		}
 		const { todos } = this.state;
 		const todo = reorder(todos, result.source.index, result.destination.index);
-		console.log(todo);
-		// firebaseTodos.set(todo);
 		this.setState({
 			todos: todo,
 		});
@@ -93,7 +89,6 @@ class TodoList extends Component {
 	render() {
 		const { className, value, tab, ...props } = this.props;
 		const { todos, isNewTodo } = this.state;
-		console.log(todos);
 		return (
 			<DragDropContext onDragEnd={this.onDragEnd}>
 				<div className={classnames(styles.todolist, className)}>
