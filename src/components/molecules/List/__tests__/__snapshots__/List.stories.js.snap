@@ -15,22 +15,21 @@ exports[`__interactive 1`] = `
     deadline={true}
     edit={false}
     file={true}
+    message="type something here..."
     star={false}
-    text="type something here..."
   >
     <List
-      AddStar={[Function]}
-      OpenEdit={[Function]}
+      cacheTodo={Object {}}
       checked={false}
       comment={true}
+      completed={false}
       date="6/18"
       deadline={true}
       edit={false}
       file={true}
       handleChange={[Function]}
-      onChangeCheckbox={[Function]}
+      message="type something here..."
       star={false}
-      text="type something here..."
     >
       <div
         className="list"
@@ -44,19 +43,12 @@ exports[`__interactive 1`] = `
             <Checkbox
               checked={false}
               className=""
-              content="type something here..."
-              name="todo"
-              onChange={[Function]}
             >
               <label
                 className="label"
-                htmlFor="todo"
               >
-                type something here...
                 <input
                   checked={false}
-                  id="todo"
-                  name="todo"
                   onChange={[Function]}
                   type="checkbox"
                 />

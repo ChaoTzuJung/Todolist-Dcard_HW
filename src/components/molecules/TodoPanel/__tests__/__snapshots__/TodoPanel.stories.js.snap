@@ -55,16 +55,44 @@ exports[`__interactive 1`] = `
             <Contain(FieldDate)
               dateOnly={true}
               handleDateChange={[Function]}
-              onChange={[Function]}
-              startTime=""
+              todoData={
+                Object {
+                  "checked": false,
+                  "date": "",
+                  "edit": true,
+                  "fileData": "",
+                  "fileName": "",
+                  "fileType": "",
+                  "hasImage": false,
+                  "star": false,
+                  "startTime": "",
+                  "text": "",
+                  "textarea": "",
+                  "time": "",
+                }
+              }
             >
               <FieldDate
                 dateOnly={true}
                 handleChange={[Function]}
                 handleDateChange={[Function]}
-                onChange={[Function]}
-                startDate={1554278049149}
-                startTime=""
+                startDate={null}
+                todoData={
+                  Object {
+                    "checked": false,
+                    "date": "",
+                    "edit": true,
+                    "fileData": "",
+                    "fileName": "",
+                    "fileType": "",
+                    "hasImage": false,
+                    "star": false,
+                    "startTime": "",
+                    "text": "",
+                    "textarea": "",
+                    "time": "",
+                  }
+                }
               >
                 <DatePicker
                   allowSameDay={false}
@@ -75,7 +103,7 @@ exports[`__interactive 1`] = `
                   disabledKeyboardNavigation={false}
                   dropdownMode="scroll"
                   inlineFocusSelectedMonth={false}
-                  minDate={2019-04-03T07:54:09.150Z}
+                  minDate={2019-04-11T18:26:26.763Z}
                   monthsShown={1}
                   nextMonthButtonLabel="Next month"
                   onBlur={[Function]}
@@ -93,7 +121,7 @@ exports[`__interactive 1`] = `
                   previousMonthButtonLabel="Previous Month"
                   readOnly={false}
                   renderDayContents={[Function]}
-                  selected=""
+                  selected={null}
                   shouldCloseOnSelect={true}
                   showMonthYearPicker={false}
                   showTimeInput={false}
@@ -189,17 +217,45 @@ exports[`__interactive 1`] = `
             </Contain(FieldDate)>
             <Contain(FieldDate)
               handleDateChange={[Function]}
-              onChange={[Function]}
-              startTime=""
               timeOnly={true}
+              todoData={
+                Object {
+                  "checked": false,
+                  "date": "",
+                  "edit": true,
+                  "fileData": "",
+                  "fileName": "",
+                  "fileType": "",
+                  "hasImage": false,
+                  "star": false,
+                  "startTime": "",
+                  "text": "",
+                  "textarea": "",
+                  "time": "",
+                }
+              }
             >
               <FieldDate
                 handleChange={[Function]}
                 handleDateChange={[Function]}
-                onChange={[Function]}
-                startDate={1554278049159}
-                startTime=""
+                startDate={null}
                 timeOnly={true}
+                todoData={
+                  Object {
+                    "checked": false,
+                    "date": "",
+                    "edit": true,
+                    "fileData": "",
+                    "fileName": "",
+                    "fileType": "",
+                    "hasImage": false,
+                    "star": false,
+                    "startTime": "",
+                    "text": "",
+                    "textarea": "",
+                    "time": "",
+                  }
+                }
               >
                 <DatePicker
                   allowSameDay={false}
@@ -210,7 +266,7 @@ exports[`__interactive 1`] = `
                   disabledKeyboardNavigation={false}
                   dropdownMode="scroll"
                   inlineFocusSelectedMonth={false}
-                  minDate={2019-04-03T07:54:09.159Z}
+                  minDate={2019-04-11T18:26:26.885Z}
                   monthsShown={1}
                   nextMonthButtonLabel="Next month"
                   onBlur={[Function]}
@@ -228,7 +284,7 @@ exports[`__interactive 1`] = `
                   previousMonthButtonLabel="Previous Month"
                   readOnly={false}
                   renderDayContents={[Function]}
-                  selected=""
+                  selected={null}
                   shouldCloseOnSelect={true}
                   showMonthYearPicker={false}
                   showTimeInput={false}
@@ -401,7 +457,6 @@ exports[`__interactive 1`] = `
               onChange={[Function]}
               placeholder="Type your memo here..."
               type="text"
-              value=""
             />
           </div>
         </div>

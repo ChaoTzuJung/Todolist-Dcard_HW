@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { Component } from 'react';
 import classnames from 'classnames';
 import Input from 'components/atoms/Input';
@@ -33,16 +34,16 @@ class TodoList extends Component {
 	componentDidMount() {
 		firebaseSort.once('value', snapshot => {
 			if (snapshot.val().length > 0) {
+				// eslint-disable-next-line no-shadow
 				firebaseSort.on('value', snapshot => {
-					console.log('componentDidMount2');
 					const sortIndex = [];
 					const sortedArray = [];
 					snapshot.forEach(childSnapshot => {
 						sortIndex.push(childSnapshot.val());
 					});
-					firebaseTodos.once('value')
-					.then(snapshot2 => {
-						const todoObject = snapshot2.val();
+					// eslint-disable-next-line no-shadow
+					firebaseTodos.once('value').then(snapshot => {
+						const todoObject = snapshot.val();
 						sortIndex.map(key => sortedArray.push(todoObject[key]));
 						this.setState(prevState => ({
 							...prevState.todos,
@@ -51,7 +52,7 @@ class TodoList extends Component {
 					});
 				});
 			} else {
-				console.log('componentDidMount1');
+				// eslint-disable-next-line no-shadow
 				firebaseTodos.on('value', snapshot => {
 					const todos = firebaseLooper(snapshot);
 					this.setState(prevState => ({
@@ -89,11 +90,11 @@ class TodoList extends Component {
 				Object.keys(TodoObj).filter(item => {
 					if (!found && item === key) {
 						const newTodo = { ...TodoObj[item], id: item };
-						console.log(newTodo);
 						answer.push(newTodo);
 						found = true;
 						return false;
 					}
+					return true;
 				});
 			});
 			this.setState(prevState => ({
@@ -120,7 +121,6 @@ class TodoList extends Component {
 	render() {
 		const { className, value, tab, ...props } = this.props;
 		const { todos, isNewTodo } = this.state;
-		console.log('render', todos);
 		return (
 			<DragDropContext onDragEnd={this.onDragEnd}>
 				<div className={classnames(styles.todolist, className)}>
@@ -138,37 +138,37 @@ class TodoList extends Component {
 						)}
 					</div>
 					<Droppable droppableId="droppable">
+						{/* eslint-disable-next-line no-unused-vars */}
 						{(provided, snapshot) => (
 							<div {...provided.droppableProps} ref={provided.innerRef}>
 								{tab === 'myTasks' &&
-									todos.map((todo, index) => {
-										return (
-											<Draggable key={todo.id} draggableId={todo.id} index={index}>
-												{(provided, snapshot) => (
-													<div
-														ref={provided.innerRef}
-														{...provided.draggableProps}
-														{...provided.dragHandleProps}
-													>
-														<TodoItem
-															key={todo.id}
-															id={todo.id}
-															message={todo.message}
-															star={todo.star}
-															date={todo.date}
-															file={todo.file}
-															name={todo.name}
-															type={todo.type}
-															comment={todo.comment}
-															completed={todo.completed}
-															isNewTodo={isNewTodo}
-															setNewTodo={this.handleNewTodo}
-														/>
-													</div>
-												)}
-											</Draggable>
-										)
-									})}
+									todos.map((todo, index) => (
+										<Draggable key={todo.id} draggableId={todo.id} index={index}>
+											{/* eslint-disable-next-line no-shadow */}
+											{(provided, snapshot) => (
+												<div
+													ref={provided.innerRef}
+													{...provided.draggableProps}
+													{...provided.dragHandleProps}
+												>
+													<TodoItem
+														key={todo.id}
+														id={todo.id}
+														message={todo.message}
+														star={todo.star}
+														date={todo.date}
+														file={todo.file}
+														name={todo.name}
+														type={todo.type}
+														comment={todo.comment}
+														completed={todo.completed}
+														isNewTodo={isNewTodo}
+														setNewTodo={this.handleNewTodo}
+													/>
+												</div>
+											)}
+										</Draggable>
+									))}
 								{tab === 'inProgress' &&
 									todos
 										.reduce((filtered, todo) => {
@@ -180,6 +180,7 @@ class TodoList extends Component {
 										}, [])
 										.map((todo, index) => (
 											<Draggable key={todo.id} draggableId={todo.id} index={index}>
+												{/* eslint-disable-next-line no-shadow */}
 												{(provided, snapshot) => (
 													<div
 														ref={provided.innerRef}
@@ -215,6 +216,7 @@ class TodoList extends Component {
 										}, [])
 										.map((todo, index) => (
 											<Draggable key={todo.id} draggableId={todo.id} index={index}>
+												{/* eslint-disable-next-line no-shadow */}
 												{(provided, snapshot) => (
 													<div
 														ref={provided.innerRef}

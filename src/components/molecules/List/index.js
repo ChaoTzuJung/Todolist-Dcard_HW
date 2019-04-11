@@ -66,8 +66,6 @@ const setLifecycle = () => ({
 	// 每次更新畫面 要 抓 data 的 message 到 cacheTodo 的 state 內
 	componentDidMount({ setState, getProps }) {
 		const { id, isNewTodo } = getProps();
-		console.log('List的props', getProps());
-		console.log('List的id', id);
 		if (!isNewTodo) {
 			firebaseDB
 				.ref(`todos/${id}`)
