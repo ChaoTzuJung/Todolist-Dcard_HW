@@ -6,7 +6,6 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 
 import { firebaseTodos, firebaseLooper, firebaseSort } from '../../../../firebase';
 import styles from './index.css';
-import { Object } from 'es6-shim';
 
 // a little function to help us with reordering the result
 const reorder = (list, startIndex, endIndex) => {
@@ -32,29 +31,36 @@ class TodoList extends Component {
 	}
 
 	componentDidMount() {
-		console.log('componentDidMount');
-		firebaseTodos.on('value', snapshot => {
-			const todos = firebaseLooper(snapshot);
-			console.log(todos);
-			this.setState(prevState => ({
-				...prevState.todos,
-				todos,
-			}));
+		firebaseSort.once('value', snapshot => {
+			if (snapshot.val().length > 0) {
+				firebaseSort.on('value', snapshot => {
+					console.log('componentDidMount2');
+					const sortIndex = [];
+					const sortedArray = [];
+					snapshot.forEach(childSnapshot => {
+						sortIndex.push(childSnapshot.val());
+					});
+					firebaseTodos.once('value')
+					.then(snapshot2 => {
+						const todoObject = snapshot2.val();
+						sortIndex.map(key => sortedArray.push(todoObject[key]));
+						this.setState(prevState => ({
+							...prevState.todos,
+							todos: sortedArray,
+						}));
+					});
+				});
+			} else {
+				console.log('componentDidMount1');
+				firebaseTodos.on('value', snapshot => {
+					const todos = firebaseLooper(snapshot);
+					this.setState(prevState => ({
+						...prevState.todos,
+						todos,
+					}));
+				});
+			}
 		});
-	}
-
-	componentDidUpdate(prevProps) {
-		// eslint-disable-next-line react/destructuring-assignment
-		if (this.props.todos !== prevProps.todos) {
-			console.log('componentDidUpdate');
-			firebaseTodos.on('value').then(snapshot => {
-				const todos = firebaseLooper(snapshot);
-				this.setState(prevState => ({
-					...prevState.todos,
-					todos,
-				}));
-			});
-		}
 	}
 
 	onDragEnd(result) {
@@ -64,19 +70,16 @@ class TodoList extends Component {
 		}
 		const { todos } = this.state;
 		const todo = reorder(todos, result.source.index, result.destination.index);
-		this.setState({
-			todos: todo,
-		});
+		// this.setState({
+		// 	todos: todo,
+		// });
 		// 產生新順序
 		const sortId = [];
 		todo.forEach(obj => {
 			sortId.push(obj.id);
 		});
 
-		// 建立順序
-		firebaseSort.set(sortId);
-
-		// Todo 依照順序曾心渲染data跟畫面
+		// Todo 依照順序並渲染data跟畫面
 		firebaseTodos.on('value', snapshot => {
 			const TodoObj = snapshot.val();
 			const answer = [];
@@ -85,17 +88,20 @@ class TodoList extends Component {
 				let found = false;
 				Object.keys(TodoObj).filter(item => {
 					if (!found && item === key) {
-						answer.push(TodoObj[item]);
+						const newTodo = { ...TodoObj[item], id: item };
+						console.log(newTodo);
+						answer.push(newTodo);
 						found = true;
 						return false;
 					}
 				});
 			});
-			console.log(answer);
 			this.setState(prevState => ({
 				...prevState.todos,
 				todos: answer,
 			}));
+			// 建立順序
+			firebaseSort.set(sortId);
 		});
 	}
 
@@ -114,6 +120,7 @@ class TodoList extends Component {
 	render() {
 		const { className, value, tab, ...props } = this.props;
 		const { todos, isNewTodo } = this.state;
+		console.log('render', todos);
 		return (
 			<DragDropContext onDragEnd={this.onDragEnd}>
 				<div className={classnames(styles.todolist, className)}>
@@ -134,32 +141,34 @@ class TodoList extends Component {
 						{(provided, snapshot) => (
 							<div {...provided.droppableProps} ref={provided.innerRef}>
 								{tab === 'myTasks' &&
-									todos.map((todo, index) => (
-										<Draggable key={todo.id} draggableId={todo.id} index={index}>
-											{(provided, snapshot) => (
-												<div
-													ref={provided.innerRef}
-													{...provided.draggableProps}
-													{...provided.dragHandleProps}
-												>
-													<TodoItem
-														key={todo.id}
-														id={todo.id}
-														message={todo.message}
-														star={todo.star}
-														date={todo.date}
-														file={todo.file}
-														name={todo.name}
-														type={todo.type}
-														comment={todo.comment}
-														completed={todo.completed}
-														isNewTodo={isNewTodo}
-														setNewTodo={this.handleNewTodo}
-													/>
-												</div>
-											)}
-										</Draggable>
-									))}
+									todos.map((todo, index) => {
+										return (
+											<Draggable key={todo.id} draggableId={todo.id} index={index}>
+												{(provided, snapshot) => (
+													<div
+														ref={provided.innerRef}
+														{...provided.draggableProps}
+														{...provided.dragHandleProps}
+													>
+														<TodoItem
+															key={todo.id}
+															id={todo.id}
+															message={todo.message}
+															star={todo.star}
+															date={todo.date}
+															file={todo.file}
+															name={todo.name}
+															type={todo.type}
+															comment={todo.comment}
+															completed={todo.completed}
+															isNewTodo={isNewTodo}
+															setNewTodo={this.handleNewTodo}
+														/>
+													</div>
+												)}
+											</Draggable>
+										)
+									})}
 								{tab === 'inProgress' &&
 									todos
 										.reduce((filtered, todo) => {

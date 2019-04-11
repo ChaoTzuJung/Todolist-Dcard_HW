@@ -5,7 +5,7 @@ import { isExist, transDayToDate } from 'util/helper';
 import List from 'components/molecules/List';
 import TodoPanel from 'components/molecules/TodoPanel';
 
-import { firebaseTodos, firebaseDB } from '../../../../firebase';
+import { firebaseTodos, firebaseDB, firebaseSort } from '../../../../firebase';
 import styles from './index.css';
 
 class TodoItem extends Component {
@@ -15,6 +15,7 @@ class TodoItem extends Component {
 		this.panel = React.createRef();
 		const { isNewTodo, completed, star } = this.props;
 
+		console.log('TodoItem的props', this.props);
 		this.state = {
 			star: star || false,
 			edit: isNewTodo,
@@ -58,6 +59,19 @@ class TodoItem extends Component {
 				type: isExist(type) ? type : null,
 				completed: false,
 				star: false,
+				id: 0,
+			})
+			.then((snap) => {
+				const key = snap.key
+				firebaseDB.ref(`todos/${key}`).update({
+					id: key,
+				})
+			 })
+
+			firebaseTodos.once('value', snapshot => {
+				const lastTodoIndex = Object.keys(snapshot.val()).length - 1;
+				const lastTodoKey = Object.keys(snapshot.val())[lastTodoIndex];
+				firebaseSort.push(lastTodoKey);
 			});
 
 			if (isNewTodo) {
