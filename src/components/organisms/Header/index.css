@@ -3,5 +3,5 @@
 	justify-content: center;
 	position: relative;
 	width: 100%;
-	background: #4a90e2;
+	background: var(--blue);;
 }

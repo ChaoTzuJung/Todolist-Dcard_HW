@@ -27,11 +27,11 @@
 		position: relative;
 		height: 30px;
 		padding: 0 10px 0 12px;
-		border: solid 1px #000;
+		border: solid 1px var(--black);
 		border-radius: 0;
 		outline: none;
 		transition: all 0.3s;
-		background: #fff;
+		background: var(--white);
 
 		& > div {
 			display: flex;
@@ -41,7 +41,7 @@
 			font-size: 12px;
 			line-height: 1.75;
 			letter-spacing: 3.4px;
-			color: #000;
+			color: var(--black);
 
 			& > i {
 				font-size: 16px;
@@ -55,7 +55,7 @@
 
 		/* &:hover {
 			cursor: pointer;
-			background: #F2F2F2;
+			background: var(--lightGray);
 		}
 
 		&:focus {

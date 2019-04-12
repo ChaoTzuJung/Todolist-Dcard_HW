@@ -3,7 +3,7 @@
 	justify-content: space-between;
 	width: 620px;
 	padding: 24px 32px;
-	background-color: #f2f2f2;
+	background-color: var(--lightGray);
 	border-radius: 5px;
 
 	& > .left {
@@ -15,7 +15,7 @@
 
 			& > .line-through {
 				text-decoration: line-through;
-				color: #9b9b9b;
+				color: var(--input-gray);
 			}
 
 			& > .todo-context {
@@ -37,7 +37,7 @@
 
 			& > .icon-fix {
 				margin-top: 16px;
-				color: #757575;
+				color: var(--darkGray);
 				font-size: 16px;
 
 				&:not(:first-child) {
@@ -48,7 +48,7 @@
 			& > span {
 				margin-top: 16px;
 				margin-left: 8px;
-				color: #757575;
+				color: var(--darkGray);
 			}
 		}
 	}
@@ -60,11 +60,11 @@
 			cursor: pointer;
 
 			& > .star {
-				color: #f5a623;
+				color: var(--yellow);
 			}
 
 			& > .edit {
-				color: #4a90e2;
+				color: var(--blue);
 			}
 
 			&:not(:first-child) {
@@ -75,7 +75,7 @@
 }
 
 .color-list {
-	background-color: #fff2dc;
+	background-color: var(--lightYellow);
 }
 
 .squared-bottom {
