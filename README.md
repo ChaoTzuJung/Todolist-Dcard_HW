@@ -15,18 +15,17 @@
 
 ```
 eslint、stylelint、react-storybook  (啟用) 
-jest、react-router、redux  (尚未啟用)
+jest、react-router、redux、react-hook (To be continued)
 ```
 
 ## 功能介紹
 
-新增 Todo (標題/日期時間/檔案/留言)
-修改 Todo (標題/日期時間/檔案/留言)
-進度管控 (所有代辦事項/進行中/已完成)
-拖拉 Todo 跟改順序
-標註星星 標示重要
+- 新增 Todo (標題/日期時間/檔案/留言)
+- 修改 Todo (標題/日期時間/檔案/留言)
+- 進度管控 (所有代辦事項/進行中/已完成)
+- 拖拉 Todo 跟改順序
+- 標註星星 標示重要
 
-拖拉 Todo 跟改順序
 ## 如何開始
 
 - 安裝 nodejs v6 以上的版本
