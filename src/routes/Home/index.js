@@ -1,6 +1,6 @@
-import React from 'react';
-import { hot } from 'react-hot-loader/root';
+// import HomeLayout from '../../layouts/Home';
+import Home from 'layouts/Home';
 
-const Home = () => <div>Home page</div>;
+// const Home = HomeLayout();
 
-export default hot(Home);
+export default Home;

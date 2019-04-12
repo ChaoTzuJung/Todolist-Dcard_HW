@@ -1,0 +1,120 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`__interactive 1`] = `
+<div
+  style={
+    Object {
+      "margin": "100px",
+    }
+  }
+>
+  <TodoItem>
+    <div
+      className="todoItem"
+    >
+      <Contain(List)
+        addStar={[Function]}
+        comment={false}
+        completed={false}
+        deadline={false}
+        file={false}
+        handleCheckboxChange={[Function]}
+        onEdit={[Function]}
+        star={false}
+      >
+        <List
+          addStar={[Function]}
+          cacheTodo={Object {}}
+          comment={false}
+          completed={false}
+          deadline={false}
+          file={false}
+          handleChange={[Function]}
+          handleCheckboxChange={[Function]}
+          onEdit={[Function]}
+          star={false}
+        >
+          <div
+            className="list"
+          >
+            <div
+              className="left"
+            >
+              <div
+                className="top"
+              >
+                <Checkbox
+                  checked={false}
+                  className=""
+                  onChange={[Function]}
+                >
+                  <label
+                    className="label"
+                  >
+                    <input
+                      checked={false}
+                      onChange={[Function]}
+                      type="checkbox"
+                    />
+                    <span
+                      className="checkbox"
+                    >
+                      <Icon>
+                        <i
+                          className="icon material-icons"
+                        >
+                          check
+                        </i>
+                      </Icon>
+                    </span>
+                  </label>
+                </Checkbox>
+              </div>
+              <div
+                className="down"
+              />
+            </div>
+            <div
+              className="right"
+            >
+              <span
+                onClick={[Function]}
+                onKeyPress={[Function]}
+                role="button"
+                tabIndex="0"
+              >
+                <Icon
+                  className=""
+                >
+                  <i
+                    className="icon material-icons"
+                  >
+                    star_border
+                  </i>
+                </Icon>
+              </span>
+              <span
+                onClick={[Function]}
+                onKeyPress={[Function]}
+                role="button"
+                tabIndex="0"
+              >
+                <Icon
+                  className=""
+                  outlined={true}
+                >
+                  <i
+                    className="icon material-icons-outlined"
+                  >
+                    edit
+                  </i>
+                </Icon>
+              </span>
+            </div>
+          </div>
+        </List>
+      </Contain(List)>
+    </div>
+  </TodoItem>
+</div>
+`;

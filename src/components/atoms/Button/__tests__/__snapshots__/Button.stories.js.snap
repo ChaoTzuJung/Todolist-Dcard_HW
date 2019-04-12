@@ -1,0 +1,83 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`__interactive 1`] = `
+<Button
+  color="normal"
+  disabled={false}
+  onClick={[Function]}
+>
+  <button
+    className="button normal"
+    onClick={[Function]}
+  >
+    <div>
+      Add Task
+    </div>
+  </button>
+</Button>
+`;
+
+exports[`with external link 1`] = `
+<Button
+  color="normal"
+  link="https://www.google.com/"
+  type="external"
+>
+  <a
+    className="button normal"
+    href="https://www.google.com/"
+    onClick={[Function]}
+    rel="noopener noreferrer"
+    target="_blank"
+  >
+    <div>
+      Link to google site
+    </div>
+  </a>
+</Button>
+`;
+
+exports[`with icon text 1`] = `
+<Button>
+  <button
+    className="button"
+    onClick={[Function]}
+  >
+    <div>
+      <Icon>
+        <i
+          className="icon material-icons"
+        >
+          close
+        </i>
+      </Icon>
+      Cancel
+    </div>
+  </button>
+</Button>
+`;
+
+exports[`with internal link 1`] = `
+<Button
+  color="normal"
+  link="/"
+>
+  <Link
+    className="button normal"
+    onClick={[Function]}
+    onlyActiveOnIndex={false}
+    style={Object {}}
+    to="/"
+  >
+    <a
+      className="button normal"
+      onClick={[Function]}
+      style={Object {}}
+    >
+      <div>
+        Go to home page
+      </div>
+    </a>
+  </Link>
+</Button>
+`;

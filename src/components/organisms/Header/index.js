@@ -1,14 +1,6 @@
 import React from 'react';
-
-import Navigation from 'components/molecules/Navigation';
-
 import styles from './index.css';
 
-const Header = () => (
-	<header className={styles.header}>
-		<h2>This is header</h2>
-		<Navigation />
-	</header>
-);
+const Header = ({ children }) => <header className={styles.header}>{children}</header>;
 
 export default Header;

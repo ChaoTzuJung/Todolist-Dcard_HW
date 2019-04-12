@@ -1,0 +1,511 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`__interactive 1`] = `
+<div
+  style={
+    Object {
+      "margin": "100px",
+    }
+  }
+>
+  <TodoPanel
+    onCancel={[Function]}
+    onSave={[Function]}
+    todoData={
+      Object {
+        "checked": false,
+        "date": "",
+        "edit": true,
+        "fileData": "",
+        "fileName": "",
+        "fileType": "",
+        "hasImage": false,
+        "star": false,
+        "startTime": "",
+        "text": "",
+        "textarea": "",
+        "time": "",
+      }
+    }
+  >
+    <div
+      className="todoPanel"
+    >
+      <div
+        className="fieldGroup"
+      >
+        <div
+          className="label"
+        >
+          <p>
+            <Icon>
+              <i
+                className="icon material-icons"
+              >
+                date_range
+              </i>
+            </Icon>
+            <span>
+              Deadline
+            </span>
+          </p>
+          <div
+            className="row"
+          >
+            <Contain(FieldDate)
+              dateOnly={true}
+              handleDateChange={[Function]}
+              todoData={
+                Object {
+                  "checked": false,
+                  "date": "",
+                  "edit": true,
+                  "fileData": "",
+                  "fileName": "",
+                  "fileType": "",
+                  "hasImage": false,
+                  "star": false,
+                  "startTime": "",
+                  "text": "",
+                  "textarea": "",
+                  "time": "",
+                }
+              }
+            >
+              <FieldDate
+                dateOnly={true}
+                handleChange={[Function]}
+                handleDateChange={[Function]}
+                startDate={null}
+                todoData={
+                  Object {
+                    "checked": false,
+                    "date": "",
+                    "edit": true,
+                    "fileData": "",
+                    "fileName": "",
+                    "fileType": "",
+                    "hasImage": false,
+                    "star": false,
+                    "startTime": "",
+                    "text": "",
+                    "textarea": "",
+                    "time": "",
+                  }
+                }
+              >
+                <DatePicker
+                  allowSameDay={false}
+                  customInput={<InputComponent />}
+                  dateFormat="yyyy/MM/dd"
+                  dateFormatCalendar="LLLL yyyy"
+                  disabled={false}
+                  disabledKeyboardNavigation={false}
+                  dropdownMode="scroll"
+                  inlineFocusSelectedMonth={false}
+                  minDate={2019-04-11T18:26:26.763Z}
+                  monthsShown={1}
+                  nextMonthButtonLabel="Next month"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onClickOutside={[Function]}
+                  onFocus={[Function]}
+                  onInputClick={[Function]}
+                  onInputError={[Function]}
+                  onKeyDown={[Function]}
+                  onMonthChange={[Function]}
+                  onSelect={[Function]}
+                  onYearChange={[Function]}
+                  placeholderText="yyyy/mm/dd"
+                  preventOpenOnFocus={false}
+                  previousMonthButtonLabel="Previous Month"
+                  readOnly={false}
+                  renderDayContents={[Function]}
+                  selected={null}
+                  shouldCloseOnSelect={true}
+                  showMonthYearPicker={false}
+                  showTimeInput={false}
+                  showTimeSelect={false}
+                  strictParsing={false}
+                  timeCaption="Time"
+                  timeInputLabel="Time"
+                  timeIntervals={30}
+                  withPortal={false}
+                >
+                  <PopperComponent
+                    hidePopper={true}
+                    popperComponent={null}
+                    popperModifiers={
+                      Object {
+                        "preventOverflow": Object {
+                          "boundariesElement": "viewport",
+                          "enabled": true,
+                          "escapeWithReference": true,
+                        },
+                      }
+                    }
+                    popperPlacement="bottom-start"
+                    popperProps={Object {}}
+                    targetComponent={
+                      <div
+                        className="react-datepicker__input-container"
+                      >
+                        <InputComponent
+                          className=""
+                          disabled={false}
+                          onBlur={[Function]}
+                          onChange={[Function]}
+                          onClick={[Function]}
+                          onFocus={[Function]}
+                          onKeyDown={[Function]}
+                          placeholder="yyyy/mm/dd"
+                          readOnly={false}
+                          value=""
+                        />
+                      </div>
+                    }
+                  >
+                    <Manager>
+                      <Reference>
+                        <InnerReference
+                          setReferenceNode={[Function]}
+                        >
+                          <div
+                            className="react-datepicker-wrapper"
+                          >
+                            <div
+                              className="react-datepicker__input-container"
+                            >
+                              <InputComponent
+                                className=""
+                                disabled={false}
+                                onBlur={[Function]}
+                                onChange={[Function]}
+                                onClick={[Function]}
+                                onFocus={[Function]}
+                                onKeyDown={[Function]}
+                                placeholder="yyyy/mm/dd"
+                                readOnly={false}
+                                value=""
+                              >
+                                <label
+                                  className="label"
+                                >
+                                  <input
+                                    className="input"
+                                    disabled={false}
+                                    onBlur={[Function]}
+                                    onChange={[Function]}
+                                    onClick={[Function]}
+                                    onFocus={[Function]}
+                                    onKeyDown={[Function]}
+                                    placeholder="yyyy/mm/dd"
+                                    readOnly={false}
+                                    type="text"
+                                    value=""
+                                  />
+                                </label>
+                              </InputComponent>
+                            </div>
+                          </div>
+                        </InnerReference>
+                      </Reference>
+                    </Manager>
+                  </PopperComponent>
+                </DatePicker>
+              </FieldDate>
+            </Contain(FieldDate)>
+            <Contain(FieldDate)
+              handleDateChange={[Function]}
+              timeOnly={true}
+              todoData={
+                Object {
+                  "checked": false,
+                  "date": "",
+                  "edit": true,
+                  "fileData": "",
+                  "fileName": "",
+                  "fileType": "",
+                  "hasImage": false,
+                  "star": false,
+                  "startTime": "",
+                  "text": "",
+                  "textarea": "",
+                  "time": "",
+                }
+              }
+            >
+              <FieldDate
+                handleChange={[Function]}
+                handleDateChange={[Function]}
+                startDate={null}
+                timeOnly={true}
+                todoData={
+                  Object {
+                    "checked": false,
+                    "date": "",
+                    "edit": true,
+                    "fileData": "",
+                    "fileName": "",
+                    "fileType": "",
+                    "hasImage": false,
+                    "star": false,
+                    "startTime": "",
+                    "text": "",
+                    "textarea": "",
+                    "time": "",
+                  }
+                }
+              >
+                <DatePicker
+                  allowSameDay={false}
+                  customInput={<InputComponent />}
+                  dateFormat="HH:mm"
+                  dateFormatCalendar="LLLL yyyy"
+                  disabled={false}
+                  disabledKeyboardNavigation={false}
+                  dropdownMode="scroll"
+                  inlineFocusSelectedMonth={false}
+                  minDate={2019-04-11T18:26:26.885Z}
+                  monthsShown={1}
+                  nextMonthButtonLabel="Next month"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onClickOutside={[Function]}
+                  onFocus={[Function]}
+                  onInputClick={[Function]}
+                  onInputError={[Function]}
+                  onKeyDown={[Function]}
+                  onMonthChange={[Function]}
+                  onSelect={[Function]}
+                  onYearChange={[Function]}
+                  placeholderText="HH:mm"
+                  preventOpenOnFocus={false}
+                  previousMonthButtonLabel="Previous Month"
+                  readOnly={false}
+                  renderDayContents={[Function]}
+                  selected={null}
+                  shouldCloseOnSelect={true}
+                  showMonthYearPicker={false}
+                  showTimeInput={false}
+                  showTimeSelect={true}
+                  showTimeSelectOnly={true}
+                  strictParsing={false}
+                  timeCaption="Time"
+                  timeFormat="HH:mm"
+                  timeInputLabel="Time"
+                  timeIntervals={60}
+                  withPortal={false}
+                >
+                  <PopperComponent
+                    hidePopper={true}
+                    popperComponent={null}
+                    popperModifiers={
+                      Object {
+                        "preventOverflow": Object {
+                          "boundariesElement": "viewport",
+                          "enabled": true,
+                          "escapeWithReference": true,
+                        },
+                      }
+                    }
+                    popperPlacement="bottom-start"
+                    popperProps={Object {}}
+                    targetComponent={
+                      <div
+                        className="react-datepicker__input-container"
+                      >
+                        <InputComponent
+                          className=""
+                          disabled={false}
+                          onBlur={[Function]}
+                          onChange={[Function]}
+                          onClick={[Function]}
+                          onFocus={[Function]}
+                          onKeyDown={[Function]}
+                          placeholder="HH:mm"
+                          readOnly={false}
+                          value=""
+                        />
+                      </div>
+                    }
+                  >
+                    <Manager>
+                      <Reference>
+                        <InnerReference
+                          setReferenceNode={[Function]}
+                        >
+                          <div
+                            className="react-datepicker-wrapper"
+                          >
+                            <div
+                              className="react-datepicker__input-container"
+                            >
+                              <InputComponent
+                                className=""
+                                disabled={false}
+                                onBlur={[Function]}
+                                onChange={[Function]}
+                                onClick={[Function]}
+                                onFocus={[Function]}
+                                onKeyDown={[Function]}
+                                placeholder="HH:mm"
+                                readOnly={false}
+                                value=""
+                              >
+                                <label
+                                  className="label"
+                                >
+                                  <input
+                                    className="input"
+                                    disabled={false}
+                                    onBlur={[Function]}
+                                    onChange={[Function]}
+                                    onClick={[Function]}
+                                    onFocus={[Function]}
+                                    onKeyDown={[Function]}
+                                    placeholder="HH:mm"
+                                    readOnly={false}
+                                    type="text"
+                                    value=""
+                                  />
+                                </label>
+                              </InputComponent>
+                            </div>
+                          </div>
+                        </InnerReference>
+                      </Reference>
+                    </Manager>
+                  </PopperComponent>
+                </DatePicker>
+              </FieldDate>
+            </Contain(FieldDate)>
+          </div>
+        </div>
+        <div
+          className="label"
+        >
+          <p>
+            <Icon
+              outlined={true}
+            >
+              <i
+                className="icon material-icons-outlined"
+              >
+                insert_drive_file
+              </i>
+            </Icon>
+            <span>
+              File
+            </span>
+          </p>
+          <div
+            className="row"
+          >
+            <ButtonFile
+              onChange={[Function]}
+            >
+              <button
+                className="buttonFile"
+                onClick={[Function]}
+                type="button"
+              >
+                <div>
+                  <i
+                    className="material-icons"
+                    style={
+                      Object {
+                        "color": "#FFFFFF",
+                      }
+                    }
+                  >
+                    add
+                  </i>
+                </div>
+              </button>
+              <input
+                className="inputFile"
+                onChange={[Function]}
+                type="file"
+              />
+            </ButtonFile>
+            <span />
+          </div>
+        </div>
+        <div
+          className="label"
+        >
+          <p>
+            <Icon
+              outlined={true}
+            >
+              <i
+                className="icon material-icons-outlined"
+              >
+                textsms
+              </i>
+            </Icon>
+            <span>
+              Comment
+            </span>
+          </p>
+          <div
+            className="row"
+          >
+            <textarea
+              name="comment"
+              onChange={[Function]}
+              placeholder="Type your memo here..."
+              type="text"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        className="buttonGroup"
+      >
+        <Button
+          color="cancel"
+          onClick={[Function]}
+        >
+          <button
+            className="button cancel"
+            onClick={[Function]}
+          >
+            <div>
+              <Icon>
+                <i
+                  className="icon material-icons"
+                >
+                  close
+                </i>
+              </Icon>
+              Cancel
+            </div>
+          </button>
+        </Button>
+        <Button
+          color="save"
+          onClick={[Function]}
+        >
+          <button
+            className="button save"
+            onClick={[Function]}
+          >
+            <div>
+              <Icon>
+                <i
+                  className="icon material-icons"
+                >
+                  add
+                </i>
+              </Icon>
+              Add Task
+            </div>
+          </button>
+        </Button>
+      </div>
+    </div>
+  </TodoPanel>
+</div>
+`;

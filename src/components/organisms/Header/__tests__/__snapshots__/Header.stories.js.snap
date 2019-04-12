@@ -1,0 +1,103 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`__interactive 1`] = `
+<Header>
+  <header
+    className="header"
+  >
+    <Contain(Navigation)
+      activeCategory="myTasks"
+      className=""
+      onClickTab={[Function]}
+      todoCategorys={
+        Array [
+          Object {
+            "id": 0,
+            "key": "myTasks",
+            "label": "My Tasks",
+          },
+          Object {
+            "id": 1,
+            "key": "inProgress",
+            "label": "In Progress",
+          },
+          Object {
+            "id": 2,
+            "key": "completed",
+            "label": "Completed",
+          },
+        ]
+      }
+    >
+      <Navigation
+        activeCategory="myTasks"
+        className=""
+        onClickTab={[Function]}
+        todoCategorys={
+          Array [
+            Object {
+              "id": 0,
+              "key": "myTasks",
+              "label": "My Tasks",
+            },
+            Object {
+              "id": 1,
+              "key": "inProgress",
+              "label": "In Progress",
+            },
+            Object {
+              "id": 2,
+              "key": "completed",
+              "label": "Completed",
+            },
+          ]
+        }
+      >
+        <div
+          className="navigation"
+        >
+          <div
+            className="item active"
+            key="myTasks"
+            onClick={[Function]}
+            onKeyPress={[Function]}
+            role="button"
+            tabIndex="0"
+          >
+            My Tasks
+            <div
+              className="bottomLine"
+            />
+          </div>
+          <div
+            className="item"
+            key="inProgress"
+            onClick={[Function]}
+            onKeyPress={[Function]}
+            role="button"
+            tabIndex="0"
+          >
+            In Progress
+            <div
+              className="bottomLine"
+            />
+          </div>
+          <div
+            className="item"
+            key="completed"
+            onClick={[Function]}
+            onKeyPress={[Function]}
+            role="button"
+            tabIndex="0"
+          >
+            Completed
+            <div
+              className="bottomLine"
+            />
+          </div>
+        </div>
+      </Navigation>
+    </Contain(Navigation)>
+  </header>
+</Header>
+`;

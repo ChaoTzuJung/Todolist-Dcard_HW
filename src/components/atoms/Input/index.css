@@ -1,0 +1,29 @@
+.input {
+	display: flex;
+	width: 620px;
+	height: 65px;
+	padding: 19px 0 18px 33px;
+	color: #cbcbcb;
+	background-color: #fff;
+	border: 2px solid #cbcbcb;
+	border-radius: 5px;
+	font-size: 24px;
+
+	& > .icon {
+		font-size: 20px;
+	}
+
+	& > input {
+		margin-left: 24px;
+		width: 100%;
+		color: #cbcbcb;
+		font-size: 24px;
+		font-weight: 400;
+		border: none;
+
+		&::placeholder {
+			color: #cbcbcb;
+			line-height: 1.6;
+		}
+	}
+}
