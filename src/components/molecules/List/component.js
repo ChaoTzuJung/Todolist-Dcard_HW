@@ -29,7 +29,6 @@ const List = ({
 	// actions
 	handleCheckboxChange,
 	handleChange,
-	...other
 }) => (
 	<Fragment>
 		<div

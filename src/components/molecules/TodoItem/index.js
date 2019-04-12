@@ -15,7 +15,6 @@ class TodoItem extends Component {
 		this.panel = React.createRef();
 		const { isNewTodo, completed, star } = this.props;
 
-		console.log('TodoItem的props', this.props);
 		this.state = {
 			star: star || false,
 			edit: isNewTodo,
@@ -49,24 +48,25 @@ class TodoItem extends Component {
 		}
 
 		if (isNewTodo) {
-			firebaseTodos.push({
-				comment: isExist(comment) ? comment : null,
-				date: isExist(date) ? date : null,
-				file: isExist(file) ? file : null,
-				message: isExist(message) ? message : null,
-				name: isExist(name) ? name : null,
-				startDate: isExist(timestamp) ? timestamp : null,
-				type: isExist(type) ? type : null,
-				completed: false,
-				star: false,
-				id: 0,
-			})
-			.then((snap) => {
-				const key = snap.key
-				firebaseDB.ref(`todos/${key}`).update({
-					id: key,
+			firebaseTodos
+				.push({
+					comment: isExist(comment) ? comment : null,
+					date: isExist(date) ? date : null,
+					file: isExist(file) ? file : null,
+					message: isExist(message) ? message : null,
+					name: isExist(name) ? name : null,
+					startDate: isExist(timestamp) ? timestamp : null,
+					type: isExist(type) ? type : null,
+					completed: false,
+					star: false,
+					id: 0,
 				})
-			 })
+				.then(snap => {
+					const { key } = snap;
+					firebaseDB.ref(`todos/${key}`).update({
+						id: key,
+					});
+				});
 
 			firebaseTodos.once('value', snapshot => {
 				const lastTodoIndex = Object.keys(snapshot.val()).length - 1;
@@ -114,7 +114,8 @@ class TodoItem extends Component {
 		const { star } = this.state;
 		const { id } = this.props;
 		this.setState({ star: !star }, () => {
-			firebaseDB.ref(`todos/${id}/star`).set(this.state.star)
+			// eslint-disable-next-line react/destructuring-assignment
+			firebaseDB.ref(`todos/${id}/star`).set(this.state.star);
 
 			this.setState(prevState => ({
 				cacheTodo: {
