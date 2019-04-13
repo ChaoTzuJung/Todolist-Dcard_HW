@@ -1,83 +1,125 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`__interactive 1`] = `
-<Button
-  color="normal"
-  disabled={false}
-  onClick={[Function]}
+<div
+  style={
+    Object {
+      "border": "1px solid #000",
+      "display": "inline-block",
+      "margin": "60px",
+    }
+  }
 >
-  <button
-    className="button normal"
+  <Button
+    color="normal"
+    disabled={false}
     onClick={[Function]}
   >
-    <div>
-      Add Task
-    </div>
-  </button>
-</Button>
+    <button
+      className="button normal"
+      disabled={false}
+      onClick={[Function]}
+    >
+      <div>
+        Add Task
+      </div>
+    </button>
+  </Button>
+</div>
 `;
 
 exports[`with external link 1`] = `
-<Button
-  color="normal"
-  link="https://www.google.com/"
-  type="external"
+<div
+  style={
+    Object {
+      "border": "1px solid #000",
+      "display": "inline-block",
+      "margin": "60px",
+    }
+  }
 >
-  <a
-    className="button normal"
-    href="https://www.google.com/"
-    onClick={[Function]}
-    rel="noopener noreferrer"
-    target="_blank"
-  >
-    <div>
-      Link to google site
-    </div>
-  </a>
-</Button>
-`;
-
-exports[`with icon text 1`] = `
-<Button>
-  <button
-    className="button"
-    onClick={[Function]}
-  >
-    <div>
-      <Icon>
-        <i
-          className="icon material-icons"
-        >
-          close
-        </i>
-      </Icon>
-      Cancel
-    </div>
-  </button>
-</Button>
-`;
-
-exports[`with internal link 1`] = `
-<Button
-  color="normal"
-  link="/"
->
-  <Link
-    className="button normal"
-    onClick={[Function]}
-    onlyActiveOnIndex={false}
-    style={Object {}}
-    to="/"
+  <Button
+    color="normal"
+    link="https://www.google.com/"
+    type="external"
   >
     <a
       className="button normal"
+      href="https://www.google.com/"
       onClick={[Function]}
-      style={Object {}}
+      rel="noopener noreferrer"
+      target="_blank"
     >
       <div>
-        Go to home page
+        Link to google site
       </div>
     </a>
-  </Link>
-</Button>
+  </Button>
+</div>
+`;
+
+exports[`with icon text 1`] = `
+<div
+  style={
+    Object {
+      "border": "1px solid #000",
+      "display": "inline-block",
+      "margin": "60px",
+    }
+  }
+>
+  <Button>
+    <button
+      className="button"
+      disabled={false}
+      onClick={[Function]}
+    >
+      <div>
+        <Icon>
+          <i
+            className="icon material-icons"
+          >
+            close
+          </i>
+        </Icon>
+        Cancel
+      </div>
+    </button>
+  </Button>
+</div>
+`;
+
+exports[`with internal link 1`] = `
+<div
+  style={
+    Object {
+      "border": "1px solid #000",
+      "display": "inline-block",
+      "margin": "60px",
+    }
+  }
+>
+  <Button
+    color="normal"
+    link="/"
+  >
+    <Link
+      className="button normal"
+      onClick={[Function]}
+      onlyActiveOnIndex={false}
+      style={Object {}}
+      to="/"
+    >
+      <a
+        className="button normal"
+        onClick={[Function]}
+        style={Object {}}
+      >
+        <div>
+          Go to home page
+        </div>
+      </a>
+    </Link>
+  </Button>
+</div>
 `;

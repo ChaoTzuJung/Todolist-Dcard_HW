@@ -30,6 +30,7 @@ exports[`__interactive 1`] = `
           file={false}
           handleChange={[Function]}
           handleCheckboxChange={[Function]}
+          message=""
           onEdit={[Function]}
           star={false}
         >
@@ -45,15 +46,22 @@ exports[`__interactive 1`] = `
                 <Checkbox
                   checked={false}
                   className=""
+                  content=""
+                  name=""
                   onChange={[Function]}
+                  value=""
                 >
                   <label
                     className="label"
+                    htmlFor=""
                   >
                     <input
                       checked={false}
+                      id=""
+                      name=""
                       onChange={[Function]}
                       type="checkbox"
+                      value=""
                     />
                     <span
                       className="checkbox"

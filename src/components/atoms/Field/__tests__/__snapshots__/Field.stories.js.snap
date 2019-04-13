@@ -1,34 +1,42 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`__interactive 1`] = `
-<Field
-  border={false}
-  color="#FFFFFF"
-  icon="person_outline"
-  name="phone"
-  placeholder="aaa"
-  valid={true}
+<div
+  style={
+    Object {
+      "margin": "60px",
+    }
+  }
 >
-  <label
-    className="field icon"
-    htmlFor="phone"
+  <Field
+    border={true}
+    color="rgba( 0, 0, 0, 0)"
+    icon="person_outline"
+    name="phone"
+    placeholder="type something here"
+    valid={true}
   >
-    <i
-      className="material-icons"
+    <label
+      className="field icon"
+      htmlFor="phone"
     >
-      person_outline
-    </i>
-    <input
-      autoComplete="off"
-      className="input"
-      name="phone"
-      placeholder="aaa"
-      style={
-        Object {
-          "background": "#FFFFFF",
+      <i
+        className="material-icons"
+      >
+        person_outline
+      </i>
+      <input
+        autoComplete="off"
+        className="input border"
+        name="phone"
+        placeholder="type something here"
+        style={
+          Object {
+            "background": "rgba( 0, 0, 0, 0)",
+          }
         }
-      }
-    />
-  </label>
-</Field>
+      />
+    </label>
+  </Field>
+</div>
 `;

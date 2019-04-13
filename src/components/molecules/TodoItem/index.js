@@ -73,6 +73,7 @@ class TodoItem extends Component {
 				if (snapshot.val().length !== null) {
 					const lastTodoIndex = Object.keys(snapshot.val()).length - 1;
 					const lastTodoKey = Object.keys(snapshot.val())[lastTodoIndex];
+					console.log(lastTodoKey);
 					firebaseSort.push(lastTodoKey);
 				}
 			});
