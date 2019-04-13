@@ -112,6 +112,7 @@ class TodoList extends Component {
 			}));
 			// 建立順序
 			firebaseSort.set(sortId);
+			console.log('我set sort ID', sortId);
 		});
 	}
 
@@ -130,7 +131,7 @@ class TodoList extends Component {
 	render() {
 		const { className, value, tab, ...props } = this.props;
 		const { todos, isNewTodo } = this.state;
-		console.log(todos);
+		console.log('這邊id很長不見', todos);
 		return (
 			<DragDropContext onDragEnd={this.onDragEnd}>
 				<div className={classnames(styles.todolist, className)}>

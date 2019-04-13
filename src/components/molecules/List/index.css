@@ -6,6 +6,18 @@
 	background-color: var(--lightGray);
 	border-radius: 5px;
 
+	@media screen and (--small-tablet) {
+		margin: auto;
+		width: 480px;
+		padding: 16px 32px;
+	}
+
+	@media screen and (--phone) {
+		margin: auto;
+		width: 480px;
+		padding: 8px 16px;
+	}
+
 	& > .left {
 		width: 100%;
 
@@ -49,6 +61,10 @@
 				&:not(:first-child) {
 					margin-left: 16px;
 				}
+
+				@media screen and (--phone) {
+					font-size: 12px;
+				}
 			}
 
 			& > span {
@@ -61,6 +77,17 @@
 
 	& > .right {
 		display: flex;
+
+		@media screen and (--small-tablet) {
+			justify-content: center;
+			align-items: center;
+		}
+
+		@media screen and (--phone) {
+			justify-content: center;
+			align-items: center;
+		}
+
 
 		& > span {
 			cursor: pointer;
@@ -75,6 +102,16 @@
 
 			&:not(:first-child) {
 				margin-left: 32px;
+			}
+
+			& > i {
+				@media screen and (--small-tablet) {
+					font-size: 20px;
+				}
+
+				@media screen and (--phone) {
+					font-size: 18px;
+				}
 			}
 		}
 	}

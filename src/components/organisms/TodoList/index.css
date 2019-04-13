@@ -3,4 +3,8 @@
 	& > .input-panel {
 		margin-bottom: 24px;
 	}
+
+	@media screen and (--phone) {
+		width: 100%;
+	}
 }

@@ -2,6 +2,11 @@
 	position: relative;
 	margin-top: 8px;
 
+	@media screen and (--phone) {
+		margin: auto;
+		width: 75%;
+	}
+
 	& > .delete-item {
 		display: flex;
 		align-items: center;
@@ -19,8 +24,15 @@
 			box-shadow: 0 4px 4px 0 #c8c8c8;
 			cursor: pointer;
 
+			@media screen and (--small-tablet) {
+				right: -48px;
+				width: 32px;
+				height: 32px;
+			}
+
 			& > i {
 				color: var(--red);
+				font-size: 16px;
 			}
 
 			& > .deleted {

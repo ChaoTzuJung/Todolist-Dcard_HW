@@ -9,6 +9,10 @@
 		font-size: 16px;
 		border: none;
 
+		@media screen and (--phone) {
+			width: 100%;
+		}
+
 		&::placeholder {
 			color: var(--wording-gray);
 			font-size: 16px;

@@ -12,6 +12,10 @@
 	cursor: pointer;
 	color: var(--black);
 
+	@media screen and (--small-tablet) {
+		font-size: 20px;
+	}
+
 	& > .checkbox {
 		display: flex;
 		position: absolute;
@@ -25,10 +29,18 @@
 		border-radius: 2px;
 		transition: all 0.2s;
 
+		@media screen and (--small-tablet) {
+			font-size: 16px;
+		}
+
 		& > i {
 			font-size: 18px;
 			color: var(--white);
 			opacity: 0;
+
+			@media screen and (--small-tablet) {
+				font-size: 16px;
+			}
 		}
 	}
 

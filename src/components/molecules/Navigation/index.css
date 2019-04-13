@@ -1,6 +1,10 @@
 .navigation {
 	display: flex;
 
+	@media screen and (--phone) {
+		flex-direction: column;
+	}
+
 	& > .item {
 		display: flex;
 		flex-shrink: 0;
@@ -13,12 +17,42 @@
 		text-align: center;
 		cursor: pointer;
 
+		@media screen and (--small-tablet) {
+			padding: 16px 20px 0 20px;
+			font-size: 20px;
+			font-weight: 300;
+		}
+
+		@media screen and (--phone) {
+			flex-direction: row-reverse;
+			margin: auto;
+			padding: 12px 0;
+
+			&:first-child {
+				padding: 24px 0 12px 0;
+			}
+
+			&:last-child {
+				padding: 12px 0 24px 0;
+			}
+		}
+
 		& > .bottom-line {
 			margin-top: 20px;
 			width: 160px;
 			height: 5px;
 			background-color: var(--darkBlue);
 			opacity: 0;
+
+			@media screen and (--small-tablet) {
+				margin-top: 16px;
+				width: 120px;
+				height: 3px;
+			}
+
+			@media screen and (--phone) {
+				display: none;
+			}
 		}
 
 		&.active,
@@ -29,6 +63,13 @@
 
 			& > .bottom-line {
 				opacity: 1;
+			}
+
+			@media screen and (--phone) {
+				display: block;
+				width: 100vw;
+				background-color: var(--darkBlue);
+				padding: 12px 0;
 			}
 		}
 	}
