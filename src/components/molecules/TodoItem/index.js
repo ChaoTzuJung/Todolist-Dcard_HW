@@ -69,9 +69,12 @@ class TodoItem extends Component {
 				});
 
 			firebaseTodos.once('value', snapshot => {
-				const lastTodoIndex = Object.keys(snapshot.val()).length - 1;
-				const lastTodoKey = Object.keys(snapshot.val())[lastTodoIndex];
-				firebaseSort.push(lastTodoKey);
+				// NOTE:
+				if (snapshot.val().length !== null) {
+					const lastTodoIndex = Object.keys(snapshot.val()).length - 1;
+					const lastTodoKey = Object.keys(snapshot.val())[lastTodoIndex];
+					firebaseSort.push(lastTodoKey);
+				}
 			});
 
 			if (isNewTodo) {

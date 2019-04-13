@@ -32,33 +32,42 @@ class TodoList extends Component {
 	}
 
 	componentDidMount() {
-		firebaseSort.once('value', snapshot => {
-			if (snapshot.val().length > 0) {
+		console.log('**TodoList** componentDidMount 嘍 !!');
+		firebaseTodos.on('value', todoSnapshot => {
+			// 確認Todo資料庫有資料 true or null
+			if (todoSnapshot.val()) {
+				// 有資料就抓出排序 讓 firebaseTodos 可以排序一下
 				// eslint-disable-next-line no-shadow
-				firebaseSort.on('value', snapshot => {
-					const sortIndex = [];
-					const sortedArray = [];
-					snapshot.forEach(childSnapshot => {
-						sortIndex.push(childSnapshot.val());
-					});
-					// eslint-disable-next-line no-shadow
-					firebaseTodos.once('value').then(snapshot => {
-						const todoObject = snapshot.val();
-						sortIndex.map(key => sortedArray.push(todoObject[key]));
+				firebaseSort.once('value', sortSnapshot => {
+					// 再確認Sort資料庫有資料 true or null
+					if (sortSnapshot.val()) {
+						// eslint-disable-next-line no-shadow
+						firebaseSort.on('value', snapshot => {
+							const sortIndex = [];
+							const sortedArray = [];
+							snapshot.forEach(childSnapshot => {
+								// 抓出排序給 firebaseTodos 做參考
+								sortIndex.push(childSnapshot.val());
+							});
+							// eslint-disable-next-line no-shadow
+							firebaseTodos.once('value').then(snapshot => {
+								const todoObject = snapshot.val();
+								// 把 firebaseSort 排序塞入 firebaseTodo
+								sortIndex.map(key => sortedArray.push(todoObject[key]));
+								this.setState(prevState => ({
+									...prevState.todos,
+									todos: sortedArray,
+								}));
+							});
+						});
+					} else {
+						// Sort 若無資料，直接把顯有 firebaseTodos 加入 state 並 渲染資料
+						const todos = firebaseLooper(todoSnapshot);
 						this.setState(prevState => ({
 							...prevState.todos,
-							todos: sortedArray,
+							todos,
 						}));
-					});
-				});
-			} else {
-				// eslint-disable-next-line no-shadow
-				firebaseTodos.on('value', snapshot => {
-					const todos = firebaseLooper(snapshot);
-					this.setState(prevState => ({
-						...prevState.todos,
-						todos,
-					}));
+					}
 				});
 			}
 		});

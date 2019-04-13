@@ -4,9 +4,12 @@ import { firebaseDB } from '../../../../firebase';
 import List from './component';
 
 const initState = ({ message, completed }) => ({
+	// controller input
 	message: message || '',
 	completed: completed || false,
-	cacheTodo: {},
+	// cacheTodo: {
+	// 	message: message || '',
+	// },
 	star: false,
 	edit: false,
 });
@@ -50,14 +53,14 @@ const mapSetStateToProps = (
 			{
 				message: e.target.value,
 			},
-			() => {
-				setState(prevState => ({
-					cacheTodo: {
-						...prevState.cacheTodo,
-						message: prevState.message,
-					},
-				}));
-			},
+			// () => {
+			// 	setState(prevState => ({
+			// 		cacheTodo: {
+			// 			...prevState.cacheTodo,
+			// 			message: prevState.message,
+			// 		},
+			// 	}));
+			// },
 		);
 	},
 });
@@ -65,6 +68,7 @@ const mapSetStateToProps = (
 const setLifecycle = () => ({
 	// 每次更新畫面 要 抓 data 的 message 到 cacheTodo 的 state 內
 	componentDidMount({ setState, getProps }) {
+		console.log('**List** componentDidMount 嘍 !!');
 		const { id, isNewTodo } = getProps();
 		if (!isNewTodo) {
 			firebaseDB
@@ -73,11 +77,15 @@ const setLifecycle = () => ({
 				.then(snapshot => {
 					const { message } = snapshot.val();
 					setState(prevState => ({
-						cacheTodo: {
-							...prevState.cacheTodo,
-							message,
-						},
+						...prevState,
+						message,
 					}));
+					// setState(prevState => ({
+					// 	cacheTodo: {
+					// 		...prevState.cacheTodo,
+					// 		message,
+					// 	},
+					// }));
 				});
 		}
 	},

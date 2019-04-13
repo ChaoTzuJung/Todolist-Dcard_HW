@@ -9,9 +9,9 @@ import styles from './index.css';
 
 const List = ({
 	// state
-	cacheTodo: { message },
+	message,
+	// cacheTodo: { message },
 	completed,
-	// message,
 	star,
 	edit,
 

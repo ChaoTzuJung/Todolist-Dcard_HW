@@ -30,6 +30,7 @@ class TodoPanel extends Component {
 	// 針對 onEdit 去抓資料放入 input
 	componentDidMount() {
 		// 若是單純新增todo而展開panel不用 fetch fdata
+		console.log('**Panel** componentDidMount 嘍 !!');
 		const { id, isNewTodo } = this.props;
 		if (!isNewTodo) {
 			firebaseDB
