@@ -76,6 +76,7 @@ const setLifecycle = () => ({
 				.ref(`todos/${id}`)
 				.once('value')
 				.then(snapshot => {
+					console.log('Cannot read property message of null', snapshot);
 					const { message } = snapshot.val();
 					setState(prevState => ({
 						...prevState,

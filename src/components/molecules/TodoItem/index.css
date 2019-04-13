@@ -1,3 +1,31 @@
 .todo-item {
+	position: relative;
 	margin-top: 8px;
+
+	& > .delete-item {
+		display: flex;
+		align-items: center;
+
+		& > span {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			position: absolute;
+			right: -64px;
+			width: 48px;
+			height: 48px;
+			border-radius: 50%;
+			background: var(--lightGray);
+			box-shadow: 0 4px 4px 0 #c8c8c8;
+			cursor: pointer;
+
+			& > i {
+				color: var(--red);
+			}
+
+			& > .deleted {
+				color: var(--red);
+			}
+		}
+	}
 }

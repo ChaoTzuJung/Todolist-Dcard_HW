@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import classnames from 'classnames';
 
 import { isExist, transDayToDate } from 'util/helper';
+import Icon from 'components/atoms/Icon';
 import List from 'components/molecules/List';
 import TodoPanel from 'components/molecules/TodoPanel';
 
@@ -19,12 +20,14 @@ class TodoItem extends Component {
 			star: star || false,
 			edit: isNewTodo,
 			completed: completed || false,
+			deleted: false,
 		};
 
 		this.handleSave = this.handleSave.bind(this);
 		this.handleCancel = this.handleCancel.bind(this);
 		this.addStar = this.addStar.bind(this);
 		this.onEdit = this.onEdit.bind(this);
+		this.removeTodo = this.removeTodo.bind(this);
 		this.handleCheck = this.handleCheck.bind(this);
 	}
 
@@ -139,9 +142,34 @@ class TodoItem extends Component {
 		const { edit } = this.state;
 		const { isNewTodo } = this.props;
 		if (isNewTodo) {
-			alert('請按下Cancel或Add Task');
+			alert('請按下 Cancel 或 Add Task');
 		} else {
 			this.setState({ edit: !edit });
+		}
+	}
+
+	removeTodo() {
+		console.log('按下刪除');
+		const { deleted } = this.state;
+		const { id, isNewTodo } = this.props;
+		console.log('刪除', id);
+		if (!isNewTodo) {
+			this.setState({ deleted: !deleted });
+			let findSortId = null;
+			firebaseDB.ref('sort').once('value', snapshot => {
+				snapshot.forEach(idSnapshot => {
+					if (id === idSnapshot.val()) {
+						findSortId = idSnapshot.key;
+					}
+				});
+			});
+			firebaseDB
+				.ref('sort')
+				.child(findSortId)
+				.remove();
+			firebaseDB.ref(`todos/${id}`).remove();
+		} else {
+			alert('請按下 Cancel 或 輸入標題喔');
 		}
 	}
 
@@ -155,27 +183,39 @@ class TodoItem extends Component {
 	}
 
 	render() {
-		const { edit, star, completed } = this.state;
-		const { className, id, message, date, file, name, type, comment, isNewTodo } = this.props;
+		const { edit, star, deleted, completed } = this.state;
+		const { className, id, date, file, name, type, comment, isNewTodo } = this.props;
 		console.log(id);
 		return (
 			<div className={classnames(styles.todoItem, className)}>
-				<List
-					ref={this.input}
-					id={id}
-					// message={message}
-					completed={completed}
-					star={star}
-					edit={edit}
-					date={date}
-					deadline={isExist(date)}
-					file={isExist(file)}
-					comment={isExist(comment)}
-					isNewTodo={isNewTodo}
-					addStar={this.addStar}
-					onEdit={this.onEdit}
-					handleCheckboxChange={this.handleCheck}
-				/>
+				<div className={styles.deleteItem}>
+					<List
+						ref={this.input}
+						id={id}
+						completed={completed}
+						star={star}
+						edit={edit}
+						date={date}
+						deadline={isExist(date)}
+						file={isExist(file)}
+						comment={isExist(comment)}
+						isNewTodo={isNewTodo}
+						addStar={this.addStar}
+						onEdit={this.onEdit}
+						handleCheckboxChange={this.handleCheck}
+					/>
+					{
+						<span onClick={this.removeTodo} onKeyPress={this.removeTodo} role="button" tabIndex="0">
+							<Icon
+								className={classnames({
+									[styles.deleted]: deleted,
+								})}
+							>
+								{deleted ? 'delete' : 'delete_outline'}
+							</Icon>
+						</span>
+					}
+				</div>
 				{edit && (
 					<TodoPanel
 						// Add task and edit
