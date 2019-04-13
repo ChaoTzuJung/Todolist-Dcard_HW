@@ -19,7 +19,6 @@ exports[`__interactive 1`] = `
     star={false}
   >
     <List
-      cacheTodo={Object {}}
       checked={false}
       comment={true}
       completed={false}
@@ -43,14 +42,22 @@ exports[`__interactive 1`] = `
             <Checkbox
               checked={false}
               className=""
+              content="type something here..."
+              name="type something here..."
+              value="type something here..."
             >
               <label
                 className="label"
+                htmlFor="type something here..."
               >
+                type something here...
                 <input
                   checked={false}
+                  id="type something here..."
+                  name="type something here..."
                   onChange={[Function]}
                   type="checkbox"
+                  value="type something here..."
                 />
                 <span
                   className="checkbox"

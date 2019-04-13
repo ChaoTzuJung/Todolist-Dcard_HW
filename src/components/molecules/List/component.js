@@ -43,11 +43,9 @@ const List = ({
 						<Field
 							className={styles.fieldFix}
 							name="edit_todo"
-							icon=""
 							placeholder="Type Something Here..."
 							valid="false"
 							color={star ? '#FFF2DC' : '#F2F2F2'}
-							border="false"
 							value={message}
 							onChange={handleChange}
 						/>

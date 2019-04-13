@@ -34,18 +34,19 @@ class TodoList extends Component {
 	componentDidMount() {
 		console.log('**TodoList** componentDidMount 嘍 !!');
 		firebaseTodos.on('value', todoSnapshot => {
-			// 確認Todo資料庫有資料 true or null
 			if (todoSnapshot.val()) {
+				console.log('確認Todo資料庫有資料', todoSnapshot.val());
 				// 有資料就抓出排序 讓 firebaseTodos 可以排序一下
 				// eslint-disable-next-line no-shadow
 				firebaseSort.once('value', sortSnapshot => {
 					// 再確認Sort資料庫有資料 true or null
 					if (sortSnapshot.val()) {
+						console.log('吃');
 						// eslint-disable-next-line no-shadow
-						firebaseSort.on('value', snapshot => {
+						firebaseSort.on('value', sortSnapshot => {
 							const sortIndex = [];
 							const sortedArray = [];
-							snapshot.forEach(childSnapshot => {
+							sortSnapshot.forEach(childSnapshot => {
 								// 抓出排序給 firebaseTodos 做參考
 								sortIndex.push(childSnapshot.val());
 							});
@@ -61,6 +62,7 @@ class TodoList extends Component {
 							});
 						});
 					} else {
+						console.log('喝');
 						// Sort 若無資料，直接把顯有 firebaseTodos 加入 state 並 渲染資料
 						const todos = firebaseLooper(todoSnapshot);
 						this.setState(prevState => ({
@@ -130,6 +132,7 @@ class TodoList extends Component {
 	render() {
 		const { className, value, tab, ...props } = this.props;
 		const { todos, isNewTodo } = this.state;
+		console.log(todos);
 		return (
 			<DragDropContext onDragEnd={this.onDragEnd}>
 				<div className={classnames(styles.todolist, className)}>

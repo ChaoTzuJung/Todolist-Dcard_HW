@@ -9,11 +9,17 @@ const stories = storiesOf('Commons|atoms/ButtonFile', module);
 stories.addDecorator(withKnobs);
 
 stories.add('__interactive', () => (
-	<ButtonFile>
-		<i className="material-icons" style={{ color: '#FFFFFF' }}>
-			add
-		</i>
-	</ButtonFile>
+	<div style={{ margin: '60px' }}>
+		<ButtonFile>
+			<i className="material-icons" style={{ color: '#FFFFFF' }}>
+				add
+			</i>
+		</ButtonFile>
+	</div>
 ));
 
-stories.add('with button style', () => <ButtonFile type="button">選擇檔案</ButtonFile>);
+stories.add('with button style', () => (
+	<div style={{ margin: '60px' }}>
+		<ButtonFile type="button">選擇檔案</ButtonFile>
+	</div>
+));

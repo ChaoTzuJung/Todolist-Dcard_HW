@@ -3,9 +3,9 @@ import { contain } from 'react-container-helper';
 import { firebaseDB } from '../../../../firebase';
 import List from './component';
 
-const initState = ({ message, completed }) => ({
+const initState = ({ completed }) => ({
 	// controller input
-	message: message || '',
+	message: '',
 	completed: completed || false,
 	// cacheTodo: {
 	// 	message: message || '',
@@ -48,28 +48,29 @@ const mapSetStateToProps = (
 	...other,
 
 	handleChange(e) {
-		console.log(`handleChange 輸入新的message: ${e.target.value}`);
-		setState(
-			{
-				message: e.target.value,
-			},
-			// () => {
-			// 	setState(prevState => ({
-			// 		cacheTodo: {
-			// 			...prevState.cacheTodo,
-			// 			message: prevState.message,
-			// 		},
-			// 	}));
-			// },
-		);
+		const val = e.target.value;
+		console.log(`handleChange 輸入新的message: ${val}`);
+		setState(prevState => ({
+			...prevState,
+			message: val,
+		}));
+		// () => {
+		// 	setState(prevState => ({
+		// 		cacheTodo: {
+		// 			...prevState.cacheTodo,
+		// 			message: prevState.message,
+		// 		},
+		// 	}));
+		// },
 	},
 });
 
 const setLifecycle = () => ({
 	// 每次更新畫面 要 抓 data 的 message 到 cacheTodo 的 state 內
 	componentDidMount({ setState, getProps }) {
-		console.log('**List** componentDidMount 嘍 !!');
 		const { id, isNewTodo } = getProps();
+		console.log('**List** componentDidMount 嘍 !!');
+		console.log('**List** id是', id);
 		if (!isNewTodo) {
 			firebaseDB
 				.ref(`todos/${id}`)

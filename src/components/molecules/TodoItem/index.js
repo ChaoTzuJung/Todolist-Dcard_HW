@@ -35,16 +35,17 @@ class TodoItem extends Component {
 		const { isNewTodo, setNewTodo, id } = this.props;
 		const { message, star } = this.input.current.state;
 
-		const { comment, date, file, name, startDate, type } = data;
+		const { comment, date, file, name, timestamp, type } = data;
+		console.log('startDate', timestamp);
 		if (!isExist(this.input.current.state.message)) {
 			alert('請輸入 Todo 標題 !');
 			return;
 		}
 
-		let timestamp;
+		let time;
 
-		if (typeof startDate === 'object') {
-			timestamp = startDate.getTime();
+		if (typeof timestamp === 'object') {
+			time = timestamp.getTime();
 		}
 
 		if (isNewTodo) {
@@ -55,7 +56,7 @@ class TodoItem extends Component {
 					file: isExist(file) ? file : null,
 					message: isExist(message) ? message : null,
 					name: isExist(name) ? name : null,
-					startDate: isExist(timestamp) ? timestamp : null,
+					timestamp: isExist(time) ? time : null,
 					type: isExist(type) ? type : null,
 					completed: false,
 					star: false,
@@ -69,7 +70,6 @@ class TodoItem extends Component {
 				});
 
 			firebaseTodos.once('value', snapshot => {
-				// NOTE:
 				if (snapshot.val().length !== null) {
 					const lastTodoIndex = Object.keys(snapshot.val()).length - 1;
 					const lastTodoKey = Object.keys(snapshot.val())[lastTodoIndex];
@@ -89,9 +89,9 @@ class TodoItem extends Component {
 				file: isExist(file) ? file : null,
 				message: isExist(message) ? message : null,
 				name: isExist(name) ? name : null,
-				startDate: isExist(startDate) ? startDate : null,
+				timestamp: isExist(time) ? time : null,
 				type: isExist(type) ? type : null,
-				// completed,
+				id,
 				star,
 			});
 
@@ -116,17 +116,21 @@ class TodoItem extends Component {
 		console.log('按下星星');
 		const { star } = this.state;
 		const { id } = this.props;
-		this.setState({ star: !star }, () => {
-			// eslint-disable-next-line react/destructuring-assignment
-			firebaseDB.ref(`todos/${id}/star`).set(this.state.star);
+		if (id) {
+			this.setState({ star: !star }, () => {
+				// eslint-disable-next-line react/destructuring-assignment
+				firebaseDB.ref(`todos/${id}/star`).set(this.state.star);
 
-			this.setState(prevState => ({
-				cacheTodo: {
-					...prevState.cacheTodo,
-					star: !star,
-				},
-			}));
-		});
+				this.setState(prevState => ({
+					cacheTodo: {
+						...prevState.cacheTodo,
+						star: !star,
+					},
+				}));
+			});
+		} else {
+			alert('尚未儲存 Todo，無法加星星喔！');
+		}
 	}
 
 	onEdit() {
@@ -152,13 +156,13 @@ class TodoItem extends Component {
 	render() {
 		const { edit, star, completed } = this.state;
 		const { className, id, message, date, file, name, type, comment, isNewTodo } = this.props;
-
+		console.log(id);
 		return (
 			<div className={classnames(styles.todoItem, className)}>
 				<List
 					ref={this.input}
 					id={id}
-					message={message}
+					// message={message}
 					completed={completed}
 					star={star}
 					edit={edit}

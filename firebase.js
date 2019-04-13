@@ -1,12 +1,12 @@
 import * as firebase from 'firebase';
 
 const config = {
-	apiKey: 'AIzaSyAVVOLPADcxTk6k1W53YMtuz1mZNyGf670',
-	authDomain: 'todolistdcardhw.firebaseapp.com',
-	databaseURL: 'https://todolistdcardhw.firebaseio.com',
-	projectId: 'todolistdcardhw',
-	storageBucket: 'todolistdcardhw.appspot.com',
-	messagingSenderId: '81149812474',
+	apiKey: 'AIzaSyAiy-dCNCFw38ym1rQn-86Tn1OBxWlTriQ',
+	authDomain: 'todolist-dcard-2019.firebaseapp.com',
+	databaseURL: 'https://todolist-dcard-2019.firebaseio.com',
+	projectId: 'todolist-dcard-2019',
+	storageBucket: 'todolist-dcard-2019.appspot.com',
+	messagingSenderId: '760711316755',
 };
 
 firebase.initializeApp(config);

@@ -6,17 +6,17 @@
 		font-size: 12px;
 		font-weight: 300;
 		letter-spacing: 0.5px;
-		border: 1px solid var(--white);
 		outline: none;
 		transition: border 0.2s;
+		border: none;
 
-		/* &:focus {
-			border: 1px solid var(--lightGray);
-		} */
+		&:focus {
+			border: 1px solid var(--black);
+		}
 	}
 
 	& > .border {
-		border: none;
+		border: 1px solid var(--black);
 	}
 
 	&.icon {

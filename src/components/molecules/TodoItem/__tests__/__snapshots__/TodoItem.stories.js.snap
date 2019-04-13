@@ -24,7 +24,6 @@ exports[`__interactive 1`] = `
       >
         <List
           addStar={[Function]}
-          cacheTodo={Object {}}
           comment={false}
           completed={false}
           deadline={false}

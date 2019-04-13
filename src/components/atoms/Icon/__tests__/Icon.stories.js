@@ -24,6 +24,8 @@ const usedIcon = [
 	'star_border',
 	'check_box',
 	'check_box_outline_blank',
+	'delete',
+	'delete_outline',
 ];
 
 stories.add('used icon', () => (

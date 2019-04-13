@@ -72,6 +72,7 @@ const Button = ({
 				[styles.upload]: color === 'upload',
 				[styles.disabled]: disabled,
 			})}
+			disabled={disabled}
 			onClick={e => {
 				if (!disabled) {
 					onClick(e);

@@ -64,9 +64,9 @@
 			background: var(--accent);
 		} */
 
-		&.disabled {
+		/* &.disabled {
 			background: var(--white);
-		}
+		} */
 	}
 
 	&.upload {
@@ -80,6 +80,7 @@
 
 	&.disabled {
 		background: solid 1px gray;
+		cursor: no-drop;
 
 		& > div {
 			color: #c8c8c8;

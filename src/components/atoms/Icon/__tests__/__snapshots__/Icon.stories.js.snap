@@ -231,5 +231,49 @@ exports[`used icon 1`] = `
       check_box_outline_blank
     </span>
   </div>
+  <div
+    key="delete"
+    style={
+      Object {
+        "alignItems": "center",
+        "display": "flex",
+        "flexDirection": "column",
+        "margin": "20px",
+      }
+    }
+  >
+    <Icon>
+      <i
+        className="icon material-icons"
+      >
+        delete
+      </i>
+    </Icon>
+    <span>
+      delete
+    </span>
+  </div>
+  <div
+    key="delete_outline"
+    style={
+      Object {
+        "alignItems": "center",
+        "display": "flex",
+        "flexDirection": "column",
+        "margin": "20px",
+      }
+    }
+  >
+    <Icon>
+      <i
+        className="icon material-icons"
+      >
+        delete_outline
+      </i>
+    </Icon>
+    <span>
+      delete_outline
+    </span>
+  </div>
 </div>
 `;

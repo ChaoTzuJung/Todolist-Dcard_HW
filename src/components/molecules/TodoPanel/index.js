@@ -16,9 +16,10 @@ class TodoPanel extends Component {
 		this.inputDate = React.createRef();
 		this.inputTime = React.createRef();
 		this.textareaRef = React.createRef();
+		const { textarea } = this.props;
 
 		this.state = {
-			textarea: '',
+			textarea: textarea || '',
 			cacheTodo: {},
 		};
 
@@ -33,10 +34,12 @@ class TodoPanel extends Component {
 		console.log('**Panel** componentDidMount 嘍 !!');
 		const { id, isNewTodo } = this.props;
 		if (!isNewTodo) {
+			console.log('go', id);
 			firebaseDB
 				.ref(`todos/${id}`)
 				.once('value')
 				.then(snapshot => {
+					console.log(snapshot.val());
 					this.setState(prevState => ({
 						cacheTodo: { ...prevState.cacheTodo, ...snapshot.val() },
 					}));
@@ -50,7 +53,7 @@ class TodoPanel extends Component {
 		this.setState(prevState => ({
 			cacheTodo: {
 				...prevState.cacheTodo,
-				startDate: e,
+				timestamp: e,
 				date: `${day} ${time}`,
 			},
 		}));
@@ -97,7 +100,8 @@ class TodoPanel extends Component {
 
 	render() {
 		const {
-			cacheTodo: { startDate, date, type, name, file, comment },
+			textarea,
+			cacheTodo: { timestamp, date, type, name, file, comment },
 		} = this.state;
 
 		const { className, onCancel = () => {}, onSave = () => {}, ...other } = this.props;
@@ -114,14 +118,14 @@ class TodoPanel extends Component {
 							<FieldDate
 								dateOnly
 								ref={this.inputDate}
-								startTime={startDate}
+								startTime={timestamp}
 								handleDateChange={this.handleDateChange}
 								{...other}
 							/>
 							<FieldDate
 								timeOnly
 								ref={this.inputDate}
-								startTime={startDate}
+								startTime={timestamp}
 								handleDateChange={this.handleDateChange}
 								{...other}
 							/>
@@ -157,7 +161,7 @@ class TodoPanel extends Component {
 								type="text"
 								name="comment"
 								placeholder="Type your memo here..."
-								value={comment}
+								value={textarea}
 								onChange={this.handleChangeTextarea}
 							/>
 						</div>
@@ -172,7 +176,7 @@ class TodoPanel extends Component {
 						color="save"
 						onClick={() =>
 							onSave({
-								startDate,
+								timestamp,
 								date,
 								type,
 								name,
