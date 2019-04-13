@@ -49,6 +49,12 @@ yarn run storybook
 
 便可在 <http://localhost:8000> 看到 storybook 開發伺服器
 
+若是嫌麻煩可以透過 [此連結](https://keen-panini-800144.netlify.com) 直接開啟已部署的 storybook 網站
+
+![storybook](https://i.imgur.com/dWv02tG.jpg)
+
+> [storybook官方文件](https://www.learnstorybook.com/react/en/deploy/)
+
 ## 專案架構
 
 此架構是參考 [Atom design](http://bradfrost.com/blog/post/atomic-web-design/) 和 [Fractal Project Structure](https://github.com/davezuko/react-redux-starter-kit/wiki/Fractal-Project-Structure) 所整理出來
