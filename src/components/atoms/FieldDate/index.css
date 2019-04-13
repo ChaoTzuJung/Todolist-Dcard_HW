@@ -1,0 +1,18 @@
+.label {
+	& > input {
+		padding: 8px 16px;
+		width: 162px;
+		background-color: var(--white);
+		border-radius: 2px;
+		color: var(--black);
+		font-weight: 300;
+		font-size: 16px;
+		border: none;
+
+		&::placeholder {
+			color: var(--wording-gray);
+			font-size: 16px;
+			font-weight: 300;
+		}
+	}
+}

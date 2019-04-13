@@ -1,0 +1,279 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`__interactive 1`] = `
+<Icon
+  light={false}
+>
+  <i
+    className="icon material-icons"
+  >
+    add
+  </i>
+</Icon>
+`;
+
+exports[`outlined icon 1`] = `
+<Icon
+  outlined={true}
+>
+  <i
+    className="icon material-icons-outlined"
+  >
+    insert_drive_file
+  </i>
+</Icon>
+`;
+
+exports[`used icon 1`] = `
+<div
+  style={
+    Object {
+      "display": "flex",
+      "flexWrap": "wrap",
+    }
+  }
+>
+  <div
+    key="add"
+    style={
+      Object {
+        "alignItems": "center",
+        "display": "flex",
+        "flexDirection": "column",
+        "margin": "20px",
+      }
+    }
+  >
+    <Icon>
+      <i
+        className="icon material-icons"
+      >
+        add
+      </i>
+    </Icon>
+    <span>
+      add
+    </span>
+  </div>
+  <div
+    key="date_range"
+    style={
+      Object {
+        "alignItems": "center",
+        "display": "flex",
+        "flexDirection": "column",
+        "margin": "20px",
+      }
+    }
+  >
+    <Icon>
+      <i
+        className="icon material-icons"
+      >
+        date_range
+      </i>
+    </Icon>
+    <span>
+      date_range
+    </span>
+  </div>
+  <div
+    key="insert_drive_file"
+    style={
+      Object {
+        "alignItems": "center",
+        "display": "flex",
+        "flexDirection": "column",
+        "margin": "20px",
+      }
+    }
+  >
+    <Icon>
+      <i
+        className="icon material-icons"
+      >
+        insert_drive_file
+      </i>
+    </Icon>
+    <span>
+      insert_drive_file
+    </span>
+  </div>
+  <div
+    key="textsms"
+    style={
+      Object {
+        "alignItems": "center",
+        "display": "flex",
+        "flexDirection": "column",
+        "margin": "20px",
+      }
+    }
+  >
+    <Icon>
+      <i
+        className="icon material-icons"
+      >
+        textsms
+      </i>
+    </Icon>
+    <span>
+      textsms
+    </span>
+  </div>
+  <div
+    key="edit"
+    style={
+      Object {
+        "alignItems": "center",
+        "display": "flex",
+        "flexDirection": "column",
+        "margin": "20px",
+      }
+    }
+  >
+    <Icon>
+      <i
+        className="icon material-icons"
+      >
+        edit
+      </i>
+    </Icon>
+    <span>
+      edit
+    </span>
+  </div>
+  <div
+    key="star"
+    style={
+      Object {
+        "alignItems": "center",
+        "display": "flex",
+        "flexDirection": "column",
+        "margin": "20px",
+      }
+    }
+  >
+    <Icon>
+      <i
+        className="icon material-icons"
+      >
+        star
+      </i>
+    </Icon>
+    <span>
+      star
+    </span>
+  </div>
+  <div
+    key="star_border"
+    style={
+      Object {
+        "alignItems": "center",
+        "display": "flex",
+        "flexDirection": "column",
+        "margin": "20px",
+      }
+    }
+  >
+    <Icon>
+      <i
+        className="icon material-icons"
+      >
+        star_border
+      </i>
+    </Icon>
+    <span>
+      star_border
+    </span>
+  </div>
+  <div
+    key="check_box"
+    style={
+      Object {
+        "alignItems": "center",
+        "display": "flex",
+        "flexDirection": "column",
+        "margin": "20px",
+      }
+    }
+  >
+    <Icon>
+      <i
+        className="icon material-icons"
+      >
+        check_box
+      </i>
+    </Icon>
+    <span>
+      check_box
+    </span>
+  </div>
+  <div
+    key="check_box_outline_blank"
+    style={
+      Object {
+        "alignItems": "center",
+        "display": "flex",
+        "flexDirection": "column",
+        "margin": "20px",
+      }
+    }
+  >
+    <Icon>
+      <i
+        className="icon material-icons"
+      >
+        check_box_outline_blank
+      </i>
+    </Icon>
+    <span>
+      check_box_outline_blank
+    </span>
+  </div>
+  <div
+    key="delete"
+    style={
+      Object {
+        "alignItems": "center",
+        "display": "flex",
+        "flexDirection": "column",
+        "margin": "20px",
+      }
+    }
+  >
+    <Icon>
+      <i
+        className="icon material-icons"
+      >
+        delete
+      </i>
+    </Icon>
+    <span>
+      delete
+    </span>
+  </div>
+  <div
+    key="delete_outline"
+    style={
+      Object {
+        "alignItems": "center",
+        "display": "flex",
+        "flexDirection": "column",
+        "margin": "20px",
+      }
+    }
+  >
+    <Icon>
+      <i
+        className="icon material-icons"
+      >
+        delete_outline
+      </i>
+    </Icon>
+    <span>
+      delete_outline
+    </span>
+  </div>
+</div>
+`;

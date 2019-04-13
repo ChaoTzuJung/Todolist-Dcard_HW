@@ -1,0 +1,101 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`__interactive 1`] = `
+<div
+  style={
+    Object {
+      "marginLeft": "200px",
+    }
+  }
+>
+  <Contain(Input)
+    className=""
+    handleChange={[Function]}
+    onSubmit={[Function]}
+    placeholder="Add Task"
+  >
+    <Input
+      className=""
+      content={Array []}
+      getInputElement={[Function]}
+      handleChange={[Function]}
+      onFocus={[Function]}
+      placeholder="Add Task"
+      submit={[Function]}
+      value=""
+    >
+      <form
+        action=""
+        autoComplete="off"
+        className="input"
+        onSubmit={[Function]}
+      >
+        <div
+          className="icon"
+        >
+          <FontAwesomeIcon
+            border={false}
+            className=""
+            color="#CBCBCB"
+            fixedWidth={false}
+            flip={null}
+            icon={
+              Object {
+                "icon": Array [
+                  448,
+                  512,
+                  Array [],
+                  "f067",
+                  "M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z",
+                ],
+                "iconName": "plus",
+                "prefix": "fas",
+              }
+            }
+            inverse={false}
+            listItem={false}
+            mask={null}
+            pull={null}
+            pulse={false}
+            rotation={null}
+            size="1x"
+            spin={false}
+            symbol={false}
+            title=""
+            transform={null}
+          >
+            <svg
+              aria-hidden="true"
+              className="svg-inline--fa fa-plus fa-w-14 fa-1x "
+              color="#CBCBCB"
+              data-icon="plus"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
+              style={Object {}}
+              viewBox="0 0 448 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"
+                fill="currentColor"
+                style={Object {}}
+              />
+            </svg>
+          </FontAwesomeIcon>
+        </div>
+        <input
+          autoComplete="off"
+          onChange={[Function]}
+          onFocus={[Function]}
+          placeholder="Add Task"
+          role="searchbox"
+          tabIndex="0"
+          type="text"
+          value=""
+        />
+      </form>
+    </Input>
+  </Contain(Input)>
+</div>
+`;

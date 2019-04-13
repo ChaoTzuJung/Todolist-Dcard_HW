@@ -14,8 +14,9 @@ body {
 	margin: 0;
 	overflow-x: hidden;
 	width: 100%;
+	background: var(--gray);
 }
-
+t
 ul {
 	list-style: none;
 	padding: 0;
@@ -26,7 +27,7 @@ input,
 select,
 textarea,
 button {
-	font-family: 'Roboto', 'PingFang TC', 'Noto Sans TC', 'Microsoft JhengHei', 'sans-serif';
+	font-family: 'Roboto', 'PingFang TC', 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
 }
 
 a {

@@ -1,0 +1,89 @@
+.list {
+	display: flex;
+	justify-content: space-between;
+	width: 620px;
+	padding: 24px 32px;
+	background-color: var(--lightGray);
+	border-radius: 5px;
+
+	& > .left {
+		width: 100%;
+
+		& > .top {
+			display: flex;
+			align-items: center;
+
+			& > .line-through {
+				text-decoration: line-through;
+				color: var(--input-gray);
+			}
+
+			& > .todo-context {
+				font-size: 24px;
+				margin-left: 16px;
+			}
+
+			& > .field-fix {
+				width: 100%;
+				margin-left: 32px;
+
+				& > input {
+					&:focus {
+						border: none;
+					}
+				}
+			}
+		}
+
+		& > .down {
+			display: flex;
+			align-items: center;
+			padding-left: 40px;
+			height: calc(100% - 30px);
+
+			& > .icon-fix {
+				margin-top: 16px;
+				color: var(--darkGray);
+				font-size: 16px;
+
+				&:not(:first-child) {
+					margin-left: 16px;
+				}
+			}
+
+			& > span {
+				margin-top: 16px;
+				margin-left: 8px;
+				color: var(--darkGray);
+			}
+		}
+	}
+
+	& > .right {
+		display: flex;
+
+		& > span {
+			cursor: pointer;
+
+			& > .star {
+				color: var(--yellow);
+			}
+
+			& > .edit {
+				color: var(--blue);
+			}
+
+			&:not(:first-child) {
+				margin-left: 32px;
+			}
+		}
+	}
+}
+
+.color-list {
+	background-color: var(--lightYellow);
+}
+
+.squared-bottom {
+	border-radius: 5px 5px 0 0;
+}
