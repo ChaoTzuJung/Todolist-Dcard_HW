@@ -41,7 +41,6 @@ class TodoList extends Component {
 				firebaseSort.once('value', sortSnapshot => {
 					// 再確認Sort資料庫有資料 true or null
 					if (sortSnapshot.val()) {
-						console.log('吃');
 						// eslint-disable-next-line no-shadow
 						firebaseSort.on('value', sortSnapshot => {
 							const sortIndex = [];
@@ -62,7 +61,6 @@ class TodoList extends Component {
 							});
 						});
 					} else {
-						console.log('喝');
 						// Sort 若無資料，直接把顯有 firebaseTodos 加入 state 並 渲染資料
 						const todos = firebaseLooper(todoSnapshot);
 						this.setState(prevState => ({

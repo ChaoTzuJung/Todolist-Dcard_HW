@@ -103,7 +103,7 @@ exports[`__interactive 1`] = `
                   disabledKeyboardNavigation={false}
                   dropdownMode="scroll"
                   inlineFocusSelectedMonth={false}
-                  minDate={2019-04-13T05:46:57.242Z}
+                  minDate={2019-04-13T10:55:49.281Z}
                   monthsShown={1}
                   nextMonthButtonLabel="Next month"
                   onBlur={[Function]}
@@ -266,7 +266,7 @@ exports[`__interactive 1`] = `
                   disabledKeyboardNavigation={false}
                   dropdownMode="scroll"
                   inlineFocusSelectedMonth={false}
-                  minDate={2019-04-13T05:46:57.251Z}
+                  minDate={2019-04-13T10:55:49.297Z}
                   monthsShown={1}
                   nextMonthButtonLabel="Next month"
                   onBlur={[Function]}
@@ -457,6 +457,7 @@ exports[`__interactive 1`] = `
               onChange={[Function]}
               placeholder="Type your memo here..."
               type="text"
+              value=""
             />
           </div>
         </div>
@@ -470,6 +471,7 @@ exports[`__interactive 1`] = `
         >
           <button
             className="button cancel"
+            disabled={false}
             onClick={[Function]}
           >
             <div>
@@ -490,6 +492,7 @@ exports[`__interactive 1`] = `
         >
           <button
             className="button save"
+            disabled={false}
             onClick={[Function]}
           >
             <div>

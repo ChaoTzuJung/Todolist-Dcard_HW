@@ -4,13 +4,13 @@ exports[`__interactive 1`] = `
 <div
   style={
     Object {
-      "margin": "16px",
+      "margin": "60px",
     }
   }
 >
   <Contain(List)
-    checked={false}
     comment={true}
+    completed={false}
     date="6/18"
     deadline={true}
     edit={false}
@@ -19,7 +19,6 @@ exports[`__interactive 1`] = `
     star={false}
   >
     <List
-      checked={false}
       comment={true}
       completed={false}
       date="6/18"

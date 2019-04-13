@@ -1,34 +1,42 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`__interactive 1`] = `
-<Checkbox
-  content="可以養寵物"
-  name="checkbox1"
-  value="1"
+<div
+  style={
+    Object {
+      "margin": "60px",
+    }
+  }
 >
-  <label
-    className="label"
-    htmlFor="checkbox1"
+  <Checkbox
+    content="可以養寵物"
+    name="checkbox1"
+    value="1"
   >
-    可以養寵物
-    <input
-      id="checkbox1"
-      name="checkbox1"
-      onChange={[Function]}
-      type="checkbox"
-      value="1"
-    />
-    <span
-      className="checkbox"
+    <label
+      className="label"
+      htmlFor="checkbox1"
     >
-      <Icon>
-        <i
-          className="icon material-icons"
-        >
-          check
-        </i>
-      </Icon>
-    </span>
-  </label>
-</Checkbox>
+      可以養寵物
+      <input
+        id="checkbox1"
+        name="checkbox1"
+        onChange={[Function]}
+        type="checkbox"
+        value="1"
+      />
+      <span
+        className="checkbox"
+      >
+        <Icon>
+          <i
+            className="icon material-icons"
+          >
+            check
+          </i>
+        </Icon>
+      </span>
+    </label>
+  </Checkbox>
+</div>
 `;
