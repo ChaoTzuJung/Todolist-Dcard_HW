@@ -32,14 +32,10 @@ class TodoItem extends Component {
 	}
 
 	handleSave(data) {
-		console.log(`Add Task 帶的資料: ${data}`);
-
-		// data 是 在 panel Add task 時 所戴的資料
 		const { isNewTodo, setNewTodo, id } = this.props;
 		const { message, star } = this.input.current.state;
 
 		const { comment, date, file, name, timestamp, type } = data;
-		console.log('startDate', timestamp);
 		if (!isExist(this.input.current.state.message)) {
 			alert('請輸入 Todo 標題 !');
 			return;
@@ -77,7 +73,6 @@ class TodoItem extends Component {
 					const lastTodoIndex = Object.keys(snapshot.val()).length - 1;
 					const lastTodoKey = Object.keys(snapshot.val())[lastTodoIndex];
 					firebaseSort.push(lastTodoKey);
-					console.log('我 push sort', lastTodoKey);
 				}
 			});
 
@@ -109,7 +104,6 @@ class TodoItem extends Component {
 	handleCancel() {
 		const { isNewTodo, setNewTodo } = this.props;
 
-		// 若是要新增Todo 的 panel 就回復成 input 而不是 todo item
 		if (isNewTodo) {
 			setNewTodo();
 		}
@@ -117,7 +111,6 @@ class TodoItem extends Component {
 	}
 
 	addStar() {
-		console.log('按下星星');
 		const { star } = this.state;
 		const { id } = this.props;
 		if (id) {
@@ -138,7 +131,6 @@ class TodoItem extends Component {
 	}
 
 	onEdit() {
-		console.log('按下 edit icon (只改變 todoItem 的 edit state)');
 		const { edit } = this.state;
 		const { isNewTodo } = this.props;
 		if (isNewTodo) {
@@ -149,10 +141,9 @@ class TodoItem extends Component {
 	}
 
 	removeTodo() {
-		console.log('按下刪除');
 		const { deleted } = this.state;
 		const { id, isNewTodo } = this.props;
-		console.log('刪除', id);
+
 		if (!isNewTodo) {
 			this.setState({ deleted: !deleted });
 			let findSortId = null;
@@ -163,18 +154,19 @@ class TodoItem extends Component {
 					}
 				});
 			});
+
+			firebaseDB.ref(`todos/${id}`).remove();
+
 			firebaseDB
 				.ref('sort')
 				.child(findSortId)
 				.remove();
-			firebaseDB.ref(`todos/${id}`).remove();
 		} else {
 			alert('請按下 Cancel 或 輸入標題喔');
 		}
 	}
 
 	handleCheck() {
-		console.log('按下Checkbox');
 		const { completed } = this.state;
 		const { id } = this.props;
 
@@ -184,8 +176,7 @@ class TodoItem extends Component {
 
 	render() {
 		const { edit, star, deleted, completed } = this.state;
-		const { className, id, date, file, name, type, comment, isNewTodo } = this.props;
-		console.log(id);
+		const { className, id, date, file, name, type, comment, isNewTodo, tab } = this.props;
 		return (
 			<div className={classnames(styles.todoItem, className)}>
 				<div className={styles.deleteItem}>
@@ -200,6 +191,7 @@ class TodoItem extends Component {
 						file={isExist(file)}
 						comment={isExist(comment)}
 						isNewTodo={isNewTodo}
+						tab={tab}
 						addStar={this.addStar}
 						onEdit={this.onEdit}
 						handleCheckboxChange={this.handleCheck}
@@ -218,7 +210,6 @@ class TodoItem extends Component {
 				</div>
 				{edit && (
 					<TodoPanel
-						// Add task and edit
 						ref={this.panel}
 						id={id}
 						date={transDayToDate(date)}

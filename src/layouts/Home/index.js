@@ -3,12 +3,6 @@ import TodoList from 'components/organisms/TodoList';
 
 import styles from './index.css';
 
-// const HomeLayout = ({ onClickTab }) => (
-// 	<div className={styles.homeLayout}>
-// 		<TodoList onClickTab={onClickTab} />
-// 	</div>
-// );
-
 // eslint-disable-next-line react/prefer-stateless-function
 class HomeLayout extends Component {
 	constructor(props) {
@@ -19,6 +13,14 @@ class HomeLayout extends Component {
 		};
 
 		this.handleTabChange = this.handleTabChange.bind(this);
+	}
+
+	componentDidUpdate(prevProps, prevState) {
+		const { tab } = this.state;
+		// condition
+		if (prevState.tab !== tab) {
+			this.handleTabChange(tab);
+		}
 	}
 
 	handleTabChange(step) {

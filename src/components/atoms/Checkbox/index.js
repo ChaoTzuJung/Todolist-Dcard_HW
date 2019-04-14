@@ -12,10 +12,7 @@ class Checkbox extends Component {
 	}
 
 	handleChange(evt) {
-		console.log('CheckBox value 與 checked', evt.target.value, evt.target.checked);
 		const { onChange = () => {} } = this.props;
-
-		// 把 checkbox 帶的值 與 開關 true/false 帶入 onChange
 		onChange(evt.target.checked);
 	}
 

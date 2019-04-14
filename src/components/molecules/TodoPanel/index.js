@@ -28,18 +28,13 @@ class TodoPanel extends Component {
 		this.handleDateChange = this.handleDateChange.bind(this);
 	}
 
-	// 針對 onEdit 去抓資料放入 input
 	componentDidMount() {
-		// 若是單純新增todo而展開panel不用 fetch fdata
-		console.log('**Panel** componentDidMount 嘍 !!');
 		const { id, isNewTodo } = this.props;
 		if (!isNewTodo) {
-			console.log('go', id);
 			firebaseDB
 				.ref(`todos/${id}`)
 				.once('value')
 				.then(snapshot => {
-					console.log(snapshot.val());
 					this.setState(prevState => ({
 						cacheTodo: { ...prevState.cacheTodo, ...snapshot.val() },
 					}));
@@ -48,7 +43,6 @@ class TodoPanel extends Component {
 	}
 
 	handleDateChange(e) {
-		console.log(`handleDateChange 選取時間: ${e}`);
 		const { day, time } = transDateToDay(e);
 		this.setState(prevState => ({
 			cacheTodo: {
@@ -63,8 +57,6 @@ class TodoPanel extends Component {
 		const file = e.target.files.item(0);
 		const fr = new FileReader();
 		const { name, type } = file;
-
-		console.log(`onUploadFile 上傳新的file: ${name} / ${type} / ${fr.result}`);
 
 		fr.addEventListener('load', () => {
 			this.setState(prevState => ({
@@ -81,8 +73,6 @@ class TodoPanel extends Component {
 	}
 
 	handleChangeTextarea(e) {
-		console.log(`handleChangeTextarea 輸入新的comment: ${e.target.value}`);
-		// 直接新增 state 屬性
 		this.setState(
 			{
 				textarea: e.target.value,

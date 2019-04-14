@@ -32,27 +32,18 @@ class TodoList extends Component {
 	}
 
 	componentDidMount() {
-		console.log('**TodoList** componentDidMount 嘍 !!');
-		firebaseTodos.on('value', todoSnapshot => {
+		firebaseTodos.once('value', todoSnapshot => {
 			if (todoSnapshot.val()) {
-				console.log('確認Todo資料庫有資料', todoSnapshot.val());
-				// 有資料就抓出排序 讓 firebaseTodos 可以排序一下
-				// eslint-disable-next-line no-shadow
 				firebaseSort.once('value', sortSnapshot => {
-					// 再確認Sort資料庫有資料 true or null
 					if (sortSnapshot.val()) {
-						// eslint-disable-next-line no-shadow
 						firebaseSort.on('value', sortSnapshot => {
 							const sortIndex = [];
 							const sortedArray = [];
 							sortSnapshot.forEach(childSnapshot => {
-								// 抓出排序給 firebaseTodos 做參考
 								sortIndex.push(childSnapshot.val());
 							});
-							// eslint-disable-next-line no-shadow
 							firebaseTodos.once('value').then(snapshot => {
 								const todoObject = snapshot.val();
-								// 把 firebaseSort 排序塞入 firebaseTodo
 								sortIndex.map(key => sortedArray.push(todoObject[key]));
 								this.setState(prevState => ({
 									...prevState.todos,
@@ -61,7 +52,6 @@ class TodoList extends Component {
 							});
 						});
 					} else {
-						// Sort 若無資料，直接把顯有 firebaseTodos 加入 state 並 渲染資料
 						const todos = firebaseLooper(todoSnapshot);
 						this.setState(prevState => ({
 							...prevState.todos,
@@ -73,6 +63,42 @@ class TodoList extends Component {
 		});
 	}
 
+	componentDidUpdate(prevProps, prevState) {
+		const { tab } = this.props;
+		// condition
+		if (prevProps.tab !== tab) {
+			firebaseTodos.once('value', todoSnapshot => {
+				if (todoSnapshot.val()) {
+					firebaseSort.once('value', sortSnapshot => {
+						if (sortSnapshot.val()) {
+							firebaseSort.on('value', sortSnapshot => {
+								const sortIndex = [];
+								const sortedArray = [];
+								sortSnapshot.forEach(childSnapshot => {
+									sortIndex.push(childSnapshot.val());
+								});
+								firebaseTodos.once('value').then(snapshot => {
+									const todoObject = snapshot.val();
+									sortIndex.map(key => sortedArray.push(todoObject[key]));
+									this.setState(prevState => ({
+										...prevState.todos,
+										todos: sortedArray,
+									}));
+								});
+							});
+						} else {
+							const todos = firebaseLooper(todoSnapshot);
+							this.setState(prevState => ({
+								...prevState.todos,
+								todos,
+							}));
+						}
+					});
+				}
+			});
+		}
+	}
+
 	onDragEnd(result) {
 		// dropped outside the list
 		if (!result.destination) {
@@ -80,17 +106,13 @@ class TodoList extends Component {
 		}
 		const { todos } = this.state;
 		const todo = reorder(todos, result.source.index, result.destination.index);
-		// this.setState({
-		// 	todos: todo,
-		// });
-		// 產生新順序
+
 		const sortId = [];
 		todo.forEach(obj => {
 			sortId.push(obj.id);
 		});
 
-		// Todo 依照順序並渲染data跟畫面
-		firebaseTodos.on('value', snapshot => {
+		firebaseTodos.once('value', snapshot => {
 			const TodoObj = snapshot.val();
 			const answer = [];
 
@@ -110,9 +132,8 @@ class TodoList extends Component {
 				...prevState.todos,
 				todos: answer,
 			}));
-			// 建立順序
+
 			firebaseSort.set(sortId);
-			console.log('我set sort ID', sortId);
 		});
 	}
 
@@ -131,7 +152,7 @@ class TodoList extends Component {
 	render() {
 		const { className, value, tab, ...props } = this.props;
 		const { todos, isNewTodo } = this.state;
-		console.log('這邊id很長不見', todos);
+
 		return (
 			<DragDropContext onDragEnd={this.onDragEnd}>
 				<div className={classnames(styles.todolist, className)}>
@@ -175,6 +196,7 @@ class TodoList extends Component {
 														completed={todo.completed}
 														isNewTodo={isNewTodo}
 														setNewTodo={this.handleNewTodo}
+														tab={tab}
 													/>
 												</div>
 											)}
@@ -211,6 +233,7 @@ class TodoList extends Component {
 															completed={todo.completed}
 															isNewTodo={isNewTodo}
 															setNewTodo={this.handleNewTodo}
+															tab={tab}
 														/>
 													</div>
 												)}
@@ -247,6 +270,7 @@ class TodoList extends Component {
 															completed={todo.completed}
 															isNewTodo={isNewTodo}
 															setNewTodo={this.handleNewTodo}
+															tab={tab}
 														/>
 													</div>
 												)}
