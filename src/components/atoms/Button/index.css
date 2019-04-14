@@ -9,6 +9,11 @@
 	border: none;
 	transition: all 0.3s;
 
+	@media screen and (--phone) {
+		padding: 8px 0;
+		height: 40px;
+	}
+
 	& > div {
 		display: flex;
 		justify-content: center;
@@ -18,9 +23,27 @@
 		font-size: 24px;
 		color: var(--black);
 
+		@media screen and (--small-tablet) {
+			font-size: 20px;
+		}
+
+
+		@media screen and (--phone) {
+			font-size: 16px;
+		}
+
 		& > i {
 			font-size: 24px;
 			margin-right: 14px;
+
+			@media screen and (--small-tablet) {
+				font-size: 20px;
+			}
+
+			@media screen and (--phone) {
+				font-size: 16px;
+				margin-right: 8px;
+			}
 		}
 	}
 

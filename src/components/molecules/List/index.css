@@ -6,6 +6,18 @@
 	background-color: var(--lightGray);
 	border-radius: 5px;
 
+	@media screen and (--small-tablet) {
+		margin: auto;
+		width: 480px;
+		padding: 16px 32px;
+	}
+
+	@media screen and (--phone) {
+		margin: auto;
+		width: 480px;
+		padding: 8px 16px;
+	}
+
 	& > .left {
 		width: 100%;
 
@@ -16,11 +28,6 @@
 			& > .line-through {
 				text-decoration: line-through;
 				color: var(--input-gray);
-			}
-
-			& > .todo-context {
-				font-size: 24px;
-				margin-left: 16px;
 			}
 
 			& > .field-fix {
@@ -41,6 +48,10 @@
 			padding-left: 40px;
 			height: calc(100% - 30px);
 
+			@media screen and (--phone) {
+				adding-left: 30px;
+			}
+
 			& > .icon-fix {
 				margin-top: 16px;
 				color: var(--darkGray);
@@ -49,18 +60,38 @@
 				&:not(:first-child) {
 					margin-left: 16px;
 				}
+
+				@media screen and (--phone) {
+					margin-top: 8px;
+					font-size: 12px;
+				}
 			}
 
 			& > span {
 				margin-top: 16px;
 				margin-left: 8px;
 				color: var(--darkGray);
+
+				@media screen and (--phone) {
+					display: none;
+				}
 			}
 		}
 	}
 
 	& > .right {
 		display: flex;
+
+		@media screen and (--small-tablet) {
+			justify-content: center;
+			align-items: center;
+		}
+
+		@media screen and (--phone) {
+			justify-content: center;
+			align-items: center;
+		}
+
 
 		& > span {
 			cursor: pointer;
@@ -75,6 +106,21 @@
 
 			&:not(:first-child) {
 				margin-left: 32px;
+
+				@media screen and (--phone) {
+					margin-left: 16px;
+				}
+
+			}
+
+			& > i {
+				@media screen and (--small-tablet) {
+					font-size: 20px;
+				}
+
+				@media screen and (--phone) {
+					font-size: 18px;
+				}
 			}
 		}
 	}

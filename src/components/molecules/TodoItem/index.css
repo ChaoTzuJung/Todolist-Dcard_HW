@@ -1,3 +1,61 @@
 .todo-item {
+	position: relative;
 	margin-top: 8px;
+
+	@media screen and (--phone) {
+		margin: auto;
+		width: 75%;
+		margin-top: 16px;
+	}
+
+	& > .delete-item {
+		display: flex;
+		align-items: center;
+
+		& > span {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			position: absolute;
+			right: -64px;
+			width: 48px;
+			height: 48px;
+			border-radius: 50%;
+			background: var(--lightGray);
+			box-shadow: 0 4px 4px 0 #c8c8c8;
+			cursor: pointer;
+
+			@media screen and (--small-tablet) {
+				right: -48px;
+				width: 32px;
+				height: 32px;
+			}
+
+			@media screen and (--phone) {
+				width: 24px;
+				height: 24px;
+				border-radius: 0%;
+				background: transparent;
+				box-shadow: none;
+				right: -34px;
+			}
+
+			& > i {
+				color: var(--red);
+				font-size: 22px;
+
+				@media screen and (--small-tablet) {
+					font-size: 18px;
+				}
+
+				@media screen and (--phone) {
+					font-size: 20px;
+				}
+			}
+
+			& > .deleted {
+				color: var(--red);
+			}
+		}
+	}
 }

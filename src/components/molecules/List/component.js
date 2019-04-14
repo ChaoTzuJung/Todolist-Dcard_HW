@@ -8,25 +8,19 @@ import Icon from 'components/atoms/Icon';
 import styles from './index.css';
 
 const List = ({
-	// state
 	message,
-	// cacheTodo: { message },
 	completed,
 	star,
 	edit,
 
-	// props
 	className,
-	// icon 隔壁的時間
 	date,
-	// 3個小icon
 	deadline,
 	file,
 	comment,
 	addStar,
 	onEdit,
 
-	// actions
 	handleCheckboxChange,
 	handleChange,
 }) => (

@@ -7,8 +7,26 @@
 	border-top: 2px solid #c8c8c8;
 	border-radius: 0 0 5px 5px;
 
+	@media screen and (--small-tablet) {
+		margin: auto;
+		width: 480px;
+	}
+
+	@media screen and (--phone) {
+		margin: auto;
+		width: 100%;
+	}
+
 	& > .field-group {
 		padding: 24px 72px;
+
+		@media screen and (--small-tablet) {
+			padding: 24px 36px;
+		}
+
+		@media screen and (--phone) {
+			padding: 16px 16px;
+		}
 
 		& > .label {
 			& > p {
@@ -19,6 +37,22 @@
 					margin-left: 6px;
 					font-size: 20px;
 					font-weight: 500;
+
+					@media screen and (--small-tablet) {
+						font-size: 16px;
+					}
+
+					@media screen and (--phone) {
+						font-size: 14px;
+					}
+				}
+
+				@media screen and (--phone) {
+					margin: 8px 0;
+
+					& > i {
+						font-size: 14px;
+					}
 				}
 			}
 
@@ -26,9 +60,25 @@
 				display: flex;
 				align-items: center;
 
+				@media screen and (--phone) {
+					flex-direction: column;
+					align-items: flex-start;
+					justify-content: flex-start;
+					width: 100%;
+
+					& > span {
+						font-size: 12px;
+					}
+				}
+
 				& > :first-child {
 					margin-left: 28px;
 					margin-right: 8px;
+
+					@media screen and (--phone) {
+						margin: 8px 0;
+						width: 100%;
+					}
 				}
 
 				&:nth-child(n) {
@@ -36,6 +86,10 @@
 						color: var(--wording-gray);
 						font-size: 16px;
 						font-weight: 300;
+					}
+
+					@media screen and (--phone) {
+						width: 100%;
 					}
 				}
 
@@ -45,6 +99,10 @@
 					height: 120px;
 					border: none;
 					resize: none;
+
+					@media screen and (--phone) {
+						height: 80px;
+					}
 
 					&::placeholder {
 						color: var(--wording-gray);
