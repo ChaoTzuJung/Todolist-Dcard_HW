@@ -5,6 +5,7 @@
 	@media screen and (--phone) {
 		margin: auto;
 		width: 75%;
+		margin-top: 16px;
 	}
 
 	& > .delete-item {
@@ -30,9 +31,26 @@
 				height: 32px;
 			}
 
+			@media screen and (--phone) {
+				width: 24px;
+				height: 24px;
+				border-radius: 0%;
+				background: transparent;
+				box-shadow: none;
+				right: -34px;
+			}
+
 			& > i {
 				color: var(--red);
-				font-size: 16px;
+				font-size: 22px;
+
+				@media screen and (--small-tablet) {
+					font-size: 18px;
+				}
+
+				@media screen and (--phone) {
+					font-size: 20px;
+				}
 			}
 
 			& > .deleted {

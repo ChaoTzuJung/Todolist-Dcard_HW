@@ -9,6 +9,11 @@
 	border: none;
 	transition: all 0.3s;
 
+	@media screen and (--phone) {
+		padding: 8px 0;
+		height: 40px;
+	}
+
 	& > div {
 		display: flex;
 		justify-content: center;
@@ -37,6 +42,7 @@
 
 			@media screen and (--phone) {
 				font-size: 16px;
+				margin-right: 8px;
 			}
 		}
 	}

@@ -20,6 +20,8 @@
 	@media screen and (--phone) {
 		width: 75%;
 		margin: auto;
+		height: 48px;
+		padding: 12px 0 12px 33px;
 	}
 
 	& > .icon {
@@ -35,8 +37,13 @@
 		border: none;
 
 		@media screen and (--small-tablet) {
-			font-size: 16px;
+			font-size: 20px;
 			font-weight: 400;
+		}
+
+		@media screen and (--phone) {
+			font-size: 16px;
+			font-weight: 300;
 		}
 
 		&::placeholder {

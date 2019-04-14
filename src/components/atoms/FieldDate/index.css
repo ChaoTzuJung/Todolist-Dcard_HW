@@ -1,4 +1,8 @@
 .label {
+	@media screen and (--phone) {
+		width: 100%;
+	}
+
 	& > input {
 		padding: 8px 16px;
 		width: 162px;
@@ -17,6 +21,10 @@
 			color: var(--wording-gray);
 			font-size: 16px;
 			font-weight: 300;
+
+			@media screen and (--phone) {
+				font-size: 12px;
+			}
 		}
 	}
 }
