@@ -8,3 +8,9 @@ _public/*
 # test
 coverage/*
 .jest-test-results.json
+
+# firebase
+.firebase/*
+firebase.json
+.firebaserc
+db.json

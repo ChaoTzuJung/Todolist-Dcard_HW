@@ -29,7 +29,7 @@ class TodoList extends Component {
 		this.onFocus = this.onFocus.bind(this);
 		this.handleNewTodo = this.handleNewTodo.bind(this);
 		this.onDragEnd = this.onDragEnd.bind(this);
-		this.onScroll = this.onScroll.bind(this);
+		// this.onScroll = this.onScroll.bind(this);
 	}
 
 	componentDidMount() {
