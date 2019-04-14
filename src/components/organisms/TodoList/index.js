@@ -29,6 +29,7 @@ class TodoList extends Component {
 		this.onFocus = this.onFocus.bind(this);
 		this.handleNewTodo = this.handleNewTodo.bind(this);
 		this.onDragEnd = this.onDragEnd.bind(this);
+		this.onScroll = this.onScroll.bind(this);
 	}
 
 	componentDidMount() {
@@ -36,6 +37,7 @@ class TodoList extends Component {
 			if (todoSnapshot.val()) {
 				firebaseSort.once('value', sortSnapshot => {
 					if (sortSnapshot.val()) {
+						// eslint-disable-next-line no-shadow
 						firebaseSort.on('value', sortSnapshot => {
 							const sortIndex = [];
 							const sortedArray = [];
@@ -61,6 +63,7 @@ class TodoList extends Component {
 				});
 			}
 		});
+		// window.addEventListener('scroll', this.onScroll);
 	}
 
 	componentDidUpdate(prevProps, prevState) {
@@ -71,6 +74,7 @@ class TodoList extends Component {
 				if (todoSnapshot.val()) {
 					firebaseSort.once('value', sortSnapshot => {
 						if (sortSnapshot.val()) {
+							// eslint-disable-next-line no-shadow
 							firebaseSort.on('value', sortSnapshot => {
 								const sortIndex = [];
 								const sortedArray = [];
@@ -80,6 +84,7 @@ class TodoList extends Component {
 								firebaseTodos.once('value').then(snapshot => {
 									const todoObject = snapshot.val();
 									sortIndex.map(key => sortedArray.push(todoObject[key]));
+									// eslint-disable-next-line no-shadow
 									this.setState(prevState => ({
 										...prevState.todos,
 										todos: sortedArray,
@@ -88,6 +93,7 @@ class TodoList extends Component {
 							});
 						} else {
 							const todos = firebaseLooper(todoSnapshot);
+							// eslint-disable-next-line no-shadow
 							this.setState(prevState => ({
 								...prevState.todos,
 								todos,
@@ -98,6 +104,18 @@ class TodoList extends Component {
 			});
 		}
 	}
+	/* Infinite Scroll */
+	// onScroll() {
+	// 	const { loading, next } = this.state;
+	// 	if (loading) return;
+	// 	if (!next) return;
+	// 	console.log(window.scrollY);
+	// 	console.log(window.innerHeight);
+	// 	console.log(document.body.scrollHeight);
+	// 	if (window.scrollY + window.innerHeight >= document.body.scrollHeight - 500) {
+	// 		console.log('load more...');
+	// 	}
+	// }
 
 	onDragEnd(result) {
 		// dropped outside the list
