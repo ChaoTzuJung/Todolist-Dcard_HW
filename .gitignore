@@ -3,7 +3,7 @@ node_modules/*
 *.log
 
 # build
-# _public/*
+_public/*
 
 # test
 coverage/*
