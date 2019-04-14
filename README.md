@@ -25,6 +25,7 @@ jest、react-router、redux、react-hook (To be continued)
 - 進度管控 (所有代辦事項/進行中/已完成)
 - 拖拉 Todo 跟改順序
 - 標註星星 標示重要
+- RWD 響應式網站
 
 ## 如何開始
 
