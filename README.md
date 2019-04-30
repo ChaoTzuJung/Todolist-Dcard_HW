@@ -125,3 +125,9 @@ export default {
 5. 每筆待辦可再填寫評論與附加檔案
 6. 待辦狀態：全部顯示(預設)、待處理、已處理
 7. 待辦事項過多時，需考量內容是否需要折疊
+
+### 待優化
+- [ ] 利用 Context API 或 redux 來解決 Props drilling 問題
+- [ ] 用 localstorge..等去 cache 資料
+- [ ] 嘗試用 React Hook 做 state management
+
