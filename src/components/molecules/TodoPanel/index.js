@@ -91,7 +91,7 @@ class TodoPanel extends Component {
 	render() {
 		const {
 			textarea,
-			cacheTodo: { timestamp, date, type, name, file, comment },
+			cacheTodo: { timestamp, date, type, name, file, comment, completed },
 		} = this.state;
 
 		const { className, onCancel = () => {}, onSave = () => {}, ...other } = this.props;
@@ -172,6 +172,7 @@ class TodoPanel extends Component {
 								name,
 								file,
 								comment,
+								completed,
 							})
 						}
 					>
