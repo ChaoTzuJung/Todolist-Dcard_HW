@@ -14,12 +14,12 @@ class TodoItem extends Component {
 		super(props);
 		this.input = React.createRef();
 		this.panel = React.createRef();
-		const { isNewTodo, completed, star } = this.props;
+		const { isNewTodo } = this.props;
 
 		this.state = {
-			star: star || false,
+			star: false,
 			edit: isNewTodo,
-			completed: completed || false,
+			completed: false,
 			deleted: false,
 		};
 
@@ -31,8 +31,18 @@ class TodoItem extends Component {
 		this.handleCheck = this.handleCheck.bind(this);
 	}
 
+	componentWillReceiveProps(nextProps) {
+		if (nextProps.star) {
+			this.setState({ star: nextProps.star });
+		}
+
+		if (nextProps.completed) {
+			this.setState({ completed: nextProps.completed });
+		}
+	}
+
 	handleSave(data) {
-		const { isNewTodo, setNewTodo, id } = this.props;
+		const { isNewTodo, setNewTodo, id, completed } = this.props;
 		const { message, star } = this.input.current.state;
 
 		const { comment, date, file, name, timestamp, type } = data;
@@ -90,8 +100,9 @@ class TodoItem extends Component {
 				name: isExist(name) ? name : null,
 				timestamp: isExist(time) ? time : null,
 				type: isExist(type) ? type : null,
-				id,
+				completed,
 				star,
+				id,
 			});
 
 			if (isNewTodo) {
