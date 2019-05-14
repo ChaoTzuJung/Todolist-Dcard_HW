@@ -130,4 +130,10 @@ export default {
 - [ ] 利用 Context API 或 redux 來解決 Props drilling 問題
 - [ ] 用 localstorge..等去 cache 資料
 - [ ] 嘗試用 React Hook 做 state management
+- [ ] 針對元件撰寫 unit test
+- [ ] PWA
+
+### bug
+- [ ] 當todo內含的資料量大，`新增資料 / 切換Tab` Todo資料出現速度慢
+- [ ] 每次Todo先出現，Todo文字內容顯示會delay
 
